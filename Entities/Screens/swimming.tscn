@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfl8kn6u0m5yn"]
+[gd_scene load_steps=9 format=3 uid="uid://cfl8kn6u0m5yn"]
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_g8jrg"]
+[ext_resource type="Script" uid="uid://cgmy17big6c0w" path="res://Scripts/swimming.gd" id="1_o6v8h"]
 [ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Screens/mini_game_player.tscn" id="2_o6v8h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6v8h"]
@@ -13,41 +14,66 @@ size = Vector2(100.73689, 116.512665)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_381oc"]
 size = Vector2(133, 656)
 
+[sub_resource type="Curve2D" id="Curve2D_wvlh8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
 [node name="Swimming" type="Node2D"]
+script = ExtResource("1_o6v8h")
+
+[node name="Rocks" type="Node2D" parent="."]
+position = Vector2(-1, 0)
 
 [node name="TempObstacles" type="Node2D" parent="."]
+position = Vector2(-41, 57)
 
 [node name="TempFloor" type="Node2D" parent="TempObstacles"]
 position = Vector2(579, 650)
 scale = Vector2(11.535, 1)
 
-[node name="Water" type="Sprite2D" parent="TempObstacles/TempFloor"]
-modulate = Color(0, 0, 0.6666667, 1)
-texture = ExtResource("1_g8jrg")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TempObstacles/TempFloor/Water"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TempObstacles/TempFloor"]
+position = Vector2(3.5543997, -10)
 physics_material_override = SubResource("PhysicsMaterial_o6v8h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TempObstacles/TempFloor/Water/StaticBody2D"]
+[node name="Water" type="Sprite2D" parent="TempObstacles/TempFloor/StaticBody2D"]
+modulate = Color(0, 0, 0.6666667, 1)
+position = Vector2(0.086692676, 1)
+texture = ExtResource("1_g8jrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempObstacles/TempFloor/StaticBody2D"]
 position = Vector2(-0.17338562, -3)
 scale = Vector2(1, 0.9955997)
 shape = SubResource("RectangleShape2D_wvlh8")
 
-[node name="InvisWall" type="Node2D" parent="TempObstacles"]
+[node name="InvisWalls" type="Node2D" parent="TempObstacles"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TempObstacles/InvisWall"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TempObstacles/InvisWalls"]
 position = Vector2(-24, 268)
 physics_material_override = SubResource("PhysicsMaterial_g8jrg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TempObstacles/InvisWall/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempObstacles/InvisWalls/StaticBody2D"]
 shape = SubResource("RectangleShape2D_381oc")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="TempObstacles/InvisWall"]
-position = Vector2(1173, 266)
+[node name="StaticBody2D2" type="StaticBody2D" parent="TempObstacles/InvisWalls"]
+position = Vector2(1262, 266)
 physics_material_override = SubResource("PhysicsMaterial_g8jrg")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TempObstacles/InvisWall/StaticBody2D2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TempObstacles/InvisWalls/StaticBody2D2"]
 shape = SubResource("RectangleShape2D_381oc")
 
 [node name="MiniGamePlayer" parent="." instance=ExtResource("2_o6v8h")]
-position = Vector2(589, 492)
+position = Vector2(548, 549)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wvlh8")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(1152, 0)
+rotation = 3.1415927
+
+[node name="RockTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]
