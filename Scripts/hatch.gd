@@ -30,6 +30,8 @@ extends Node2D
 
 @onready var available_pets = [deerdog]
 
+signal finished
+
 var hatching = false
 var amount_pressed = 0
 func _ready() -> void:
@@ -113,4 +115,4 @@ func _on_end_timeout() -> void:
 
 
 func _on_transition_exited() -> void:
-	get_tree().change_scene_to_file("res://Entities/UI/days_left.tscn")
+	emit_signal("finished")

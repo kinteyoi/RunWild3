@@ -821,7 +821,6 @@ stream = SubResource("AudioStreamRandomizer_kk3od")
 wait_time = 0.1
 
 [node name="Transition" parent="." instance=ExtResource("15_iryu1")]
-visible = false
 
 [node name="End" type="Timer" parent="."]
 wait_time = 3.0

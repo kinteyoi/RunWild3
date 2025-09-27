@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://c1p6yysosa0qw"]
+[gd_scene load_steps=36 format=4 uid="uid://c1p6yysosa0qw"]
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_1bki2"]
 [ext_resource type="Script" uid="uid://bns4n0ukjcgl6" path="res://Scripts/fruit_collection.gd" id="1_8gfxb"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://nc5bfedvnpgm" path="res://addons/rmsmartshape/materials/shape_material.gd" id="13_5yrvm"]
 [ext_resource type="Texture2D" uid="uid://dnub6q51ebmgj" path="res://Assets/Environment/runwild_applecanopy.png" id="14_o2xe5"]
 [ext_resource type="Texture2D" uid="uid://by4ndgva7j4q2" path="res://Assets/Environment/runwild_applecanopyback.png" id="15_dtt0i"]
+[ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="16_fjsm6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6v8h"]
 
@@ -28,7 +29,7 @@ size = Vector2(133, 1253)
 
 [sub_resource type="Curve2D" id="Curve2D_wvlh8"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1102, 0, 0, 0, 0, 0, 50, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 1703, 0, 0, 0, 0, 0, 50, 0)
 }
 point_count = 2
 
@@ -169,11 +170,11 @@ shape = SubResource("RectangleShape2D_381oc")
 position = Vector2(548, 549)
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2(0, 11)
+position = Vector2(-300, 11)
 curve = SubResource("Curve2D_wvlh8")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(1102, 0)
+position = Vector2(1703, 0)
 rotation = 3.1415927
 scale = Vector2(1.1993349, 0.9999999)
 
@@ -209,5 +210,7 @@ self_modulate = Color(0.56, 0.56, 0.56, 1)
 z_index = -570
 position = Vector2(578, 318)
 texture = ExtResource("15_dtt0i")
+
+[node name="Transition" parent="." instance=ExtResource("16_fjsm6")]
 
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]

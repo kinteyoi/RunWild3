@@ -1,5 +1,5 @@
 extends Node2D
-
+@onready var escape = preload("res://Entities/Screens/escape.tscn")
 @onready var transition: Node2D = $Transition
 
 func _ready() -> void:
@@ -7,4 +7,5 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Entities/Screens/escape.tscn")
+	var escape_tscn = escape.instantiate()
+	add_child(escape_tscn)

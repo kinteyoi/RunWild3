@@ -4,17 +4,20 @@ extends Node2D
 @onready var path_follow_2d: PathFollow2D = $Path2D/PathFollow2D
 @onready var coconutScene: PackedScene = preload("res://Entities/Objects/fruit.tscn")
 @onready var mini_game_player: CharacterBody2D = $MiniGamePlayer
+@onready var transition: Node2D = $Transition
 
 
 var timeLimit = 0
 
 func _ready():
+	transition.leavesopen()
 	Manager.activeScene = "FruitCollection"
 
 func _process(delta: float) -> void:
 	timeLimit += delta
 	if timeLimit >= 30 or mini_game_player == null:
-		Engine.time_scale = 0
+		get_tree().paused = true
+		transition.leavesclose()
 
 func _on_fruit_timer_timeout() -> void:
 	var fruitOrCoco = randi_range(0,3) == 1

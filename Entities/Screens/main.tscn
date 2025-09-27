@@ -7,3 +7,5 @@
 script = ExtResource("1_ui0nx")
 
 [node name="Hatch" parent="." instance=ExtResource("2_kfjtj")]
+
+[connection signal="finished" from="Hatch" to="." method="_on_hatch_finished"]

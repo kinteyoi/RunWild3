@@ -64,7 +64,7 @@ texture = ExtResource("5_1k3xh")
 [node name="Points" type="Node2D" parent="."]
 
 [node name="Rest" type="Marker2D" parent="Points"]
-position = Vector2(576, 69)
+position = Vector2(576, 101)
 
 [node name="RunwildButtonrest" type="Sprite2D" parent="Points/Rest"]
 scale = Vector2(0.415, 0.415)
@@ -79,7 +79,7 @@ offset_bottom = 49.0
 pivot_offset = Vector2(80, 49)
 
 [node name="Eat" type="Marker2D" parent="Points"]
-position = Vector2(776, 69)
+position = Vector2(776, 85)
 
 [node name="RunwildButtoneat" type="Sprite2D" parent="Points/Eat"]
 scale = Vector2(0.415, 0.415)
@@ -92,6 +92,7 @@ offset_top = -49.0
 offset_right = 81.0
 offset_bottom = 49.0
 pivot_offset = Vector2(80, 49)
+metadata/_edit_use_anchors_ = true
 
 [node name="Run" type="Marker2D" parent="Points"]
 position = Vector2(176, 69)
@@ -109,7 +110,7 @@ offset_bottom = 49.0
 pivot_offset = Vector2(80, 49)
 
 [node name="Swim" type="Marker2D" parent="Points"]
-position = Vector2(376, 69)
+position = Vector2(376, 85)
 
 [node name="RunwildButtonswim" type="Sprite2D" parent="Points/Swim"]
 scale = Vector2(0.415, 0.415)

@@ -20,10 +20,10 @@ tracks/0/path = NodePath("RunwildLeafwall1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1.6245025, 1, 1),
 "update": 0,
-"values": [Vector2(-218, 299), Vector2(615.3334, 299)]
+"values": [Vector2(-2030, 299), Vector2(-302, 299), Vector2(615.3334, 299)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -32,10 +32,10 @@ tracks/1/path = NodePath("RunwildLeafwall2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1.4142147, 1, 1),
 "update": 0,
-"values": [Vector2(1404, 299), Vector2(570.6666, 299)]
+"values": [Vector2(3538, 299), Vector2(1426, 299), Vector2(570.6666, 299)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
