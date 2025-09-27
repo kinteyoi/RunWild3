@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3s1f6udt8kna"]
+[gd_scene load_steps=11 format=3 uid="uid://c3s1f6udt8kna"]
 
 [ext_resource type="Script" uid="uid://dj4br0qcnm18" path="res://Scripts/sky.gd" id="1_o24eu"]
 [ext_resource type="Texture2D" uid="uid://ddu3o1udunf1" path="res://Assets/Environment/SkyBackground.png" id="1_q65rb"]
 [ext_resource type="PackedScene" uid="uid://bfmsiihjy8gae" path="res://Entities/Objects/cloud.tscn" id="2_xmyi1"]
 [ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Players/mini_game_player.tscn" id="3_o24eu"]
 [ext_resource type="Script" uid="uid://ceqmca8wufmra" path="res://Scripts/kill_box.gd" id="5_rbh4c"]
-[ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="6_ckrgw"]
+[ext_resource type="Texture2D" uid="uid://bj7hy1aurstv" path="res://Assets/Environment/runwild_jumpcloud1.png" id="6_ckrgw"]
+[ext_resource type="Texture2D" uid="uid://dmd2kkbre1ynn" path="res://Assets/Environment/runwild_jumpcloud2.png" id="7_u04ro"]
 
 [sub_resource type="Curve2D" id="Curve2D_xmyi1"]
 _data = {
@@ -17,7 +18,7 @@ point_count = 2
 size = Vector2(2773, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u04ro"]
-size = Vector2(3637, 405)
+size = Vector2(11752.264, 273.73547)
 
 [node name="Sky" type="Node2D"]
 script = ExtResource("1_o24eu")
@@ -72,16 +73,24 @@ shape = SubResource("RectangleShape2D_o24eu")
 [node name="KillBox" type="Node2D" parent="."]
 
 [node name="KillBox" type="Area2D" parent="KillBox"]
+scale = Vector2(0.21740495, 1.2696733)
 script = ExtResource("5_rbh4c")
 
 [node name="Sprite2D" type="Sprite2D" parent="KillBox/KillBox"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(1023, 1334)
-scale = Vector2(28.48, 3.2800002)
+modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+position = Vector2(1604.0527, 806.9409)
+scale = Vector2(20.387363, 2.3589294)
 texture = ExtResource("6_ckrgw")
 
+[node name="Sprite2D2" type="Sprite2D" parent="KillBox/KillBox"]
+modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+position = Vector2(6445.6846, 807.1426)
+scale = Vector2(18.03364, 2.3588276)
+texture = ExtResource("7_u04ro")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox/KillBox"]
-position = Vector2(1014.5, 1329)
+position = Vector2(3669.7595, 815.01886)
+scale = Vector2(1, 1.0000001)
 shape = SubResource("RectangleShape2D_u04ro")
 
 [node name="KillBoxDelay" type="Timer" parent="KillBox"]
