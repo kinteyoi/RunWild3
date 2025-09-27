@@ -1,8 +1,8 @@
 extends Node2D
-@onready var fruitScene: PackedScene = preload("res://Entities/Screens/fruit.tscn")
+@onready var fruitScene: PackedScene = preload("res://Entities/Objects/fruit.tscn")
 @onready var fruits: Node2D = $Fruits
 @onready var path_follow_2d: PathFollow2D = $Path2D/PathFollow2D
-@onready var coconutScene: PackedScene = preload("res://Entities/Screens/rock.tscn")
+@onready var coconutScene: PackedScene = preload("res://Entities/Objects/rock.tscn")
 @onready var mini_game_player: CharacterBody2D = $MiniGamePlayer
 
 
