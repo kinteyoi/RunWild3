@@ -4,6 +4,7 @@ var gravity_scale = 0
 var direction: Vector2 = Vector2.RIGHT
 var mode : String
 var check = false
+@onready var swim_time: Timer = $SwimTime
 @onready var checker: Timer = $checker
 
 @onready var label: Label = $Label
@@ -18,7 +19,8 @@ func im_pooping(type):
 	if type == "swim":
 		check = true
 		checker.start()
-		mode = "swim"
+		velocity.y += 200
+		swim_time.start()
 	
 	
 	
@@ -40,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	if mode == "fly":
 		print("fly")
 		label.text = "Flyung Poop"
-		velocity.y = 400
+		velocity.y = 600
 	if mode == "swim":
 		print("swim")
 		label.text = "Swimung Poop"
@@ -50,3 +52,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_check_timeout() -> void:
 	check = false
+
+
+func _on_swim_time_timeout() -> void:
+	mode = "swim"

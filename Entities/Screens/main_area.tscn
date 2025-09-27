@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cubhshy5y2exj"]
+[gd_scene load_steps=7 format=3 uid="uid://cubhshy5y2exj"]
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_ay5kp"]
 [ext_resource type="Script" uid="uid://b7fxy3lrbaleq" path="res://Scripts/main_area.gd" id="1_xhqh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="2_3cto1"]
-[ext_resource type="PackedScene" uid="uid://difmblivk0shd" path="res://Entities/Objects/terrain.tscn" id="4_bpk2j"]
+[ext_resource type="PackedScene" uid="uid://3851a7p8vssg" path="res://Entities/Objects/ss_2d_shape.tscn" id="4_bpk2j"]
+[ext_resource type="Texture2D" uid="uid://c0t0dy1hngdta" path="res://Assets/Environment/runwild_background_home.png" id="5_1k3xh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cto1"]
 size = Vector2(1178, 101)
@@ -25,5 +26,13 @@ texture = ExtResource("1_ay5kp")
 [node name="Transition" parent="." instance=ExtResource("2_3cto1")]
 visible = false
 
-[node name="Terrain" parent="." instance=ExtResource("4_bpk2j")]
-position = Vector2(0, 58)
+[node name="MainAreaFloor" parent="." instance=ExtResource("4_bpk2j")]
+position = Vector2(0, 2)
+
+[node name="RunwildBackgroundHome" type="Sprite2D" parent="."]
+modulate = Color(0.61, 0.61, 0.61, 1)
+z_index = -190
+position = Vector2(621, 509)
+texture = ExtResource("5_1k3xh")
+
+[node name="Points" type="Node2D" parent="."]
