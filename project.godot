@@ -14,6 +14,16 @@ config/name="RunWild"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "purple",
+"res://Entities/": "red",
+"res://Fonts/": "orange",
+"res://Scripts/": "green",
+"res://Shaders/": "blue"
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
