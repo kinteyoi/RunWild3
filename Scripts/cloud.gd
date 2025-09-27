@@ -14,7 +14,7 @@ func _ready() -> void:
 	var obby_graphics = [obby, obby2]
 	var random_item = obby_graphics.pick_random()
 	sprite_2d.texture = random_item
-	timer.wait_time = randf_range(3,5)
+	timer.wait_time = randf_range(4,7)
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if cloudBounces > 0:
 		body.velocity.y = 0

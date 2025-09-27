@@ -109,6 +109,37 @@ position = Vector2(598, 326)
 texture = ExtResource("4_wvlh8")
 
 [node name="Transition" parent="." instance=ExtResource("5_381oc")]
+visible = false
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -751.0
+offset_top = -395.0
+offset_right = -711.0
+offset_bottom = -355.0
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1543.0
+offset_top = 965.0
+offset_right = 1583.0
+offset_bottom = 1005.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(7.9599905, 1)
+
+[node name="Label" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.28643006, 1.72)
+text = "Score:"
 
 [connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]
 [connection signal="timeout" from="Difficulty" to="." method="_on_difficulty_timeout"]

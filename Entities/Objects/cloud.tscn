@@ -4,17 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://bj7hy1aurstv" path="res://Assets/Environment/runwild_jumpcloud1.png" id="2_v7gq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7gq6"]
-size = Vector2(318, 76)
+size = Vector2(316, 15)
 
 [node name="Cloud" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_v7gq6")
+jumpingPower = -1100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_v7gq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 24)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_v7gq6")
 
 [node name="Timer" type="Timer" parent="."]

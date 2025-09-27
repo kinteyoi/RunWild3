@@ -39,11 +39,16 @@ func _process(_delta: float) -> void:
 		AddCloud()
 	
 func AddCloud():
-	var randPos = randf_range(0, .15)
+	var left = randi_range(0,1) == 1
+	var randPos = randf_range(0, .5)
 	var cloud = cloudScene.instantiate()
 	clouds.add_child(cloud)
 	Manager.cloudList.append(cloud)
-	path_follow_2d.progress_ratio = randPos + mini_game_player.position.x/ratio
+	path_follow_2d.progress_ratio = mini_game_player.position.x
+	var playerPos = path_follow_2d.progress_ratio
+	if left:
+		randPos = -randPos
+	path_follow_2d.progress_ratio = playerPos + randPos
 	cloud.position = path_follow_2d.global_position
 
 

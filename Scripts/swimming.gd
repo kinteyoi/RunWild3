@@ -5,20 +5,23 @@ extends Node2D
 @onready var mini_game_player: CharacterBody2D = $SwimmingMiniGamePlayer
 @onready var rock_timer: Timer = $RockTimer
 @onready var transition: Node2D = $Transition
-signal finished
-@export var power = 0
+@onready var label: Label = $UI/Panel/Label
 
+
+signal finished
+@export var score = 0
 
 
 func _ready() -> void:
 	Manager.activeScene = "swim"
 	transition.leavesopen()
 func _process(delta: float) -> void:
-	power += delta
+	score += delta
 	if mini_game_player == null:
-		Manager.swimStats = power
+		Manager.swimStats = score
 		get_tree().paused = true
 		transition.leavesclose()
+	label.text = "Score: " + str(int(score))
 func _on_rock_timer_timeout() -> void:
 	var rock = rockScene.instantiate()
 	var randPos = randf_range(0,1)
