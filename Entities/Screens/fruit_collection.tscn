@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_1bki2"]
 [ext_resource type="Script" uid="uid://bns4n0ukjcgl6" path="res://Scripts/fruit_collection.gd" id="1_8gfxb"]
-[ext_resource type="PackedScene" path="res://Entities/Players/mini_game_player.tscn" id="2_8gfxb"]
+[ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Players/mini_game_player.tscn" id="2_8gfxb"]
 [ext_resource type="Texture2D" uid="uid://2kwff3xfgjsm" path="res://Assets/Environment/runwild_background_applecatch.png" id="4_5pqtc"]
 [ext_resource type="Script" uid="uid://dhdc4b8yddyej" path="res://addons/rmsmartshape/shapes/shape.gd" id="5_kw2vf"]
 [ext_resource type="Script" uid="uid://bwcf4pjgprn0k" path="res://addons/rmsmartshape/shapes/point.gd" id="6_o2xe5"]
@@ -212,6 +212,39 @@ position = Vector2(578, 318)
 texture = ExtResource("15_dtt0i")
 
 [node name="Transition" parent="." instance=ExtResource("16_fjsm6")]
+visible = false
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -751.0
+offset_top = -395.0
+offset_right = -711.0
+offset_bottom = -355.0
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 391.0
+offset_top = 177.0
+offset_right = 431.0
+offset_bottom = 217.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(7.9599905, 1)
+
+[node name="Label" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 0.87939805
+offset_top = -1.0
+offset_right = 48.8794
+offset_bottom = 22.0
+scale = Vector2(0.28643006, 1.72)
+text = "Score:"
 
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
