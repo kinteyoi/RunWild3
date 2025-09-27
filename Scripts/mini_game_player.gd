@@ -3,12 +3,14 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
+const GRAV_SCALE = .8
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		if velocity.y > 0:
+			print("fall")
+		velocity += get_gravity() * delta * GRAV_SCALE
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and Manager.activeScene != "swim":
