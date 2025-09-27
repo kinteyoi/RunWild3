@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3s1f6udt8kna"]
+[gd_scene load_steps=12 format=3 uid="uid://c3s1f6udt8kna"]
 
 [ext_resource type="Script" uid="uid://dj4br0qcnm18" path="res://Scripts/sky.gd" id="1_o24eu"]
 [ext_resource type="Texture2D" uid="uid://ddu3o1udunf1" path="res://Assets/Environment/SkyBackground.png" id="1_q65rb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ceqmca8wufmra" path="res://Scripts/kill_box.gd" id="5_rbh4c"]
 [ext_resource type="Texture2D" uid="uid://bj7hy1aurstv" path="res://Assets/Environment/runwild_jumpcloud1.png" id="6_ckrgw"]
 [ext_resource type="Texture2D" uid="uid://dmd2kkbre1ynn" path="res://Assets/Environment/runwild_jumpcloud2.png" id="7_u04ro"]
+[ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="8_u04ro"]
 
 [sub_resource type="Curve2D" id="Curve2D_xmyi1"]
 _data = {
@@ -135,6 +136,8 @@ text = "Score:"
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(751, 395)
 
+[node name="Transition" parent="." instance=ExtResource("8_u04ro")]
+
 [connection signal="Down" from="MiniGamePlayer" to="." method="_on_mini_game_player_down"]
 [connection signal="Up" from="MiniGamePlayer" to="." method="_on_mini_game_player_up"]
 [connection signal="body_entered" from="Clouds/Cloud0" to="." method="_on_cloud_0_body_entered"]
@@ -145,3 +148,4 @@ position = Vector2(751, 395)
 [connection signal="body_entered" from="DifficultyBarriers/SubMaxes2" to="." method="_on_sub_maxes_2_body_entered"]
 [connection signal="body_entered" from="KillBox/KillBox" to="." method="_on_kill_box_body_entered"]
 [connection signal="timeout" from="KillBox/KillBoxDelay" to="KillBox/KillBox" method="_on_kill_box_delay_timeout"]
+[connection signal="exited" from="Transition" to="." method="_on_transition_exited"]

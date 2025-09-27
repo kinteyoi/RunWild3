@@ -10,6 +10,7 @@ extends Node2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var label: Label = $Camera2D/UI/Panel/Label
 @onready var marker_2d: Marker2D = $Marker2D
+@onready var transition: Node2D = $Transition
 
 @export var minXToWrap = -700
 @export var maxXToWrap = 2100
@@ -17,7 +18,10 @@ extends Node2D
 var playerUp = false
 var maxHeight = 0
 
+signal finishedfly
+
 func _ready() -> void:
+	transition.leavesopen()
 	Manager.cloudList.append($Clouds/Cloud0)
 	Manager.cloudList.append($Clouds/Cloud1)
 	Manager.cloudList.append($Clouds/Cloud2)
@@ -81,7 +85,8 @@ func _on_kill_box_body_entered(body: Node2D) -> void:
 	else:
 		Manager.cloudStats = int(-maxHeight)
 		print(Manager.cloudStats)
-		Engine.time_scale = 0
+		get_tree().paused = true
+		transition.leavesclose()
 
 
 func _on_mini_game_player_up() -> void:
@@ -90,3 +95,9 @@ func _on_mini_game_player_up() -> void:
 
 func _on_mini_game_player_down() -> void:
 	playerUp = false
+
+
+func _on_transition_exited() -> void:
+	if not is_connected("finishedfly", Callable(get_parent(), "go_to_days")):
+		connect("finishedfly", Callable(get_parent(), "go_to_days"))
+		emit_signal("finishedfly")
