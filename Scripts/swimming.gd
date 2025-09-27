@@ -7,10 +7,15 @@ extends Node2D
 
 @export var power = 0
 
+
+
+func _ready() -> void:
+	Manager.activeScene = "swim"
 func _process(delta: float) -> void:
 	power += delta
 	if mini_game_player == null:
 		Engine.time_scale = 0
+		Manager.swimStats = power
 
 func _on_rock_timer_timeout() -> void:
 	var rock = rockScene.instantiate()

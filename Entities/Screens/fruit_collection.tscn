@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfl8kn6u0m5yn"]
+[gd_scene load_steps=9 format=3 uid="uid://di6r4u2odhqe2"]
 
-[ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_g8jrg"]
-[ext_resource type="Script" uid="uid://cgmy17big6c0w" path="res://Scripts/swimming.gd" id="1_o6v8h"]
-[ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Players/mini_game_player.tscn" id="2_o6v8h"]
+[ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_1bki2"]
+[ext_resource type="Script" uid="uid://bns4n0ukjcgl6" path="res://Scripts/fruit_collection.gd" id="1_8gfxb"]
+[ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Players/mini_game_player.tscn" id="2_8gfxb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6v8h"]
 
@@ -20,10 +20,10 @@ _data = {
 }
 point_count = 2
 
-[node name="Swimming" type="Node2D"]
-script = ExtResource("1_o6v8h")
+[node name="FruitCollection" type="Node2D"]
+script = ExtResource("1_8gfxb")
 
-[node name="Rocks" type="Node2D" parent="."]
+[node name="Fruits" type="Node2D" parent="."]
 position = Vector2(-1, 0)
 
 [node name="TempObstacles" type="Node2D" parent="."]
@@ -41,7 +41,7 @@ physics_material_override = SubResource("PhysicsMaterial_o6v8h")
 [node name="Water" type="Sprite2D" parent="TempObstacles/TempFloor/StaticBody2D"]
 modulate = Color(0, 0, 0.6666667, 1)
 position = Vector2(0.086692676, 1)
-texture = ExtResource("1_g8jrg")
+texture = ExtResource("1_1bki2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TempObstacles/TempFloor/StaticBody2D"]
 position = Vector2(-0.17338562, -3)
@@ -66,7 +66,7 @@ physics_material_override = SubResource("PhysicsMaterial_g8jrg")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TempObstacles/InvisWalls/StaticBody2D2"]
 shape = SubResource("RectangleShape2D_381oc")
 
-[node name="MiniGamePlayer" parent="." instance=ExtResource("2_o6v8h")]
+[node name="MiniGamePlayer" parent="." instance=ExtResource("2_8gfxb")]
 position = Vector2(548, 549)
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -77,12 +77,7 @@ position = Vector2(1102, 0)
 rotation = 3.1415927
 scale = Vector2(1.1993349, 0.9999999)
 
-[node name="RockTimer" type="Timer" parent="."]
+[node name="FruitTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Difficulty" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
-[connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]
-[connection signal="timeout" from="Difficulty" to="." method="_on_difficulty_timeout"]
+[connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]

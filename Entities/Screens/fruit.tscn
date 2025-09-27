@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://uj18tvim8uml"]
+[gd_scene load_steps=4 format=3 uid="uid://du4u0eabxsbsh"]
 
-[ext_resource type="Script" uid="uid://b4s4hsm34gdl8" path="res://Scripts/rock.gd" id="1_18mdk"]
-[ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_724g6"]
+[ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_dtcql"]
+[ext_resource type="Script" uid="uid://b4wldr7uj05dc" path="res://Scripts/fruit.gd" id="1_xr8lx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jvlum"]
 radius = 65.0
 
-[node name="Rock" type="Area2D"]
+[node name="Fruit" type="Area2D"]
 collision_layer = 4
-script = ExtResource("1_18mdk")
+script = ExtResource("1_xr8lx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-texture = ExtResource("1_724g6")
+modulate = Color(1, 0.4257876, 0.35708547, 1)
+texture = ExtResource("1_dtcql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jvlum")
