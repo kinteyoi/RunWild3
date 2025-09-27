@@ -5,26 +5,9 @@ extends Node2D
 @onready var mini_game_player: CharacterBody2D = $SwimmingMiniGamePlayer
 @onready var rock_timer: Timer = $RockTimer
 @onready var transition: Node2D = $Transition
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-@onready var label: Label = $UI/Panel/Label
-=======
 signal finishedswim
 @export var score = 0
->>>>>>> Stashed changes
-=======
-signal finishedswim
-@export var score = 0
->>>>>>> Stashed changes
-=======
-signal finishedswim
-@export var score = 0
->>>>>>> Stashed changes
 
-
-signal finished
-@export var score = 0
 
 
 func _ready() -> void:
