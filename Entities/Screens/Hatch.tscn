@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw71wn42kta0q"]
+[gd_scene load_steps=11 format=3 uid="uid://dw71wn42kta0q"]
 
+[ext_resource type="Script" uid="uid://2ej61un2gti7" path="res://Scripts/hatch.gd" id="1_o8joq"]
 [ext_resource type="Texture2D" uid="uid://bl6xon6nle35b" path="res://Assets/Players/pngtree-fresh-single-egg-png-image_12504967.png" id="1_pd4m8"]
+[ext_resource type="Texture2D" uid="uid://c0t0dy1hngdta" path="res://Assets/Environment/runwild_background_home.png" id="3_k7n8x"]
 
 [sub_resource type="Animation" id="Animation_w8xk4"]
 resource_name = "Wiggle"
 length = 1.1
-loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -58,20 +59,106 @@ _data = {
 &"WiggleOther": SubResource("Animation_o8joq")
 }
 
+[sub_resource type="Animation" id="Animation_k7n8x"]
+resource_name = "Jump"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PngtreeFreshSingleEggPngImage12504967:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(0.15932018, 1.2745608, 1),
+"update": 0,
+"values": [Vector2(576, 419), Vector2(576, 369), Vector2(576, 419)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PngtreeFreshSingleEggPngImage12504967:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.123, 0.855), Vector2(0.915, 1), Vector2(0.915, 1), Vector2(0.9, 1), Vector2(1.19, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wfokv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PngtreeFreshSingleEggPngImage12504967:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 419)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PngtreeFreshSingleEggPngImage12504967:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.915, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bf452"]
+_data = {
+&"Jump": SubResource("Animation_k7n8x"),
+&"RESET": SubResource("Animation_wfokv")
+}
+
 [node name="Hatch" type="Node2D"]
+script = ExtResource("1_o8joq")
 
 [node name="PngtreeFreshSingleEggPngImage12504967" type="Sprite2D" parent="."]
 z_index = 85
 position = Vector2(576, 419)
+scale = Vector2(0.915, 1)
 texture = ExtResource("1_pd4m8")
 offset = Vector2(0, -98)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
+[node name="ColorRect" type="Sprite2D" parent="."]
+position = Vector2(577, 315)
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("3_k7n8x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_o8joq")
 }
+
+[node name="Wiggle" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Jump" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bf452")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Button" type="Button" parent="."]
+z_index = 130
+offset_left = 455.0
+offset_top = 136.0
+offset_right = 696.0
+offset_bottom = 466.0
+
+[connection signal="timeout" from="Wiggle" to="." method="_on_wiggle_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
