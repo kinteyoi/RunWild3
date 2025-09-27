@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://beack4lvpb5r0"
+path="res://.godot/imported/Cute thing tense.mp3-fcbceb69f500e5d32cad47464b27a689.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Cute thing tense.mp3"
+dest_files=["res://.godot/imported/Cute thing tense.mp3-fcbceb69f500e5d32cad47464b27a689.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -9,6 +9,8 @@ extends Node2D
 @onready var hatch: Node2D = $Hatch
 
 var current_scene
+@onready var main_audio: AudioStreamPlayer = $MainAudio
+@onready var mini_game_audio: AudioStreamPlayer = $MiniGameAudio
 
 func _on_hatch_finished() -> void:
 	var dlscene = days_left.instantiate()
@@ -18,6 +20,8 @@ func _on_hatch_finished() -> void:
 	dlscene.finished.connect(Callable(self, "main_area_go_to"))
 	
 func main_area_go_to():
+	main_audio.play()
+	mini_game_audio.stop()
 	print(current_scene)
 	var mascene = main_area.instantiate()
 	add_child(mascene)
@@ -25,12 +29,16 @@ func main_area_go_to():
 	current_scene = mascene
 
 func go_to_swim():
+	main_audio.stop()
+	mini_game_audio.play()
 	print(current_scene)
 	var sgscene = swimgame.instantiate()
 	add_child(sgscene)
 	current_scene.queue_free()
 	current_scene = sgscene
 func go_to_run():
+	main_audio.stop()
+	mini_game_audio.play()
 	print(current_scene)
 	print("bust")
 	var rgscene = rungame.instantiate()
@@ -38,12 +46,16 @@ func go_to_run():
 	current_scene.queue_free()
 	current_scene = rgscene
 func go_to_fly():
+	main_audio.stop()
+	mini_game_audio.play()
 	print(current_scene)
 	var fgscene = flygame.instantiate()
 	add_child(fgscene)
 	current_scene.queue_free()
 	current_scene = fgscene
 func go_to_days():
+	main_audio.stop()
+	mini_game_audio.stop()
 	print(current_scene)
 	Manager.days_left -= 1
 	var dltdscene = days_left.instantiate()
