@@ -36,7 +36,6 @@ func _process(delta: float) -> void:
 		Manager.swimStats = score
 		get_tree().paused = true
 		transition.leavesclose()
-	label.text = "Score: " + str(int(score))
 func _on_rock_timer_timeout() -> void:
 	var rock = rockScene.instantiate()
 	var randPos = randf_range(0,1)
