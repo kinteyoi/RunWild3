@@ -5,15 +5,18 @@ extends Node2D
 @onready var path_follow_2d: PathFollow2D = $Path2D/PathFollow2D
 @onready var cloudScene: PackedScene = preload("res://Entities/Objects/cloud.tscn")
 @onready var clouds: Node2D = $Clouds
+@onready var sub_maxes: Area2D = $DifficultyBarriers/SubMaxes
 
 
 func _ready() -> void:
 	Manager.cloudList.append($Clouds/Cloud0)
+	Manager.cloudList.append($Clouds/Cloud1)
+	Manager.cloudList.append($Clouds/Cloud2)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	path_2d.global_position.y = mini_game_player.global_position.y - 50
 
-	if Manager.cloudList.size() <= Manager.maxClouds:
+	if Manager.cloudList.size() < Manager.maxClouds:
 		AddCloud()
 	
 func AddCloud():
@@ -23,8 +26,17 @@ func AddCloud():
 	Manager.cloudList.append(cloud)
 	path_follow_2d.progress_ratio = randPos
 	cloud.position = path_follow_2d.global_position
-	if Manager.maxBounce == 1 and Manager.maxClouds == 1:
-		return
-	else:
-		Manager.maxBounce -= 1
-		Manager.maxClouds -=1
+
+
+
+
+
+func _on_sub_maxes_body_entered(_body: Node2D) -> void:
+	Manager.maxBounce -= 1
+	Manager.maxClouds -= 1
+	print("entered New Max")
+	print("Max Bounce " + str(Manager.maxBounce))
+	print("Max Cloud " + str(Manager.maxClouds))
+	if _body.has_method("im_here"):
+		sub_maxes.queue_free()
+	#print($"Max Bounce: {Manager.maxBounce}, Max Clouds: {Manager.maxClouds}")
