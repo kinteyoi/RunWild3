@@ -1,12 +1,19 @@
-[gd_scene load_steps=27 format=3 uid="uid://dw71wn42kta0q"]
+[gd_scene load_steps=38 format=3 uid="uid://dw71wn42kta0q"]
 
 [ext_resource type="Script" uid="uid://2ej61un2gti7" path="res://Scripts/hatch.gd" id="1_o8joq"]
 [ext_resource type="Texture2D" uid="uid://d0rs3ot8q24o1" path="res://Assets/Eggs/runwild_egg3purple.png" id="2_k7n8x"]
 [ext_resource type="Texture2D" uid="uid://c0t0dy1hngdta" path="res://Assets/Environment/runwild_background_home.png" id="3_k7n8x"]
-[ext_resource type="Texture2D" uid="uid://fqwy3xjhilkf" path="res://Assets/Eggs/runwild_eggcrackswhite.png" id="3_s5wdi"]
+[ext_resource type="Texture2D" uid="uid://dvq4f50pyog7m" path="res://Assets/Eggs/runwild_eggcrack1.png" id="3_s5wdi"]
 [ext_resource type="FontFile" uid="uid://c5sl0a5qldyyc" path="res://Fonts/Lovely Autumn.ttf" id="4_k7n8x"]
 [ext_resource type="Texture2D" uid="uid://54i5vl613p2p" path="res://Assets/UI/595FAD8C-E33F-4E12-A974-9B2D043A2BA3.png.eac9bd8cac80378692e4115553790af8.png" id="5_wfokv"]
 [ext_resource type="Shader" uid="uid://dtqfybx65bkrl" path="res://Shaders/Ray.gdshader" id="6_bf452"]
+[ext_resource type="Texture2D" uid="uid://w7ks77wcs5wv" path="res://Assets/Players/fetchimage.jpeg" id="8_kw0aw"]
+[ext_resource type="Texture2D" uid="uid://c7lab4qlwqpth" path="res://Assets/UI/UIBox.png" id="9_dasb0"]
+[ext_resource type="FontFile" uid="uid://d3pwalfla0xq5" path="res://Fonts/Born2bSportyFS.otf" id="10_01l2b"]
+[ext_resource type="AudioStream" uid="uid://bb71hrwd4jbxc" path="res://Assets/Sounds/drop_001.ogg" id="11_2woqt"]
+[ext_resource type="AudioStream" uid="uid://clb5piqc3xwi1" path="res://Assets/Sounds/drop_002.ogg" id="12_iryu1"]
+[ext_resource type="AudioStream" uid="uid://bsd4rltwcer10" path="res://Assets/Sounds/drop_003.ogg" id="13_ympbk"]
+[ext_resource type="AudioStream" uid="uid://dlfx1okt8hbv6" path="res://Assets/Sounds/drop_004.ogg" id="14_hhqnw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bf452"]
 shader = ExtResource("6_bf452")
@@ -90,11 +97,49 @@ tracks/0/keys = {
 "values": [0.0, 0.034906585, -0.034906585, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_6miic"]
+resource_name = "WiggleMax2"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Egg:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.12217305, 0.0, -0.12217305, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2woqt"]
+resource_name = "WiggleMax3"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Egg:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.2268928, 0.0, 0.2268928, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o8joq"]
 _data = {
 &"RESET": SubResource("Animation_pd4m8"),
 &"Wiggle": SubResource("Animation_w8xk4"),
 &"WiggleMax": SubResource("Animation_kw0aw"),
+&"WiggleMax2": SubResource("Animation_6miic"),
+&"WiggleMax3": SubResource("Animation_2woqt"),
 &"WiggleOther": SubResource("Animation_o8joq")
 }
 
@@ -409,16 +454,58 @@ tracks/9/keys = {
 [sub_resource type="Animation" id="Animation_dasb0"]
 resource_name = "Cutscene2"
 
+[sub_resource type="Animation" id="Animation_kk3od"]
+resource_name = "Reverse"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.21763767, 1),
+"update": 0,
+"values": [Color(0.45, 0.45, 0.45, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("595fad8cE33f4e12A9749b2d043a2ba3_png_eac9Bd8Cac80378692e4115553790Af8:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.35000002, 0.35000002), Vector2(4.38, 4.38)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ray:material:shader_parameter/color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.90083337, 0.65, 0.23137254), Color(1, 0.90083337, 0.65, 0.5137255)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s5wdi"]
 _data = {
 &"Cutscene": SubResource("Animation_bf452"),
 &"Cutscene2": SubResource("Animation_dasb0"),
-&"RESET": SubResource("Animation_s5wdi")
+&"RESET": SubResource("Animation_s5wdi"),
+&"Reverse": SubResource("Animation_kk3od")
 }
 
 [sub_resource type="Animation" id="Animation_01l2b"]
 resource_name = "Cutscene2"
-length = 3.0
+length = 4.3
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -426,10 +513,46 @@ tracks/0/path = NodePath("TextureRect:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(0.659754, 1),
+"times": PackedFloat32Array(0, 3, 3.2, 4.2),
+"transitions": PackedFloat32Array(0.659754, 1, 0.16493858, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(18.58, 18.58)]
+"values": [Vector2(1e-05, 1e-05), Vector2(18.58, 18.58), Vector2(18.58, 18.58), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Egg:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_py76b"]
@@ -445,6 +568,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Egg:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kk3od"]
@@ -480,6 +639,14 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7948718, 0.15384616)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kk3od"]
+random_pitch = 1.5
+streams_count = 4
+stream_0/stream = ExtResource("11_2woqt")
+stream_1/stream = ExtResource("12_iryu1")
+stream_2/stream = ExtResource("13_ympbk")
+stream_3/stream = ExtResource("14_hhqnw")
+
 [node name="Hatch" type="Node2D"]
 script = ExtResource("1_o8joq")
 
@@ -492,7 +659,6 @@ offset = Vector2(0, -129)
 
 [node name="RunwildEggcrackswhite" type="Sprite2D" parent="Egg"]
 visible = false
-self_modulate = Color(0, 0, 0, 1)
 z_index = 690
 texture = ExtResource("3_s5wdi")
 offset = Vector2(0, -129)
@@ -501,10 +667,10 @@ offset = Vector2(0, -129)
 visible = false
 z_index = 880
 material = SubResource("ShaderMaterial_bf452")
-offset_left = 4.999939
-offset_top = -206.00002
-offset_right = 428.99994
-offset_bottom = 308.0
+offset_left = 10.214097
+offset_top = -167.04393
+offset_right = 434.2141
+offset_bottom = 346.95605
 rotation = -1.7161082
 mouse_filter = 2
 
@@ -512,10 +678,10 @@ mouse_filter = 2
 visible = false
 z_index = 880
 material = SubResource("ShaderMaterial_bf452")
-offset_left = -87.99997
-offset_top = -182.0
-offset_right = 336.0
-offset_bottom = 332.0
+offset_left = -49.682415
+offset_top = -150.26862
+offset_right = 374.31757
+offset_bottom = 363.73138
 rotation = -3.3112626
 mouse_filter = 2
 
@@ -523,10 +689,10 @@ mouse_filter = 2
 visible = false
 z_index = 880
 material = SubResource("ShaderMaterial_bf452")
-offset_left = 5.0
-offset_top = -36.99994
-offset_right = 429.0
-offset_bottom = 477.00006
+offset_left = 50.08542
+offset_top = -56.63433
+offset_right = 474.08542
+offset_bottom = 457.36566
 rotation = -0.7708154
 mouse_filter = 2
 
@@ -595,6 +761,7 @@ offset_bottom = 560.0
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 z_index = 4096
 offset_left = 335.0
 offset_top = 67.00003
@@ -604,6 +771,52 @@ scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(241, 241)
 texture = SubResource("GradientTexture2D_kw0aw")
 
+[node name="Kritter" type="Sprite2D" parent="."]
+visible = false
+z_index = 440
+position = Vector2(576, 324)
+texture = ExtResource("8_kw0aw")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+visible = false
+position = Vector2(576, 575)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Marker2D"]
+texture_filter = 3
+offset_left = -82.0
+offset_top = -20.0
+offset_right = 82.0
+offset_bottom = 20.0
+scale = Vector2(3, 3)
+pivot_offset = Vector2(82, 20)
+texture = ExtResource("9_dasb0")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marker2D/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_01l2b")
+text = "You Hatched Poopgon"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Bing" type="AudioStreamPlayer2D" parent="Marker2D"]
+stream = SubResource("AudioStreamRandomizer_kk3od")
+
+[node name="BingTime" type="Timer" parent="Marker2D"]
+wait_time = 0.1
+
 [connection signal="timeout" from="Wiggle" to="." method="_on_wiggle_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="Cutscene2" to="." method="_on_cutscene_2_animation_finished"]
+[connection signal="timeout" from="Marker2D/BingTime" to="." method="_on_bing_time_timeout"]
