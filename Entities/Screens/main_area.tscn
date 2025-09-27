@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cubhshy5y2exj"]
+[gd_scene load_steps=16 format=4 uid="uid://cubhshy5y2exj"]
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_ay5kp"]
 [ext_resource type="Script" uid="uid://b7fxy3lrbaleq" path="res://Scripts/main_area.gd" id="1_xhqh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="2_3cto1"]
 [ext_resource type="PackedScene" uid="uid://3851a7p8vssg" path="res://Entities/Objects/ss_2d_shape.tscn" id="4_bpk2j"]
 [ext_resource type="Texture2D" uid="uid://c0t0dy1hngdta" path="res://Assets/Environment/runwild_background_home.png" id="5_1k3xh"]
+[ext_resource type="Script" uid="uid://llobjh5hvry" path="res://addons/rmsmartshape/shapes/mesh.gd" id="5_bpaqk"]
+[ext_resource type="Texture2D" uid="uid://ce7xk5g378us5" path="res://Assets/Environment/runwild_grassblock1.2.png" id="6_8s5yf"]
 [ext_resource type="Texture2D" uid="uid://cnuh3lulteorf" path="res://Assets/UI/runwild_buttonrest.png" id="6_xsfye"]
 [ext_resource type="Texture2D" uid="uid://25nmppkoxpjv" path="res://Assets/UI/runwild_buttoneat.png" id="7_0es1c"]
 [ext_resource type="Texture2D" uid="uid://bfafwtmucvjce" path="res://Assets/UI/runwild_buttonrun.png" id="8_bpaqk"]
@@ -13,6 +15,24 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cto1"]
 size = Vector2(1178, 101)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bpaqk"]
+_surfaces = [{
+"aabb": AABB(-525.0562, 524.3355, 0, 2470.4458, 1036.6228, 1e-05),
+"attribute_data": PackedByteArray("/////wAAAAAAAAAAAAAAAAAAAAD/////AAAAAAAAgD8AAAAAAACAP/////+pkGc/AACAP6mQZz8AAIA//////6mQZz8AAAAAqZBnPwAAAAD/////WRngQAAAgD9ZGeBAAACAP/////9ZGeBAAAAAAFkZ4EAAAAAA/////0BXCkEAAIA/QFcKQQAAgD//////QFcKQQAAAABAVwpBAAAAAP////9y+h5BAACAP3L6HkEAAIA//////3L6HkEAAAAAcvoeQQAAAAD/////IdsuQQAAgD8h2y5BAACAP/////8h2y5BAAAAACHbLkEAAAAA/////3DghUEAAIA/cOCFQQAAgD//////cOCFQQAAAABw4IVBAAAAAP////+vN4tBAACAP683i0EAAIA//////683i0EAAAAArzeLQQAAAAD/////AACYQQAAgD8AAJhBAACAP/////8AAJhBAAAAAAAAmEEAAAAA"),
+"format": 34359742527,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAwACAAQAAwAEAAUABQAEAAYABQAGAAcABwAGAAgABwAIAAkACQAIAAoACQAKAAsACwAKAAwACwAMAA0ADQAMAA4ADQAOAA8ADwAOABAADwAQABEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("eCzzRMBcl0QAAAAAdrXRRBLUlUQAAAAAzU3KRDWFo0QAAAAADSzbRLF2wEQAAAAAIralQQcBo0QAAAAAMR1ewqsew0QAAAAAHvSJw0JijUQAAAAAmUMDxM65mUQAAAAAFJpKw6QSYUQAAAAACK/Xw8ArPkQAAAAAQ3VwwofqQUQAAAAAVykZw3kVA0QAAAAA7ty1ROZvQEQAAAAA0OXEREqQBEQAAAAAWde8RKHWWEQAAAAAmavZRI+2NkQAAAAAdrXRRBLUlUQAAAAAeCzzRMBcl0QAAAAA/3//f4BRPxf/f/9/ElN2Fv9//38rL2oo/3//f68upyj/f/9/eRo8Tf9//3/jG/FN/3//fy9fl2//f/9/Wl2tbv9//39JsNpn/3//f4SvPGj/f/9/It1uUf9//39j3U1R/3//f9DP6Cf/f/9/w9RiKv9//3/Wr+sX/3//f7yx3hj/f/9/j6fHE/9//38sphYT")
+}]
+
+[sub_resource type="Resource" id="Resource_8s5yf"]
+script = ExtResource("5_bpaqk")
+texture = ExtResource("6_8s5yf")
+mesh = SubResource("ArrayMesh_bpaqk")
 
 [node name="MainArea" type="Node2D"]
 script = ExtResource("1_xhqh8")
@@ -33,6 +53,7 @@ visible = false
 
 [node name="MainAreaFloor" parent="." instance=ExtResource("4_bpk2j")]
 position = Vector2(0, 2)
+_meshes = Array[ExtResource("5_bpaqk")]([SubResource("Resource_8s5yf")])
 
 [node name="RunwildBackgroundHome" type="Sprite2D" parent="."]
 modulate = Color(0.61, 0.61, 0.61, 1)
@@ -119,3 +140,12 @@ pivot_offset = Vector2(80, 49)
 
 [node name="Transition2" parent="." instance=ExtResource("2_3cto1")]
 visible = false
+
+[node name="Button" type="Button" parent="."]
+offset_left = 42.0
+offset_top = 393.0
+offset_right = 275.0
+offset_bottom = 493.0
+text = "escape"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
