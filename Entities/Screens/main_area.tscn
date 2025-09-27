@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cubhshy5y2exj"]
+[gd_scene load_steps=12 format=3 uid="uid://cubhshy5y2exj"]
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_ay5kp"]
 [ext_resource type="Script" uid="uid://b7fxy3lrbaleq" path="res://Scripts/main_area.gd" id="1_xhqh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="2_3cto1"]
 [ext_resource type="PackedScene" uid="uid://3851a7p8vssg" path="res://Entities/Objects/ss_2d_shape.tscn" id="4_bpk2j"]
 [ext_resource type="Texture2D" uid="uid://c0t0dy1hngdta" path="res://Assets/Environment/runwild_background_home.png" id="5_1k3xh"]
+[ext_resource type="Texture2D" uid="uid://cnuh3lulteorf" path="res://Assets/UI/runwild_buttonrest.png" id="6_xsfye"]
+[ext_resource type="Texture2D" uid="uid://25nmppkoxpjv" path="res://Assets/UI/runwild_buttoneat.png" id="7_0es1c"]
+[ext_resource type="Texture2D" uid="uid://bfafwtmucvjce" path="res://Assets/UI/runwild_buttonrun.png" id="8_bpaqk"]
+[ext_resource type="Texture2D" uid="uid://bxaa8o7in4mgd" path="res://Assets/UI/runwild_buttonswim.png" id="9_8s5yf"]
+[ext_resource type="Texture2D" uid="uid://ceitcm1l4efpm" path="res://Assets/UI/runwild_buttonfly.png" id="10_b00yh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cto1"]
 size = Vector2(1178, 101)
@@ -36,3 +41,81 @@ position = Vector2(621, 509)
 texture = ExtResource("5_1k3xh")
 
 [node name="Points" type="Node2D" parent="."]
+
+[node name="Rest" type="Marker2D" parent="Points"]
+position = Vector2(576, 69)
+
+[node name="RunwildButtonrest" type="Sprite2D" parent="Points/Rest"]
+scale = Vector2(0.415, 0.415)
+texture = ExtResource("6_xsfye")
+
+[node name="Button" type="Button" parent="Points/Rest"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -81.0
+offset_top = -49.0
+offset_right = 80.0
+offset_bottom = 49.0
+pivot_offset = Vector2(80, 49)
+
+[node name="Eat" type="Marker2D" parent="Points"]
+position = Vector2(776, 69)
+
+[node name="RunwildButtoneat" type="Sprite2D" parent="Points/Eat"]
+scale = Vector2(0.415, 0.415)
+texture = ExtResource("7_0es1c")
+
+[node name="Button2" type="Button" parent="Points/Eat"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -80.0
+offset_top = -49.0
+offset_right = 81.0
+offset_bottom = 49.0
+pivot_offset = Vector2(80, 49)
+
+[node name="Run" type="Marker2D" parent="Points"]
+position = Vector2(176, 69)
+
+[node name="RunwildButtonrun" type="Sprite2D" parent="Points/Run"]
+scale = Vector2(0.415, 0.415)
+texture = ExtResource("8_bpaqk")
+
+[node name="Button2" type="Button" parent="Points/Run"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -80.0
+offset_top = -49.0
+offset_right = 81.0
+offset_bottom = 49.0
+pivot_offset = Vector2(80, 49)
+
+[node name="Swim" type="Marker2D" parent="Points"]
+position = Vector2(376, 69)
+
+[node name="RunwildButtonswim" type="Sprite2D" parent="Points/Swim"]
+scale = Vector2(0.415, 0.415)
+texture = ExtResource("9_8s5yf")
+
+[node name="Button2" type="Button" parent="Points/Swim"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -80.0
+offset_top = -49.0
+offset_right = 81.0
+offset_bottom = 49.0
+pivot_offset = Vector2(80, 49)
+
+[node name="Fly" type="Marker2D" parent="Points"]
+position = Vector2(976, 69)
+
+[node name="RunwildButtonfly" type="Sprite2D" parent="Points/Fly"]
+scale = Vector2(0.415, 0.415)
+texture = ExtResource("10_b00yh")
+
+[node name="Button2" type="Button" parent="Points/Fly"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -80.0
+offset_top = -49.0
+offset_right = 81.0
+offset_bottom = 49.0
+pivot_offset = Vector2(80, 49)
+
+[node name="Transition2" parent="." instance=ExtResource("2_3cto1")]
+visible = false
