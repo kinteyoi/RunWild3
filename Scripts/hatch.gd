@@ -6,14 +6,27 @@ extends Node2D
 @onready var ray_1: ColorRect = $Egg/Ray1
 @onready var ray_2: ColorRect = $Egg/Ray2
 @onready var ray_3: ColorRect = $Egg/Ray3
-
-
+@onready var cutscene_2: AnimationPlayer = $Cutscene2
+@onready var crack2 = preload("res://Assets/Eggs/runwild_eggcrack2.png")
+@onready var crack3 = preload("res://Assets/Eggs/runwild_eggcrack3.png")
 @onready var egg1 = preload("res://Assets/Eggs/runwild_egg1.png")
 @onready var egg2 = preload("res://Assets/Eggs/runwild_egg2green.png")
 @onready var egg3 = preload("res://Assets/Eggs/runwild_egg3purple.png")
 @onready var egg4 = preload("res://Assets/Eggs/runwild_egg4blue.png")
 @onready var egg5 = preload("res://Assets/Eggs/runwild_egg5orange.png")
 @onready var egg: Sprite2D = $Egg
+@onready var runwild_eggcrackswhite: Sprite2D = $Egg/RunwildEggcrackswhite
+
+@onready var label: Label = $Marker2D/NinePatchRect/Label
+@onready var bing: AudioStreamPlayer2D = $Marker2D/Bing
+@onready var bing_time: Timer = $Marker2D/BingTime
+@onready var kritter: Sprite2D = $Kritter
+
+@onready var marker_2d: Marker2D = $Marker2D
+
+
+
+
 var hatching = false
 var amount_pressed = 0
 func _ready() -> void:
@@ -51,11 +64,32 @@ func _on_button_pressed() -> void:
 		cutscene.play("Cutscene")
 		amount_pressed += 1
 	elif amount_pressed == 1:
+		animation_player.play("WiggleMax2")
 		ray_2.visible = true
 		amount_pressed += 1
+		runwild_eggcrackswhite.texture = crack2
 	elif amount_pressed == 2:
+		runwild_eggcrackswhite.texture = crack3
+		animation_player.play("WiggleMax3")
 		ray_3.visible = true
 		amount_pressed += 1
+	elif amount_pressed == 3:
+		cutscene_2.play("Cutscene2")
+		amount_pressed += 1
 	else:
-		
+		pass
 	
+
+
+func _on_cutscene_2_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Cutscene2":
+		cutscene.play("Reverse")
+		kritter.visible = true
+		marker_2d.visible = true
+		bing_time.start()
+
+
+func _on_bing_time_timeout() -> void:
+	if label.visible_ratio <= .99:
+		bing.play()
+		label.visible_characters += 1
