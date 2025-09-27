@@ -5,7 +5,12 @@ extends Node2D
 @onready var mini_game_player: CharacterBody2D = $SwimmingMiniGamePlayer
 @onready var rock_timer: Timer = $RockTimer
 @onready var transition: Node2D = $Transition
+<<<<<<< Updated upstream
 @onready var label: Label = $UI/Panel/Label
+=======
+signal finishedswim
+@export var score = 0
+>>>>>>> Stashed changes
 
 
 signal finished
@@ -35,4 +40,6 @@ func _on_difficulty_timeout() -> void:
 
 
 func _on_transition_exited() -> void:
-	emit_signal("finished")
+	if not is_connected("finishedswim", Callable(get_parent(), "go_to_days")):
+		connect("finishedswim", Callable(get_parent(), "go_to_days"))
+		emit_signal("finishedswim")

@@ -18,18 +18,35 @@ func _on_hatch_finished() -> void:
 	dlscene.finished.connect(Callable(self, "main_area_go_to"))
 	
 func main_area_go_to():
+	print(current_scene)
 	var mascene = main_area.instantiate()
 	add_child(mascene)
 	current_scene.queue_free()
 	current_scene = mascene
 
 func go_to_swim():
-	pass
+	print(current_scene)
+	var sgscene = swimgame.instantiate()
+	add_child(sgscene)
+	current_scene.queue_free()
+	current_scene = sgscene
 func go_to_run():
+	print(current_scene)
 	print("bust")
 	var rgscene = rungame.instantiate()
 	add_child(rgscene)
 	current_scene.queue_free()
 	current_scene = rgscene
 func go_to_fly():
-	pass
+	print(current_scene)
+	var fgscene = flygame.instantiate()
+	add_child(fgscene)
+	current_scene.queue_free()
+	current_scene = fgscene
+func go_to_days():
+	print(current_scene)
+	Manager.days_left -= 1
+	var dltdscene = days_left.instantiate()
+	add_child(dltdscene)
+	current_scene.queue_free()
+	current_scene = dltdscene

@@ -31,11 +31,14 @@ func _on_fly_pressed() -> void:
 func _on_transition_exited() -> void:
 	print("exitedHERE")
 	if goto == "run":
-		connect("run", Callable(get_parent(), "go_to_run"))
-		emit_signal("run")
+		if not is_connected("run", Callable(get_parent(), "go_to_run")):
+			connect("run", Callable(get_parent(), "go_to_run"))
+			emit_signal("run")
 	elif goto == "swim":
-		connect("swim", Callable(get_parent(), "go_to_swim"))
-		emit_signal("swim")
+		if not is_connected("swim", Callable(get_parent(), "go_to_swim")):
+			connect("swim", Callable(get_parent(), "go_to_swim"))
+			emit_signal("swim")
 	elif goto == "fly":
-		connect("fly", Callable(get_parent(), "go_to_fly"))
-		emit_signal("fly")
+		if not is_connected("fly", Callable(get_parent(), "go_to_fly")):
+			connect("fly", Callable(get_parent(), "go_to_fly"))
+			emit_signal("fly")

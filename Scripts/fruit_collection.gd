@@ -6,7 +6,7 @@ extends Node2D
 @onready var mini_game_player: CharacterBody2D = $MiniGamePlayer
 @onready var transition: Node2D = $Transition
 
-signal finished
+signal finishedrun
 var timeLimit = 0
 
 func _ready():
@@ -35,4 +35,6 @@ func _on_fruit_timer_timeout() -> void:
 
 
 func _on_transition_exited() -> void:
-	emit_signal("finished")
+	if not is_connected("finishedrun", Callable(get_parent(), "go_to_days")):
+		connect("finishedrun", Callable(get_parent(), "go_to_days"))
+		emit_signal("finishedrun")
