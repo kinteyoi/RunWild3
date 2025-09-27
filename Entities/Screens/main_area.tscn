@@ -49,7 +49,6 @@ position = Vector2(572, 483)
 texture = ExtResource("1_ay5kp")
 
 [node name="Transition" parent="." instance=ExtResource("2_3cto1")]
-visible = false
 
 [node name="MainAreaFloor" parent="." instance=ExtResource("4_bpk2j")]
 position = Vector2(0, 2)
@@ -70,7 +69,7 @@ position = Vector2(576, 101)
 scale = Vector2(0.415, 0.415)
 texture = ExtResource("6_xsfye")
 
-[node name="Button" type="Button" parent="Points/Rest"]
+[node name="Rust" type="Button" parent="Points/Rest"]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -81.0
 offset_top = -49.0
@@ -85,7 +84,7 @@ position = Vector2(776, 85)
 scale = Vector2(0.415, 0.415)
 texture = ExtResource("7_0es1c")
 
-[node name="Button2" type="Button" parent="Points/Eat"]
+[node name="Eat" type="Button" parent="Points/Eat"]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -80.0
 offset_top = -49.0
@@ -101,7 +100,7 @@ position = Vector2(176, 69)
 scale = Vector2(0.415, 0.415)
 texture = ExtResource("8_bpaqk")
 
-[node name="Button2" type="Button" parent="Points/Run"]
+[node name="Run" type="Button" parent="Points/Run"]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -80.0
 offset_top = -49.0
@@ -116,7 +115,7 @@ position = Vector2(376, 85)
 scale = Vector2(0.415, 0.415)
 texture = ExtResource("9_8s5yf")
 
-[node name="Button2" type="Button" parent="Points/Swim"]
+[node name="Swim" type="Button" parent="Points/Swim"]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -80.0
 offset_top = -49.0
@@ -131,16 +130,13 @@ position = Vector2(976, 69)
 scale = Vector2(0.415, 0.415)
 texture = ExtResource("10_b00yh")
 
-[node name="Button2" type="Button" parent="Points/Fly"]
+[node name="Fly" type="Button" parent="Points/Fly"]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -80.0
 offset_top = -49.0
 offset_right = 81.0
 offset_bottom = 49.0
 pivot_offset = Vector2(80, 49)
-
-[node name="Transition2" parent="." instance=ExtResource("2_3cto1")]
-visible = false
 
 [node name="Button" type="Button" parent="."]
 offset_left = 42.0
@@ -149,4 +145,8 @@ offset_right = 275.0
 offset_bottom = 493.0
 text = "escape"
 
+[connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
+[connection signal="pressed" from="Points/Run/Run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="Points/Swim/Swim" to="." method="_on_swim_pressed"]
+[connection signal="pressed" from="Points/Fly/Fly" to="." method="_on_fly_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
