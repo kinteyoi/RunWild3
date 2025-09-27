@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfl8kn6u0m5yn"]
+
+[ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_g8jrg"]
+[ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Screens/mini_game_player.tscn" id="2_o6v8h"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6v8h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvlh8"]
+size = Vector2(100.73689, 116.512665)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g8jrg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_381oc"]
+size = Vector2(133, 656)
+
+[node name="Swimming" type="Node2D"]
+
+[node name="TempObstacles" type="Node2D" parent="."]
+
+[node name="TempFloor" type="Node2D" parent="TempObstacles"]
+position = Vector2(579, 650)
+scale = Vector2(11.535, 1)
+
+[node name="Water" type="Sprite2D" parent="TempObstacles/TempFloor"]
+modulate = Color(0, 0, 0.6666667, 1)
+texture = ExtResource("1_g8jrg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TempObstacles/TempFloor/Water"]
+physics_material_override = SubResource("PhysicsMaterial_o6v8h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempObstacles/TempFloor/Water/StaticBody2D"]
+position = Vector2(-0.17338562, -3)
+scale = Vector2(1, 0.9955997)
+shape = SubResource("RectangleShape2D_wvlh8")
+
+[node name="InvisWall" type="Node2D" parent="TempObstacles"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TempObstacles/InvisWall"]
+position = Vector2(-24, 268)
+physics_material_override = SubResource("PhysicsMaterial_g8jrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempObstacles/InvisWall/StaticBody2D"]
+shape = SubResource("RectangleShape2D_381oc")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="TempObstacles/InvisWall"]
+position = Vector2(1173, 266)
+physics_material_override = SubResource("PhysicsMaterial_g8jrg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TempObstacles/InvisWall/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_381oc")
+
+[node name="MiniGamePlayer" parent="." instance=ExtResource("2_o6v8h")]
+position = Vector2(589, 492)
