@@ -37,6 +37,5 @@ func _on_sub_maxes_body_entered(_body: Node2D) -> void:
 	print("entered New Max")
 	print("Max Bounce " + str(Manager.maxBounce))
 	print("Max Cloud " + str(Manager.maxClouds))
-	if _body.has_method("im_here"):
-		sub_maxes.queue_free()
+	sub_maxes.queue_free()
 	#print($"Max Bounce: {Manager.maxBounce}, Max Clouds: {Manager.maxClouds}")

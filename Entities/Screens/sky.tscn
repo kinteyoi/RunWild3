@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://c3s1f6udt8kna"]
 
-[ext_resource type="Script" uid="uid://dj4br0qcnm18" path="res://Entities/Screens/sky.gd" id="1_o24eu"]
+[ext_resource type="Script" uid="uid://dj4br0qcnm18" path="res://Scripts/sky.gd" id="1_o24eu"]
 [ext_resource type="Texture2D" uid="uid://ddu3o1udunf1" path="res://Assets/Environment/SkyBackground.png" id="1_q65rb"]
 [ext_resource type="PackedScene" uid="uid://bfmsiihjy8gae" path="res://Entities/Objects/cloud.tscn" id="2_xmyi1"]
 [ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Players/mini_game_player.tscn" id="3_o24eu"]
-[ext_resource type="Script" uid="uid://c4t35apilq47v" path="res://Entities/Screens/KillBox.gd" id="5_rbh4c"]
+[ext_resource type="Script" uid="uid://c4t35apilq47v" path="res://Scripts/KillBox.gd" id="5_rbh4c"]
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="6_ckrgw"]
 
 [sub_resource type="Curve2D" id="Curve2D_xmyi1"]
