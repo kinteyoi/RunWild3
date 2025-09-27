@@ -8,11 +8,13 @@ extends Node2D
 @onready var sub_maxes: Area2D = $DifficultyBarriers/SubMaxes
 @onready var sub_maxes_2: Area2D = $DifficultyBarriers/SubMaxes2
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var label: Label = $Camera2D/UI/Panel/Label
+@onready var marker_2d: Marker2D = $Marker2D
 
 @export var minXToWrap = -700
 @export var maxXToWrap = 2100
 @export var ratio = 1050
-
+var playerUp = false
 var maxHeight = 0
 
 func _ready() -> void:
@@ -22,12 +24,16 @@ func _ready() -> void:
 	Manager.cloudList.append($Clouds/Cloud3)
 	
 func _process(_delta: float) -> void:
+	
 	camera_2d.position.y = mini_game_player.position.y
 	path_2d.global_position.y = mini_game_player.global_position.y - 30
 	mini_game_player.position.x = wrapf(mini_game_player.position.x, minXToWrap, maxXToWrap)
+	if mini_game_player.position.y < marker_2d.position.y and playerUp and Engine.time_scale != 0:
+		marker_2d.position = mini_game_player.position
+		maxHeight = marker_2d.position.y
 	
-	if Engine.time_scale != 0 and maxHeight < mini_game_player.position.y:
-		maxHeight = mini_game_player.position.y
+	
+	label.text = "Score: " + str(int(-maxHeight))
 
 	if Manager.cloudList.size() < Manager.maxClouds:
 		AddCloud()
@@ -68,7 +74,14 @@ func _on_kill_box_body_entered(body: Node2D) -> void:
 		body.queue_free()
 		print("snapCracklePop")
 	else:
-		maxHeight *= .1
-		print(int(maxHeight))
-		Manager.cloudStats = int(maxHeight)
+		Manager.cloudStats = int(-maxHeight)
+		print(Manager.cloudStats)
 		Engine.time_scale = 0
+
+
+func _on_mini_game_player_up() -> void:
+	playerUp = true
+
+
+func _on_mini_game_player_down() -> void:
+	playerUp = false

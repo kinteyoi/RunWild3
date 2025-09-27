@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3s1f6udt8kna"]
+[gd_scene load_steps=10 format=3 uid="uid://c3s1f6udt8kna"]
 
 [ext_resource type="Script" uid="uid://dj4br0qcnm18" path="res://Scripts/sky.gd" id="1_o24eu"]
 [ext_resource type="Texture2D" uid="uid://ddu3o1udunf1" path="res://Assets/Environment/SkyBackground.png" id="1_q65rb"]
 [ext_resource type="PackedScene" uid="uid://bfmsiihjy8gae" path="res://Entities/Objects/cloud.tscn" id="2_xmyi1"]
 [ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Players/mini_game_player.tscn" id="3_o24eu"]
+[ext_resource type="Script" uid="uid://ceqmca8wufmra" path="res://Scripts/kill_box.gd" id="5_rbh4c"]
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="6_ckrgw"]
 
 [sub_resource type="Curve2D" id="Curve2D_xmyi1"]
@@ -71,6 +72,7 @@ shape = SubResource("RectangleShape2D_o24eu")
 [node name="KillBox" type="Node2D" parent="."]
 
 [node name="KillBox" type="Area2D" parent="KillBox"]
+script = ExtResource("5_rbh4c")
 
 [node name="Sprite2D" type="Sprite2D" parent="KillBox/KillBox"]
 modulate = Color(0, 1, 0, 1)
@@ -82,7 +84,7 @@ texture = ExtResource("6_ckrgw")
 position = Vector2(1014.5, 1329)
 shape = SubResource("RectangleShape2D_u04ro")
 
-[node name="Timer" type="Timer" parent="KillBox"]
+[node name="KillBoxDelay" type="Timer" parent="KillBox"]
 wait_time = 5.0
 one_shot = true
 autostart = true
@@ -91,6 +93,41 @@ autostart = true
 position = Vector2(751, 395)
 zoom = Vector2(0.45, 0.45)
 
+[node name="UI" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -751.0
+offset_top = -395.0
+offset_right = -711.0
+offset_bottom = -355.0
+
+[node name="Panel" type="Panel" parent="Camera2D/UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1673.0
+offset_top = 1034.0
+offset_right = 1713.0
+offset_bottom = 1074.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(7.9599905, 1)
+
+[node name="Label" type="Label" parent="Camera2D/UI/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.28643006, 1.72)
+text = "Score:"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(751, 395)
+
+[connection signal="Down" from="MiniGamePlayer" to="." method="_on_mini_game_player_down"]
+[connection signal="Up" from="MiniGamePlayer" to="." method="_on_mini_game_player_up"]
 [connection signal="body_entered" from="Clouds/Cloud0" to="." method="_on_cloud_0_body_entered"]
 [connection signal="body_entered" from="Clouds/Cloud1" to="." method="_on_cloud_0_body_entered"]
 [connection signal="body_entered" from="Clouds/Cloud2" to="." method="_on_cloud_0_body_entered"]
@@ -98,4 +135,4 @@ zoom = Vector2(0.45, 0.45)
 [connection signal="body_entered" from="DifficultyBarriers/SubMaxes" to="." method="_on_sub_maxes_body_entered"]
 [connection signal="body_entered" from="DifficultyBarriers/SubMaxes2" to="." method="_on_sub_maxes_2_body_entered"]
 [connection signal="body_entered" from="KillBox/KillBox" to="." method="_on_kill_box_body_entered"]
-[connection signal="timeout" from="KillBox/Timer" to="KillBox/KillBox" method="_on_timer_timeout"]
+[connection signal="timeout" from="KillBox/KillBoxDelay" to="KillBox/KillBox" method="_on_kill_box_delay_timeout"]
