@@ -214,3 +214,4 @@ texture = ExtResource("15_dtt0i")
 [node name="Transition" parent="." instance=ExtResource("16_fjsm6")]
 
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]
+[connection signal="exited" from="Transition" to="." method="_on_transition_exited"]

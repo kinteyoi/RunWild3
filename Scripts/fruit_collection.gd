@@ -6,7 +6,7 @@ extends Node2D
 @onready var mini_game_player: CharacterBody2D = $MiniGamePlayer
 @onready var transition: Node2D = $Transition
 
-
+signal finished
 var timeLimit = 0
 
 func _ready():
@@ -32,3 +32,7 @@ func _on_fruit_timer_timeout() -> void:
 		fruit.global_position = path_follow_2d.global_position 
 		fruits.add_child(fruit)
 	
+
+
+func _on_transition_exited() -> void:
+	emit_signal("finished")

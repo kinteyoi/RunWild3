@@ -21,3 +21,10 @@ func main_area_go_to():
 	var mascene = main_area.instantiate()
 	add_child(mascene)
 	current_scene.queue_free()
+
+func go_to_swim():
+	pass
+func go_to_run():
+	pass
+func go_to_fly():
+	pass

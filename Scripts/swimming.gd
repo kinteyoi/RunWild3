@@ -5,7 +5,7 @@ extends Node2D
 @onready var mini_game_player: CharacterBody2D = $SwimmingMiniGamePlayer
 @onready var rock_timer: Timer = $RockTimer
 @onready var transition: Node2D = $Transition
-
+signal finished
 @export var power = 0
 
 
@@ -32,5 +32,4 @@ func _on_difficulty_timeout() -> void:
 
 
 func _on_transition_exited() -> void:
-	Manager.days_left -= 1
-	get_tree().change_scene_to_file("res://Entities/UI/days_left.tscn")
+	emit_signal("finished")
