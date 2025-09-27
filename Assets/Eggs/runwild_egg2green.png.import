@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl6xon6nle35b"
-path="res://.godot/imported/pngtree-fresh-single-egg-png-image_12504967.png-e5b39b4701402bc65cf87d4ef0d76e27.ctex"
+uid="uid://b4cy0sa6hn3n5"
+path="res://.godot/imported/runwild_egg2green.png-f16adf050acaaa1c5744d22e50a61021.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Players/pngtree-fresh-single-egg-png-image_12504967.png"
-dest_files=["res://.godot/imported/pngtree-fresh-single-egg-png-image_12504967.png-e5b39b4701402bc65cf87d4ef0d76e27.ctex"]
+source_file="res://Assets/Eggs/runwild_egg2green.png"
+dest_files=["res://.godot/imported/runwild_egg2green.png-f16adf050acaaa1c5744d22e50a61021.ctex"]
 
 [params]
 
