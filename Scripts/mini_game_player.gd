@@ -8,8 +8,6 @@ const GRAV_SCALE = .8
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		if velocity.y > 0:
-			print("fall")
 		velocity += get_gravity() * delta * GRAV_SCALE
 
 	# Handle jump.
