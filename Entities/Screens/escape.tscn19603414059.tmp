@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://45gjlsafn1oi"]
+
+[ext_resource type="PackedScene" uid="uid://c1ggb7ghur43v" path="res://Entities/Players/runner_pet.tscn" id="1_3ok8t"]
+[ext_resource type="PackedScene" uid="uid://noykacdnn7xw" path="res://Entities/Players/switch_mode.tscn" id="2_lgyr1"]
+
+[node name="Escape" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-4, 0, 0, 594, 1224, 593, 1604, 509, 1910, 358, 2093, 211, 2341, 93, 2683, 18, 3079, 18, 3504, 111, 3880, 320, 4135, 549, 4440, 712, 5472, 1017, 6433, 1076, 8279, 1072, 8697, 980, 8931, 896, 9177, 687, 9340, 537, 9474, 374, 9683, 82, 9941, -208, 10265, -340, 10699, -476, 11099, -562, 11533, -577, 12418, -582, 12716, -619, 12715, 1500, 12873, 1738, 13650, 2375, 14723, 2804, 16129, 3078, 18837, 3085, 20206, 3085, 20214, 3596, 20340, 3973, 20702, 4284, 21176, 4617, 21990, 4898, 25238, 4898, 29127, 4875, 30122, 4544, 30697, 4160, 30977, 3636, 31238, 2869, 35124, 2714, 39211, 1922, 42507, 926, 46237, 364, 49890, 415, 50004, 7569, -158, 7966, -82, -9)
+
+[node name="RunnerPet" parent="." instance=ExtResource("1_3ok8t")]
+position = Vector2(89, 490)
+
+[node name="Camera2D" type="Camera2D" parent="RunnerPet"]
+zoom = Vector2(0.295, 0.295)
+
+[node name="SwitchMode" parent="." instance=ExtResource("2_lgyr1")]
+position = Vector2(2859, -1)
+type = "fly"

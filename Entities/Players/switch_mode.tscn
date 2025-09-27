@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://noykacdnn7xw"]
+
+[ext_resource type="Script" uid="uid://dynfd0irle338" path="res://Scripts/switch_mode.gd" id="1_05ea7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05ea7"]
+size = Vector2(44, 42)
+
+[node name="SwitchMode" type="Area2D"]
+script = ExtResource("1_05ea7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_05ea7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
