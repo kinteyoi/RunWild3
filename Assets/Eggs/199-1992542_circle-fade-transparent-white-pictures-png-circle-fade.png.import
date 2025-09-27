@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8bihvqcvobsd"
-path="res://.godot/imported/whitefade.jpg-847a4b28b0ab43b931bd936833b3cffc.ctex"
+uid="uid://v63l1yifwyqq"
+path="res://.godot/imported/199-1992542_circle-fade-transparent-white-pictures-png-circle-fade.png-0f894b86d01496e4eb669e296d579d04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Eggs/whitefade.jpg"
-dest_files=["res://.godot/imported/whitefade.jpg-847a4b28b0ab43b931bd936833b3cffc.ctex"]
+source_file="res://Assets/Eggs/199-1992542_circle-fade-transparent-white-pictures-png-circle-fade.png"
+dest_files=["res://.godot/imported/199-1992542_circle-fade-transparent-white-pictures-png-circle-fade.png-0f894b86d01496e4eb669e296d579d04.ctex"]
 
 [params]
 

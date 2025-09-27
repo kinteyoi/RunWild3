@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dw71wn42kta0q"]
+[gd_scene load_steps=27 format=3 uid="uid://dw71wn42kta0q"]
 
 [ext_resource type="Script" uid="uid://2ej61un2gti7" path="res://Scripts/hatch.gd" id="1_o8joq"]
 [ext_resource type="Texture2D" uid="uid://d0rs3ot8q24o1" path="res://Assets/Eggs/runwild_egg3purple.png" id="2_k7n8x"]
@@ -416,6 +416,43 @@ _data = {
 &"RESET": SubResource("Animation_s5wdi")
 }
 
+[sub_resource type="Animation" id="Animation_01l2b"]
+resource_name = "Cutscene2"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.659754, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(18.58, 18.58)]
+}
+
+[sub_resource type="Animation" id="Animation_py76b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kk3od"]
+_data = {
+&"Cutscene2": SubResource("Animation_01l2b"),
+&"RESET": SubResource("Animation_py76b")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s5wdi"]
 resource_local_to_scene = true
 shader = ExtResource("6_bf452")
@@ -432,6 +469,16 @@ shader_parameter/ray2_intensity = 0.1210000057475
 shader_parameter/color = Color(1, 0.90083337, 0.65, 0.5137255)
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
+
+[sub_resource type="Gradient" id="Gradient_s5wdi"]
+offsets = PackedFloat32Array(0, 0.16931216, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kw0aw"]
+gradient = SubResource("Gradient_s5wdi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7948718, 0.15384616)
 
 [node name="Hatch" type="Node2D"]
 script = ExtResource("1_o8joq")
@@ -533,6 +580,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_s5wdi")
 }
 
+[node name="Cutscene2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kk3od")
+}
+
 [node name="Ray" type="ColorRect" parent="."]
 z_index = 190
 material = SubResource("ShaderMaterial_s5wdi")
@@ -541,6 +593,16 @@ offset_top = -142.0
 offset_right = 900.0
 offset_bottom = 560.0
 mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 4096
+offset_left = 335.0
+offset_top = 67.00003
+offset_right = 817.0
+offset_bottom = 549.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(241, 241)
+texture = SubResource("GradientTexture2D_kw0aw")
 
 [connection signal="timeout" from="Wiggle" to="." method="_on_wiggle_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
