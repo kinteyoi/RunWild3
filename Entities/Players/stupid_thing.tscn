@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://byoo7lnnse0c"]
+
+[ext_resource type="Script" uid="uid://bii1dtv43glkf" path="res://Scripts/stupid_thing.gd" id="1_gfosg"]
+[ext_resource type="Texture2D" uid="uid://cesw62ump63e6" path="res://Assets/Players/DeerDog/Kritter1_adultback6.png" id="1_vbogk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfosg"]
+size = Vector2(98, 111)
+
+[node name="StupidThing" type="CharacterBody2D"]
+script = ExtResource("1_gfosg")
+
+[node name="Kritter1Adultback7" type="Sprite2D" parent="."]
+position = Vector2(0, -130.00002)
+scale = Vector2(0.485, 0.485)
+texture = ExtResource("1_vbogk")
+
+[node name="ActionTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -55.5)
+shape = SubResource("RectangleShape2D_gfosg")
+
+[connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]
