@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cubhshy5y2exj"]
+[gd_scene load_steps=21 format=4 uid="uid://cubhshy5y2exj"]
 
 [ext_resource type="Script" uid="uid://b7fxy3lrbaleq" path="res://Scripts/main_area.gd" id="1_xhqh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="2_3cto1"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dr3gng7cjp8jk" path="res://Assets/Environment/runwild_coin.png" id="10_nitqc"]
 [ext_resource type="FontFile" uid="uid://wq64lwf82khb" path="res://Fonts/ShortStack-Regular.ttf" id="11_glmmk"]
 [ext_resource type="PackedScene" uid="uid://byoo7lnnse0c" path="res://Entities/Players/stupid_thing.tscn" id="14_b00yh"]
+[ext_resource type="Texture2D" uid="uid://c4bscj12m1msp" path="res://Assets/UI/energybar_bottom.png" id="15_ohl71"]
+[ext_resource type="Texture2D" uid="uid://b1hah1tagb7hk" path="res://Assets/UI/energybar_top.png" id="16_qjqji"]
+[ext_resource type="Texture2D" uid="uid://dngplirvfvb70" path="res://Assets/UI/energybar_middle.png" id="17_o3fja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cto1"]
 size = Vector2(1178, 101)
@@ -66,16 +69,18 @@ shape = SubResource("RectangleShape2D_3cto1")
 visible = false
 
 [node name="MainAreaFloor" parent="." instance=ExtResource("4_bpk2j")]
-position = Vector2(0, 2)
+position = Vector2(-346, -240)
+scale = Vector2(1.43, 1.43)
 _meshes = Array[ExtResource("5_bpaqk")]([SubResource("Resource_8s5yf")])
 
 [node name="RunwildBackgroundHome" type="Sprite2D" parent="."]
 modulate = Color(0.61, 0.61, 0.61, 1)
 z_index = -190
-position = Vector2(621, 509)
+position = Vector2(600, 350)
 texture = ExtResource("5_1k3xh")
 
 [node name="Points" type="Node2D" parent="."]
+position = Vector2(0, -161)
 
 [node name="Rest" type="Marker2D" parent="Points"]
 position = Vector2(576, 101)
@@ -109,15 +114,15 @@ pivot_offset = Vector2(80, 49)
 metadata/_edit_use_anchors_ = true
 
 [node name="RunwildCoin" type="Sprite2D" parent="Points/Eat"]
-position = Vector2(31.000061, 73.000015)
+position = Vector2(64, 59)
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("10_nitqc")
 
 [node name="Label" type="Label" parent="Points/Eat"]
-offset_left = -65.0
-offset_top = 52.0
-offset_right = -13.0
-offset_bottom = 91.0
+offset_left = -32.0
+offset_top = 43.0
+offset_right = 20.0
+offset_bottom = 82.0
 theme_override_colors/font_color = Color(0.7529412, 0.5137255, 0.12156863, 1)
 theme_override_fonts/font = ExtResource("11_glmmk")
 theme_override_font_sizes/font_size = 31
@@ -177,6 +182,23 @@ text = "escape"
 
 [node name="StupidThing" parent="." instance=ExtResource("14_b00yh")]
 position = Vector2(535, 550)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = -1
+offset_left = 187.0
+offset_top = -23.0
+offset_right = 965.0
+offset_bottom = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(389, 101)
+texture_under = ExtResource("15_ohl71")
+texture_over = ExtResource("16_qjqji")
+texture_progress = ExtResource("17_o3fja")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+zoom = Vector2(0.655, 0.655)
 
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
 [connection signal="pressed" from="Points/Run/Run" to="." method="_on_run_pressed"]
