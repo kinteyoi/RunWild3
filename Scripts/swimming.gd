@@ -2,7 +2,7 @@ extends Node2D
 @onready var rockScene: PackedScene = preload("res://Entities/Screens/rock.tscn")
 @onready var rocks: Node2D = $Rocks
 @onready var path_follow_2d: PathFollow2D = $Path2D/PathFollow2D
-@onready var mini_game_player: CharacterBody2D = $MiniGamePlayer
+@onready var mini_game_player: CharacterBody2D = $SwimmingMiniGamePlayer
 @onready var rock_timer: Timer = $RockTimer
 
 @export var power = 0
