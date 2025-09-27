@@ -1,15 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3s1f6udt8kna"]
+[gd_scene load_steps=9 format=3 uid="uid://c3s1f6udt8kna"]
 
 [ext_resource type="Script" uid="uid://dj4br0qcnm18" path="res://Scripts/sky.gd" id="1_o24eu"]
 [ext_resource type="Texture2D" uid="uid://ddu3o1udunf1" path="res://Assets/Environment/SkyBackground.png" id="1_q65rb"]
 [ext_resource type="PackedScene" uid="uid://bfmsiihjy8gae" path="res://Entities/Objects/cloud.tscn" id="2_xmyi1"]
 [ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Players/mini_game_player.tscn" id="3_o24eu"]
-[ext_resource type="Script" uid="uid://c4t35apilq47v" path="res://Scripts/KillBox.gd" id="5_rbh4c"]
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="6_ckrgw"]
 
 [sub_resource type="Curve2D" id="Curve2D_xmyi1"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 650, -600, 0, 0, 0, 0, -650, -600)
+"points": PackedVector2Array(0, 0, 0, 0, 1050, -600, 0, 0, 0, 0, -1050, -604.783)
 }
 point_count = 2
 
@@ -30,19 +29,19 @@ texture = ExtResource("1_q65rb")
 [node name="MiniGamePlayer" parent="." instance=ExtResource("3_o24eu")]
 position = Vector2(751, 395)
 
-[node name="Camera2D" type="Camera2D" parent="MiniGamePlayer"]
-zoom = Vector2(0.45, 0.45)
-
 [node name="Clouds" type="Node2D" parent="."]
 
 [node name="Cloud0" parent="Clouds" instance=ExtResource("2_xmyi1")]
 position = Vector2(751, 549)
 
 [node name="Cloud1" parent="Clouds" instance=ExtResource("2_xmyi1")]
-position = Vector2(1405, -206)
+position = Vector2(1347, -202)
 
 [node name="Cloud2" parent="Clouds" instance=ExtResource("2_xmyi1")]
-position = Vector2(-141, -185)
+position = Vector2(216, -193)
+
+[node name="Cloud3" parent="Clouds" instance=ExtResource("2_xmyi1")]
+position = Vector2(732, -772)
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(751, 395)
@@ -50,8 +49,8 @@ scale = Vector2(1.0036066, 0.98878425)
 curve = SubResource("Curve2D_xmyi1")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(650, -600)
-rotation = 3.1415927
+position = Vector2(1050, -600)
+rotation = -3.1393151
 
 [node name="DifficultyBarriers" type="Node2D" parent="."]
 
@@ -62,18 +61,24 @@ position = Vector2(0, -1446)
 position = Vector2(706.5, 0)
 shape = SubResource("RectangleShape2D_o24eu")
 
+[node name="SubMaxes2" type="Area2D" parent="DifficultyBarriers"]
+position = Vector2(0, -4816)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DifficultyBarriers/SubMaxes2"]
+position = Vector2(706.5, 0)
+shape = SubResource("RectangleShape2D_o24eu")
+
 [node name="KillBox" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="KillBox"]
-script = ExtResource("5_rbh4c")
+[node name="KillBox" type="Area2D" parent="KillBox"]
 
-[node name="Sprite2D" type="Sprite2D" parent="KillBox/Area2D"]
+[node name="Sprite2D" type="Sprite2D" parent="KillBox/KillBox"]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(1023, 1334)
 scale = Vector2(28.48, 3.2800002)
 texture = ExtResource("6_ckrgw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox/KillBox"]
 position = Vector2(1014.5, 1329)
 shape = SubResource("RectangleShape2D_u04ro")
 
@@ -82,9 +87,15 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(751, 395)
+zoom = Vector2(0.45, 0.45)
+
 [connection signal="body_entered" from="Clouds/Cloud0" to="." method="_on_cloud_0_body_entered"]
 [connection signal="body_entered" from="Clouds/Cloud1" to="." method="_on_cloud_0_body_entered"]
 [connection signal="body_entered" from="Clouds/Cloud2" to="." method="_on_cloud_0_body_entered"]
+[connection signal="body_entered" from="Clouds/Cloud3" to="." method="_on_cloud_0_body_entered"]
 [connection signal="body_entered" from="DifficultyBarriers/SubMaxes" to="." method="_on_sub_maxes_body_entered"]
-[connection signal="body_entered" from="KillBox/Area2D" to="KillBox/Area2D" method="_on_body_entered"]
-[connection signal="timeout" from="KillBox/Timer" to="KillBox/Area2D" method="_on_timer_timeout"]
+[connection signal="body_entered" from="DifficultyBarriers/SubMaxes2" to="." method="_on_sub_maxes_2_body_entered"]
+[connection signal="body_entered" from="KillBox/KillBox" to="." method="_on_kill_box_body_entered"]
+[connection signal="timeout" from="KillBox/Timer" to="KillBox/KillBox" method="_on_timer_timeout"]

@@ -4,7 +4,7 @@ extends Area2D
 var cloudBounces = Manager.maxBounce
 
 func _ready() -> void:
-	timer.wait_time = randi_range(3,5)
+	timer.wait_time = randf_range(3,5)
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if cloudBounces > 0:
 		body.velocity.y = 0
