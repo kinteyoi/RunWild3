@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw71wn42kta0q"]
+
+[ext_resource type="Texture2D" uid="uid://bl6xon6nle35b" path="res://Assets/Players/pngtree-fresh-single-egg-png-image_12504967.png" id="1_pd4m8"]
+
+[sub_resource type="Animation" id="Animation_w8xk4"]
+resource_name = "Wiggle"
+length = 1.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PngtreeFreshSingleEggPngImage12504967:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.90000004, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.3490658503988659, 0.0, 0.17453292, 0.0, -0.08726646, 0.017453292, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pd4m8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PngtreeFreshSingleEggPngImage12504967:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o8joq"]
+resource_name = "WiggleOther"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PngtreeFreshSingleEggPngImage12504967:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 0.32987696, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.34906584, 0.0, -0.17453292, 0.0, 0.08726646, -0.017453292, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o8joq"]
+_data = {
+&"RESET": SubResource("Animation_pd4m8"),
+&"Wiggle": SubResource("Animation_w8xk4"),
+&"WiggleOther": SubResource("Animation_o8joq")
+}
+
+[node name="Hatch" type="Node2D"]
+
+[node name="PngtreeFreshSingleEggPngImage12504967" type="Sprite2D" parent="."]
+z_index = 85
+position = Vector2(576, 419)
+texture = ExtResource("1_pd4m8")
+offset = Vector2(0, -98)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o8joq")
+}
