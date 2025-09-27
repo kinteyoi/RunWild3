@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://hautk1w8yj7d"]
+
+[sub_resource type="Animation" id="Animation_p5nsa"]
+resource_name = "FadeIn"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6kir8"]
+_data = {
+&"FadeIn": SubResource("Animation_p5nsa")
+}
+
+[node name="Transition" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6kir8")
+}
