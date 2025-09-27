@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_g8jrg"]
 [ext_resource type="Script" uid="uid://cgmy17big6c0w" path="res://Scripts/swimming.gd" id="1_o6v8h"]
-[ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Screens/mini_game_player.tscn" id="2_o6v8h"]
+[ext_resource type="PackedScene" uid="uid://cf6ava8086hif" path="res://Entities/Players/mini_game_player.tscn" id="2_o6v8h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6v8h"]
 
@@ -35,6 +35,7 @@ scale = Vector2(11.535, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TempObstacles/TempFloor"]
 position = Vector2(3.5543997, -10)
+collision_layer = 4
 physics_material_override = SubResource("PhysicsMaterial_o6v8h")
 
 [node name="Water" type="Sprite2D" parent="TempObstacles/TempFloor/StaticBody2D"]
@@ -76,4 +77,9 @@ rotation = 3.1415927
 [node name="RockTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="Difficulty" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]
+[connection signal="timeout" from="Difficulty" to="." method="_on_difficulty_timeout"]
