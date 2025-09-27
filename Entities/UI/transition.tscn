@@ -1,16 +1,225 @@
-[gd_scene load_steps=3 format=3 uid="uid://hautk1w8yj7d"]
+[gd_scene load_steps=9 format=3 uid="uid://hautk1w8yj7d"]
+
+[ext_resource type="Texture2D" uid="uid://c425dmdk3fou8" path="res://Assets/UI/runwild_leafwall1.png" id="1_6kir8"]
+[ext_resource type="Script" uid="uid://bh0ufilbxkf8v" path="res://Scripts/transition.gd" id="1_r7ay6"]
+[ext_resource type="Texture2D" uid="uid://d4j0ylwkj4vxb" path="res://Assets/UI/TransitionFade.png" id="2_m346y"]
 
 [sub_resource type="Animation" id="Animation_p5nsa"]
 resource_name = "FadeIn"
 
+[sub_resource type="Animation" id="Animation_6kir8"]
+resource_name = "LeavesClose"
+
+[sub_resource type="Animation" id="Animation_m346y"]
+resource_name = "LeavesOpen"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RunwildLeafwall1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-218, 299), Vector2(615.3334, 299)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RunwildLeafwall2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1404, 299), Vector2(570.6666, 299)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RunwildLeafwall1/TransitionFade:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(800, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RunwildLeafwall2/TransitionFade2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(800, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RunwildLeafwall2/TransitionFade2/ColorRect2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3080, -540)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:mouse_filter")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 2, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_r7ay6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RunwildLeafwall1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-218, 299)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RunwildLeafwall2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1404, 299)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RunwildLeafwall1/TransitionFade:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RunwildLeafwall2/TransitionFade2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RunwildLeafwall2/TransitionFade2/ColorRect2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-208, -540)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:mouse_filter")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6kir8"]
 _data = {
-&"FadeIn": SubResource("Animation_p5nsa")
+&"FadeIn": SubResource("Animation_p5nsa"),
+&"LeavesClose": SubResource("Animation_6kir8"),
+&"LeavesOpen": SubResource("Animation_m346y"),
+&"RESET": SubResource("Animation_r7ay6")
 }
 
 [node name="Transition" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_r7ay6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_6kir8")
 }
+speed_scale = 0.5
+
+[node name="RunwildLeafwall1" type="Sprite2D" parent="."]
+z_index = 3891
+position = Vector2(-218, 299)
+texture = ExtResource("1_6kir8")
+
+[node name="TransitionFade" type="Sprite2D" parent="RunwildLeafwall1"]
+z_index = 4096
+texture = ExtResource("2_m346y")
+
+[node name="ColorRect" type="ColorRect" parent="RunwildLeafwall1/TransitionFade"]
+z_index = 4096
+offset_left = -3080.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 1)
+
+[node name="RunwildLeafwall2" type="Sprite2D" parent="."]
+z_index = 3891
+position = Vector2(1404, 299)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_6kir8")
+
+[node name="TransitionFade2" type="Sprite2D" parent="RunwildLeafwall2"]
+z_index = 4096
+texture = ExtResource("2_m346y")
+
+[node name="ColorRect2" type="ColorRect" parent="RunwildLeafwall2/TransitionFade2"]
+z_index = 4096
+offset_left = -208.0
+offset_top = -540.0
+offset_right = 1912.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 4096
+offset_left = -615.0
+offset_top = -422.0
+offset_right = 1747.0
+offset_bottom = 978.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

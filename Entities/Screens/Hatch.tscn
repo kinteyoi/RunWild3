@@ -1,19 +1,20 @@
-[gd_scene load_steps=38 format=3 uid="uid://dw71wn42kta0q"]
+[gd_scene load_steps=39 format=3 uid="uid://dw71wn42kta0q"]
 
 [ext_resource type="Script" uid="uid://2ej61un2gti7" path="res://Scripts/hatch.gd" id="1_o8joq"]
 [ext_resource type="Texture2D" uid="uid://d0rs3ot8q24o1" path="res://Assets/Eggs/runwild_egg3purple.png" id="2_k7n8x"]
 [ext_resource type="Texture2D" uid="uid://c0t0dy1hngdta" path="res://Assets/Environment/runwild_background_home.png" id="3_k7n8x"]
 [ext_resource type="Texture2D" uid="uid://dvq4f50pyog7m" path="res://Assets/Eggs/runwild_eggcrack1.png" id="3_s5wdi"]
-[ext_resource type="FontFile" uid="uid://c5sl0a5qldyyc" path="res://Fonts/Lovely Autumn.ttf" id="4_k7n8x"]
 [ext_resource type="Texture2D" uid="uid://54i5vl613p2p" path="res://Assets/UI/595FAD8C-E33F-4E12-A974-9B2D043A2BA3.png.eac9bd8cac80378692e4115553790af8.png" id="5_wfokv"]
 [ext_resource type="Shader" uid="uid://dtqfybx65bkrl" path="res://Shaders/Ray.gdshader" id="6_bf452"]
-[ext_resource type="Texture2D" uid="uid://w7ks77wcs5wv" path="res://Assets/Players/fetchimage.jpeg" id="8_kw0aw"]
+[ext_resource type="FontFile" uid="uid://wq64lwf82khb" path="res://Fonts/ShortStack-Regular.ttf" id="6_iryu1"]
+[ext_resource type="Texture2D" uid="uid://cesw62ump63e6" path="res://Assets/Players/DeerDog/Kritter1_adultback6.png" id="8_2woqt"]
 [ext_resource type="Texture2D" uid="uid://c7lab4qlwqpth" path="res://Assets/UI/UIBox.png" id="9_dasb0"]
 [ext_resource type="FontFile" uid="uid://d3pwalfla0xq5" path="res://Fonts/Born2bSportyFS.otf" id="10_01l2b"]
 [ext_resource type="AudioStream" uid="uid://bb71hrwd4jbxc" path="res://Assets/Sounds/drop_001.ogg" id="11_2woqt"]
 [ext_resource type="AudioStream" uid="uid://clb5piqc3xwi1" path="res://Assets/Sounds/drop_002.ogg" id="12_iryu1"]
 [ext_resource type="AudioStream" uid="uid://bsd4rltwcer10" path="res://Assets/Sounds/drop_003.ogg" id="13_ympbk"]
 [ext_resource type="AudioStream" uid="uid://dlfx1okt8hbv6" path="res://Assets/Sounds/drop_004.ogg" id="14_hhqnw"]
+[ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="15_iryu1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bf452"]
 shader = ExtResource("6_bf452")
@@ -61,22 +62,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.3490658503988659, 0.0, 0.17453292, 0.0, -0.08726646, 0.017453292, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_o8joq"]
-resource_name = "WiggleOther"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Egg:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 0.32987696, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.34906584, 0.0, -0.17453292, 0.0, 0.08726646, -0.017453292, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_kw0aw"]
@@ -131,6 +116,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.2268928, 0.0, 0.2268928, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o8joq"]
+resource_name = "WiggleOther"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Egg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 0.32987696, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.34906584, 0.0, -0.17453292, 0.0, 0.08726646, -0.017453292, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o8joq"]
@@ -328,6 +329,9 @@ tracks/9/keys = {
 "values": [0.2870000611324999]
 }
 
+[sub_resource type="Animation" id="Animation_dasb0"]
+resource_name = "Cutscene2"
+
 [sub_resource type="Animation" id="Animation_s5wdi"]
 length = 0.001
 tracks/0/type = "value"
@@ -450,9 +454,6 @@ tracks/9/keys = {
 "update": 0,
 "values": [0.2870000611324999]
 }
-
-[sub_resource type="Animation" id="Animation_dasb0"]
-resource_name = "Cutscene2"
 
 [sub_resource type="Animation" id="Animation_kk3od"]
 resource_name = "Reverse"
@@ -721,20 +722,24 @@ autostart = true
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-z_index = 2720
+z_index = 1215
 offset_left = 370.0
 offset_top = 87.0
 offset_right = 792.0
 offset_bottom = 549.0
 
 [node name="Label" type="Label" parent="."]
-offset_left = 391.0
-offset_top = 533.0
-offset_right = 745.0
-offset_bottom = 628.0
-theme_override_fonts/font = ExtResource("4_k7n8x")
-theme_override_font_sizes/font_size = 81
-text = "Hatch Me!"
+self_modulate = Color(1, 1, 1, 0.30588236)
+offset_left = 343.0
+offset_top = 453.0
+offset_right = 791.0
+offset_bottom = 658.0
+theme_override_fonts/font = ExtResource("6_iryu1")
+theme_override_font_sizes/font_size = 61
+text = "Click to
+Hatch Me!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="595fad8cE33f4e12A9749b2d043a2ba3_png_eac9Bd8Cac80378692e4115553790Af8" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -774,8 +779,8 @@ texture = SubResource("GradientTexture2D_kw0aw")
 [node name="Kritter" type="Sprite2D" parent="."]
 visible = false
 z_index = 440
-position = Vector2(576, 324)
-texture = ExtResource("8_kw0aw")
+position = Vector2(576, 175)
+texture = ExtResource("8_2woqt")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 visible = false
@@ -815,8 +820,17 @@ stream = SubResource("AudioStreamRandomizer_kk3od")
 [node name="BingTime" type="Timer" parent="Marker2D"]
 wait_time = 0.1
 
+[node name="Transition" parent="." instance=ExtResource("15_iryu1")]
+visible = false
+
+[node name="End" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="Wiggle" to="." method="_on_wiggle_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="animation_finished" from="Cutscene2" to="." method="_on_cutscene_2_animation_finished"]
 [connection signal="timeout" from="Marker2D/BingTime" to="." method="_on_bing_time_timeout"]
+[connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
+[connection signal="timeout" from="End" to="." method="_on_end_timeout"]

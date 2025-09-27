@@ -21,11 +21,14 @@ extends Node2D
 @onready var bing: AudioStreamPlayer2D = $Marker2D/Bing
 @onready var bing_time: Timer = $Marker2D/BingTime
 @onready var kritter: Sprite2D = $Kritter
+@onready var transition: Node2D = $Transition
+@onready var end: Timer = $End
 
 @onready var marker_2d: Marker2D = $Marker2D
 
+@onready var deerdog = preload("res://Assets/Players/DeerDog/Kritter1_adultback6.png")
 
-
+@onready var available_pets = [deerdog]
 
 var hatching = false
 var amount_pressed = 0
@@ -33,6 +36,12 @@ func _ready() -> void:
 	var eggs = [egg1, egg2, egg3, egg4, egg5]
 	var random_item = eggs.pick_random()
 	egg.texture = random_item
+	var random_pet = available_pets.pick_random()
+	kritter.texture = random_pet
+	if random_pet == deerdog:
+		label.text = "You Hatched DeerGon"
+		Manager.current_pet = "deergon"
+	transition.leavesopen()
 	wiggle()
 
 func _on_wiggle_timeout() -> void:
@@ -93,3 +102,15 @@ func _on_bing_time_timeout() -> void:
 	if label.visible_ratio <= .99:
 		bing.play()
 		label.visible_characters += 1
+	else:
+		print("boi")
+		bing_time.stop()
+		end.start()
+
+
+func _on_end_timeout() -> void:
+	transition.leavesclose()
+
+
+func _on_transition_exited() -> void:
+	get_tree().change_scene_to_file("res://Entities/UI/days_left.tscn")

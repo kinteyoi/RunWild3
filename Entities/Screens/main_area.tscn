@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cubhshy5y2exj"]
+
+[ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_ay5kp"]
+[ext_resource type="Script" uid="uid://b7fxy3lrbaleq" path="res://Scripts/main_area.gd" id="1_xhqh8"]
+[ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="2_3cto1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cto1"]
+size = Vector2(1178, 101)
+
+[node name="MainArea" type="Node2D"]
+script = ExtResource("1_xhqh8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(579, 40.5)
+shape = SubResource("RectangleShape2D_3cto1")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(572, 483)
+texture = ExtResource("1_ay5kp")
+
+[node name="Transition" parent="." instance=ExtResource("2_3cto1")]
+visible = false

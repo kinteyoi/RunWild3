@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3tsqpmfenm7g"]
+
+[ext_resource type="FontFile" uid="uid://wq64lwf82khb" path="res://Fonts/ShortStack-Regular.ttf" id="1_8m0b7"]
+[ext_resource type="Script" uid="uid://1bauh5keu48j" path="res://Scripts/days_left.gd" id="1_i6al6"]
+[ext_resource type="AudioStream" uid="uid://dxj03188sjhwb" path="res://Assets/Sounds/Ominousbell.mp3" id="2_c78l8"]
+
+[sub_resource type="Animation" id="Animation_c78l8"]
+resource_name = "Doom"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker2D/Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.15, 1.15), Vector2(0.785, 0.785)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.3, 4.6666665, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.57, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i6al6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker2D/Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.15, 1.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i2kh8"]
+_data = {
+&"Doom": SubResource("Animation_c78l8"),
+&"RESET": SubResource("Animation_i6al6")
+}
+
+[node name="DaysLeft" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_i6al6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Label" type="Label" parent="Marker2D"]
+custom_minimum_size = Vector2(1000, 1000)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.15, 1.15)
+pivot_offset = Vector2(500, 500)
+theme_override_fonts/font = ExtResource("1_8m0b7")
+theme_override_font_sizes/font_size = 56
+text = "20 Days Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_c78l8")
+volume_db = -8.0
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i2kh8")
+}
+autoplay = "Doom"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

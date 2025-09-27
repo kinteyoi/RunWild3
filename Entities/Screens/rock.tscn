@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dng0es7dq0vaf"]
+
+[ext_resource type="Script" uid="uid://b4s4hsm34gdl8" path="res://Scripts/rock.gd" id="1_18mdk"]
+[ext_resource type="Texture2D" uid="uid://dae3u4lyxmbj3" path="res://Assets/Environment/runwild_swimlog2.png" id="2_18mdk"]
+
+[sub_resource type="Animation" id="Animation_jvlum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_18mdk"]
+resource_name = "sway"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.05235988, 0.0, 0.05235988, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n506i"]
+_data = {
+&"RESET": SubResource("Animation_jvlum"),
+&"sway": SubResource("Animation_18mdk")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18mdk"]
+radius = 12.0
+height = 384.0
+
+[node name="Rock" type="Area2D" node_paths=PackedStringArray("animation_player") groups=["objects"]]
+scale = Vector2(0.6, 0.6)
+collision_layer = 4
+script = ExtResource("1_18mdk")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["objects"]]
+libraries = {
+&"": SubResource("AnimationLibrary_n506i")
+}
+autoplay = "sway"
+speed_scale = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_18mdk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-181, -166, 353, 318)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_18mdk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
