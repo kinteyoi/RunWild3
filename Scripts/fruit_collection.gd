@@ -5,6 +5,7 @@ extends Node2D
 @onready var coconutScene: PackedScene = preload("res://Entities/Objects/fruit.tscn")
 @onready var mini_game_player: CharacterBody2D = $MiniGamePlayer
 @onready var transition: Node2D = $Transition
+@onready var label: Label = $UI/Panel/Label
 
 signal finishedrun
 var timeLimit = 0
@@ -18,7 +19,7 @@ func _process(delta: float) -> void:
 	if timeLimit >= 30 or mini_game_player == null:
 		get_tree().paused = true
 		transition.leavesclose()
-
+	label.text = "Score: " + str(Manager.fruitStats)
 func _on_fruit_timer_timeout() -> void:
 	var fruitOrCoco = randi_range(0,3) == 1
 	var randPos = randf_range(0,1)
