@@ -5,6 +5,8 @@ extends Node2D
 @onready var mini_game_player: CharacterBody2D = $SwimmingMiniGamePlayer
 @onready var rock_timer: Timer = $RockTimer
 @onready var transition: Node2D = $Transition
+@onready var label: Label = $UI/Panel/Label
+
 signal finishedswim
 @export var score = 0
 
@@ -15,6 +17,7 @@ func _ready() -> void:
 	transition.leavesopen()
 func _process(delta: float) -> void:
 	score += delta
+	label.text = "Score: " + str(int(score))
 	if mini_game_player == null:
 		Manager.swimStats = score
 		get_tree().paused = true
