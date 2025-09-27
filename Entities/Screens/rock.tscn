@@ -6,8 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jvlum"]
 radius = 65.0
 
-[node name="Rock" type="CharacterBody2D"]
-collision_mask = 2
+[node name="Rock" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_18mdk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,4 +19,5 @@ shape = SubResource("CircleShape2D_jvlum")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
