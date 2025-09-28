@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dw71wn42kta0q"]
+[gd_scene load_steps=40 format=3 uid="uid://dw71wn42kta0q"]
 
 [ext_resource type="Script" uid="uid://2ej61un2gti7" path="res://Scripts/hatch.gd" id="1_o8joq"]
 [ext_resource type="Texture2D" uid="uid://d0rs3ot8q24o1" path="res://Assets/Eggs/runwild_egg3purple.png" id="2_k7n8x"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://bsd4rltwcer10" path="res://Assets/Sounds/drop_003.ogg" id="13_ympbk"]
 [ext_resource type="AudioStream" uid="uid://dlfx1okt8hbv6" path="res://Assets/Sounds/drop_004.ogg" id="14_hhqnw"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="15_iryu1"]
+[ext_resource type="Texture2D" uid="uid://d3hdd2o8grdqi" path="res://Assets/Eggs/runwild_eggshadow.png" id="16_ympbk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bf452"]
 shader = ExtResource("6_bf452")
@@ -171,6 +172,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.123, 0.855), Vector2(0.915, 1), Vector2(0.915, 1), Vector2(0.9, 1), Vector2(1.19, 0.8), Vector2(1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RunwildEggshadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.76, 0.76), Vector2(0.76, 0.76), Vector2(1.222, 1.222), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RunwildEggshadow:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6, 0.8, 0.90000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.8392157), Color(1, 1, 1, 0.43529412), Color(1, 1, 1, 0.43529412), Color(1, 1, 1, 0.89411765), Color(1, 1, 1, 0.8392157)]
+}
 
 [sub_resource type="Animation" id="Animation_wfokv"]
 length = 0.001
@@ -197,6 +222,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.915, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RunwildEggshadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RunwildEggshadow:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.43529412)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bf452"]
@@ -825,6 +874,12 @@ wait_time = 0.1
 [node name="End" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="RunwildEggshadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.43529412)
+position = Vector2(581, 453)
+texture = ExtResource("16_ympbk")
+offset = Vector2(0, -131)
 
 [connection signal="timeout" from="Wiggle" to="." method="_on_wiggle_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
