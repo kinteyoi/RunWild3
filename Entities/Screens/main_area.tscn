@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cubhshy5y2exj"]
+[gd_scene load_steps=25 format=4 uid="uid://cubhshy5y2exj"]
 
 [ext_resource type="Script" uid="uid://b7fxy3lrbaleq" path="res://Scripts/main_area.gd" id="1_xhqh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="2_3cto1"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dngplirvfvb70" path="res://Assets/UI/energybar_middle.png" id="17_o3fja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cto1"]
-size = Vector2(1178, 101)
+size = Vector2(1741, 101)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bpaqk"]
 _surfaces = [{
@@ -39,6 +39,49 @@ script = ExtResource("5_bpaqk")
 texture = ExtResource("6_8s5yf")
 mesh = SubResource("ArrayMesh_bpaqk")
 
+[sub_resource type="Animation" id="Animation_ohl71"]
+resource_name = "Rest"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.58000004, 0.58000004, 1, 1), Color(0, 0, 0.5, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qjqji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.58000004, 0.58000004, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o3fja"]
+resource_name = "Morning"
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjqji"]
+_data = {
+&"Morning": SubResource("Animation_o3fja"),
+&"RESET": SubResource("Animation_qjqji"),
+&"Rest": SubResource("Animation_ohl71")
+}
+
 [node name="MainArea" type="Node2D"]
 script = ExtResource("1_xhqh8")
 
@@ -46,11 +89,11 @@ script = ExtResource("1_xhqh8")
 position = Vector2(0, 560)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(579, 40.5)
+position = Vector2(572.5, 40.5)
 shape = SubResource("RectangleShape2D_3cto1")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(-13, 566)
+position = Vector2(-283, 566)
 rotation = -1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
@@ -58,7 +101,7 @@ position = Vector2(579, 40.5)
 shape = SubResource("RectangleShape2D_3cto1")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(1084, 679)
+position = Vector2(1350, 679)
 rotation = -1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
@@ -85,15 +128,15 @@ position = Vector2(0, -161)
 [node name="Rest" type="Marker2D" parent="Points"]
 position = Vector2(576, 101)
 
-[node name="RunwildButtonrest" type="Sprite2D" parent="Points/Rest"]
+[node name="RunwildButtonfly" type="Sprite2D" parent="Points/Rest"]
 scale = Vector2(0.415, 0.415)
-texture = ExtResource("6_xsfye")
+texture = ExtResource("10_b00yh")
 
-[node name="Rust" type="Button" parent="Points/Rest"]
+[node name="Fly" type="Button" parent="Points/Rest"]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = -81.0
+offset_left = -80.0
 offset_top = -49.0
-offset_right = 80.0
+offset_right = 81.0
 offset_bottom = 49.0
 pivot_offset = Vector2(80, 49)
 
@@ -161,11 +204,11 @@ pivot_offset = Vector2(80, 49)
 [node name="Fly" type="Marker2D" parent="Points"]
 position = Vector2(976, 69)
 
-[node name="RunwildButtonfly" type="Sprite2D" parent="Points/Fly"]
+[node name="RunwildButtonrest" type="Sprite2D" parent="Points/Fly"]
 scale = Vector2(0.415, 0.415)
-texture = ExtResource("10_b00yh")
+texture = ExtResource("6_xsfye")
 
-[node name="Fly" type="Button" parent="Points/Fly"]
+[node name="Rust" type="Button" parent="Points/Fly"]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -80.0
 offset_top = -49.0
@@ -184,14 +227,15 @@ text = "escape"
 position = Vector2(535, 550)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-anchors_preset = -1
 offset_left = 187.0
 offset_top = -23.0
 offset_right = 965.0
 offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.745, 0.745)
 pivot_offset = Vector2(389, 101)
+value = 100.0
 texture_under = ExtResource("15_ohl71")
 texture_over = ExtResource("16_qjqji")
 texture_progress = ExtResource("17_o3fja")
@@ -200,8 +244,16 @@ texture_progress = ExtResource("17_o3fja")
 position = Vector2(576, 324)
 zoom = Vector2(0.655, 0.655)
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.58000004, 0.58000004, 1, 1)
+
+[node name="EEpy" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qjqji")
+}
+
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
+[connection signal="pressed" from="Points/Rest/Fly" to="." method="_on_fly_pressed"]
 [connection signal="pressed" from="Points/Run/Run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="Points/Swim/Swim" to="." method="_on_swim_pressed"]
-[connection signal="pressed" from="Points/Fly/Fly" to="." method="_on_fly_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
