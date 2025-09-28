@@ -141,13 +141,54 @@ polygon = PackedVector2Array(-4265.925, 3729.5269, -3197.2512, 637.8199, 1518.45
 
 [node name="RunnerPet" parent="." instance=ExtResource("1_3ok8t")]
 position = Vector2(91, 470)
-flyingSpeed = 700.0
-swimmingSpeed = 700.0
-runningSpeed = 700.0
+flyingSpeed = 100.0
+swimmingSpeed = 100.0
+runningSpeed = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="RunnerPet"]
 position = Vector2(0, -271)
 zoom = Vector2(0.475, 0.475)
+
+[node name="GG" type="Control" parent="RunnerPet/Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1208.0
+offset_top = -680.0
+offset_right = -1168.0
+offset_bottom = -640.0
+
+[node name="Panel" type="Panel" parent="RunnerPet/Camera2D/GG"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(60.639744, 28.37465)
+
+[node name="Label" type="Label" parent="RunnerPet/Camera2D/GG/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.28439608, 0.8107212)
+text = "You let them die..."
+horizontal_alignment = 1
+
+[node name="TryAgain" type="Button" parent="RunnerPet/Camera2D/GG/Panel"]
+layout_mode = 0
+offset_left = 0.8740145
+offset_top = 17.339422
+offset_right = 81.874016
+offset_bottom = 48.339424
+scale = Vector2(0.18542156, 0.4002968)
+text = "Try Again"
+
+[node name="GiveUp" type="Button" parent="RunnerPet/Camera2D/GG/Panel"]
+layout_mode = 0
+offset_left = 24.192055
+offset_top = 16.881266
+offset_right = 105.192055
+offset_bottom = 47.881264
+scale = Vector2(0.18542156, 0.4002968)
+text = "Give Up"
 
 [node name="RunwildBackgroundSwim" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.69411767)

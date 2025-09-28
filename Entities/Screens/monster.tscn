@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://01g144g63sbe"]
+[gd_scene load_steps=8 format=3 uid="uid://01g144g63sbe"]
 
 [ext_resource type="Script" uid="uid://cgp36ynhmldvh" path="res://Scripts/monster.gd" id="1_20gda"]
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="2_os1v1"]
@@ -68,6 +68,10 @@ _data = {
 &"new_animation": SubResource("Animation_3k203")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_20gda"]
+radius = 85.0
+height = 310.0
+
 [node name="Monster" type="CharacterBody2D"]
 floor_stop_on_slope = false
 floor_max_angle = 3.1415927
@@ -112,5 +116,11 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_20gda")
+
 [connection signal="timeout" from="checker" to="." method="_on_check_timeout"]
 [connection signal="timeout" from="SwimTime" to="." method="_on_swim_time_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

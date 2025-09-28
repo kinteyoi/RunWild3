@@ -6,12 +6,13 @@ var mode : String
 var check = false
 @onready var swim_time: Timer = $SwimTime
 @onready var checker: Timer = $checker
+@onready var panel: Panel = $"../RunnerPet/Camera2D/GG/Panel"
 
 @onready var label: Label = $Label
 
 
 
-func im_pooping(type):
+func im_creaming(type):
 	if type == "fly":
 		check = true
 		checker.start()
@@ -48,6 +49,10 @@ func _physics_process(delta: float) -> void:
 		label.text = "evil Swimung Poop"
 		velocity.y = 0
 	move_and_slide()
+	
+func Death():
+	panel.visible = true
+	get_tree().paused = true
 
 
 func _on_check_timeout() -> void:
@@ -56,3 +61,8 @@ func _on_check_timeout() -> void:
 
 func _on_swim_time_timeout() -> void:
 	mode = "swim"
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.has_method("im_pooping"):
+		Death()
