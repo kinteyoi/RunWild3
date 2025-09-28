@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	label.text = "Time Spent: " + str(int(score)) + "x" + str(closeMult)
 	if mini_game_player == null:
 		score *= closeMult
-		label.text = "Score: " + str(score) + "!"
+		label.text = "Score: " + str(int(score)) + "!"
 		score *= .15
 
 		Manager.SetStats(.15 * score, .7 * score, .15 * score)

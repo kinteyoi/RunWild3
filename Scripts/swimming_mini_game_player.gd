@@ -12,6 +12,8 @@ extends CharacterBody2D
 @onready var speed = 150
 
 signal rockIsClose 
+func player():
+	pass
 func _ready() -> void:
 	match Manager.current_pet:
 		"deergon":

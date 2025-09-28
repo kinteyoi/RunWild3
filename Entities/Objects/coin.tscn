@@ -17,7 +17,7 @@ z_index = 410
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_qna40")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." groups=["objects"]]
 wait_time = 8.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

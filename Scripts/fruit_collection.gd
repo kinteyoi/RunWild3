@@ -36,15 +36,15 @@ func _on_fruit_timer_timeout() -> void:
 	var fruit
 	path_follow_2d.progress_ratio = randPos
 	if fruitOrCoco:
-		if randi_range(0,2) == 1:
+		if randi_range(0,1) == 1:
 			print("MOney")
 			fruit = coinScene.instantiate()
 		else:
 			fruit = coconutScene.instantiate()
 	else:
 		fruit = fruitScene.instantiate()
-		fruit.global_position = path_follow_2d.global_position 
-		fruits.add_child(fruit)
+	fruit.global_position = path_follow_2d.global_position 
+	fruits.add_child(fruit)
 	
 
 
