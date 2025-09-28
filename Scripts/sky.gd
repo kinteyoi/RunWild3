@@ -84,7 +84,7 @@ func _on_kill_box_body_entered(body: Node2D) -> void:
 		body.queue_free()
 		print("snapCracklePop")
 	else:
-		maxHeight *= -0.1
+		maxHeight *= -0.2
 		Manager.maxBounce = Manager.defaultMaxBounce
 		Manager.maxClouds = Manager.defaultMaxClouds
 		Manager.flyStats += maxHeight * .7

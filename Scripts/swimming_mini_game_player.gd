@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 @onready var speed = 150
 
-var closeness = 0 
+signal rockIsClose 
 func _ready() -> void:
 	match Manager.current_pet:
 		"deergon":
@@ -26,17 +26,16 @@ func _physics_process(_delta):
 	move_and_slide()
 
 
-func _on_close_time_limit_timeout(delta) -> void:
-	closeness += delta
-	print(closeness)
+func _on_close_time_limit_timeout() -> void:
+	emit_signal("rockIsClose")
 
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("start")
+	#print("start")
 	close_time_limit.start()
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	print("stop")
+	#print("stop")
 	close_time_limit.stop()

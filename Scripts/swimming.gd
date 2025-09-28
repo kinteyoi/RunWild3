@@ -9,7 +9,7 @@ extends Node2D
 
 signal finishedswim
 @export var score = 0
-
+var closeMult = 1
 
 
 func _ready() -> void:
@@ -17,9 +17,13 @@ func _ready() -> void:
 	transition.leavesopen()
 func _process(delta: float) -> void:
 	score += delta
-	label.text = "Score: " + str(int(score))
+	label.text = "Time Spent: " + str(int(score))
 	if mini_game_player == null:
-		Manager.swimStats += score
+		score *= 2
+		label.text = "Score: " + str(int(score) * closeMult)+ "!"
+		Manager.swimStats += int(score) * .7 
+		Manager.runStats += int(score) * .15
+		Manager.flyStats += int(score) * .15
 		score = 0
 		get_tree().paused = true
 		transition.leavesclose()
@@ -39,3 +43,7 @@ func _on_transition_exited() -> void:
 	if not is_connected("finishedswim", Callable(get_parent(), "go_to_days")):
 		connect("finishedswim", Callable(get_parent(), "go_to_days"))
 		emit_signal("finishedswim")
+
+
+func _on_swimming_mini_game_player_rock_is_close() -> void:
+	closeMult += 1

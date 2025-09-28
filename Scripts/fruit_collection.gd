@@ -18,7 +18,7 @@ func _ready():
 func _process(delta: float) -> void:
 	timeLimit += delta
 	if timeLimit >= 30 or mini_game_player == null:
-		var score = Manager.fruitStats * .01
+		var score = Manager.fruitStats * .1
 		Manager.runStats += .7 * score
 		Manager.swimStats += .15 * score
 		Manager.flyStats += .15 * score
