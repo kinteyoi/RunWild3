@@ -63,9 +63,9 @@ func _on_rust_pressed() -> void:
 
 func _process(delta: float) -> void:
 	fly_stats_3.text = str(Manager.currency)
-	fly_stats.text = str(Manager.flyStats)
-	run_stats.text = str(Manager.runStats)
-	swim_stats.text = str(Manager.swimStats)
+	fly_stats.text = str(int(Manager.flyStats))
+	run_stats.text = str(int(Manager.runStats))
+	swim_stats.text = str(int(Manager.swimStats))
 
 func _on_eat_pressed() -> void:
 	if Manager.currency >= 10:
