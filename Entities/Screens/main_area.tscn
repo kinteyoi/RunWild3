@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cubhshy5y2exj"]
+[gd_scene load_steps=35 format=4 uid="uid://cubhshy5y2exj"]
 
 [ext_resource type="Script" uid="uid://b7fxy3lrbaleq" path="res://Scripts/main_area.gd" id="1_xhqh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="2_3cto1"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dnub6q51ebmgj" path="res://Assets/Environment/runwild_applecanopy.png" id="20_efrv2"]
 [ext_resource type="Texture2D" uid="uid://dlhwl63id6f6o" path="res://Assets/Environment/runwild_apple1.png" id="21_nxvwa"]
 [ext_resource type="Texture2D" uid="uid://c53v5vxxtbpo3" path="res://Assets/Environment/runwild_apple2.png" id="22_cc2mi"]
+[ext_resource type="AudioStream" uid="uid://doyfd7yxen8i1" path="res://Assets/Sounds/bronx-knock-lo-fi-percussion.wav" id="24_cc2mi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cto1"]
 size = Vector2(1741, 101)
@@ -452,9 +453,17 @@ curve = SubResource("Curve2D_nxvwa")
 position = Vector2(-94, -271)
 rotation = -0.001510573
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_cc2mi")
+
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
+[connection signal="mouse_entered" from="Points/Rest/Fly" to="." method="_on_fly_mouse_entered"]
 [connection signal="pressed" from="Points/Rest/Fly" to="." method="_on_fly_pressed"]
+[connection signal="mouse_entered" from="Points/Eat/Eat" to="." method="_on_eat_mouse_entered"]
 [connection signal="pressed" from="Points/Eat/Eat" to="." method="_on_eat_pressed"]
+[connection signal="mouse_entered" from="Points/Run/Run" to="." method="_on_run_mouse_entered"]
 [connection signal="pressed" from="Points/Run/Run" to="." method="_on_run_pressed"]
+[connection signal="mouse_entered" from="Points/Swim/Swim" to="." method="_on_swim_mouse_entered"]
 [connection signal="pressed" from="Points/Swim/Swim" to="." method="_on_swim_pressed"]
+[connection signal="mouse_entered" from="Points/Fly/Rust" to="." method="_on_rust_mouse_entered"]
 [connection signal="pressed" from="Points/Fly/Rust" to="." method="_on_rust_pressed"]

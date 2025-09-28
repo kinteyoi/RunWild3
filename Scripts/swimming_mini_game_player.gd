@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var deerjump2 = preload("res://Assets/Players/DeerDog/likufdftgyh.png")
 @onready var deerjump3 = preload("res://Assets/Players/DeerDog/dguykaweopl.png")
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var close_time_limit: Timer = $CloseTimeLimit
 @onready var pose: Sprite2D = $Icon
@@ -139,6 +140,7 @@ func _on_jump_timeout() -> void:
 	spscene.position.y += 50
 	add_child(spscene)
 	can_jump = true
+	audio_stream_player_2d.play()
 	match Manager.current_pet:
 		"deergon":
 			match Manager.evo:

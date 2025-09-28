@@ -15,6 +15,8 @@ extends Node2D
 @onready var swimbutt: Button = $Points/Swim/Swim
 @onready var rustbutt: Button = $Points/Fly/Rust
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 signal run
 signal swim
 signal fly
@@ -122,3 +124,23 @@ func disable_all():
 		runbutt.disabled = true
 		swimbutt.disabled = true
 		rustbutt.disabled = true
+
+
+func _on_fly_mouse_entered() -> void:
+	audio_stream_player_2d.play()
+
+
+func _on_eat_mouse_entered() -> void:
+	audio_stream_player_2d.play()
+
+
+func _on_run_mouse_entered() -> void:
+	audio_stream_player_2d.play()
+
+
+func _on_swim_mouse_entered() -> void:
+	audio_stream_player_2d.play()
+
+
+func _on_rust_mouse_entered() -> void:
+	audio_stream_player_2d.play()
