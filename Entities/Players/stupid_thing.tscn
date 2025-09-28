@@ -22,4 +22,13 @@ autostart = true
 position = Vector2(0, -55.5)
 shape = SubResource("RectangleShape2D_gfosg")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -56)
+target_position = Vector2(125, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(0, -56)
+rotation = -3.1415927
+target_position = Vector2(125, 0)
+
 [connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=4 uid="uid://cubhshy5y2exj"]
+[gd_scene load_steps=34 format=4 uid="uid://cubhshy5y2exj"]
 
 [ext_resource type="Script" uid="uid://b7fxy3lrbaleq" path="res://Scripts/main_area.gd" id="1_xhqh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="2_3cto1"]
+[ext_resource type="Script" uid="uid://cm6qnkedd5eom" path="res://Scripts/filler.gd" id="2_nxvwa"]
 [ext_resource type="PackedScene" uid="uid://3851a7p8vssg" path="res://Entities/Objects/ss_2d_shape.tscn" id="4_bpk2j"]
 [ext_resource type="Texture2D" uid="uid://c0t0dy1hngdta" path="res://Assets/Environment/runwild_background_home.png" id="5_1k3xh"]
 [ext_resource type="Script" uid="uid://llobjh5hvry" path="res://addons/rmsmartshape/shapes/mesh.gd" id="5_bpaqk"]
@@ -94,6 +95,12 @@ _data = {
 &"Rest": SubResource("Animation_ohl71")
 }
 
+[sub_resource type="Curve2D" id="Curve2D_nxvwa"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -94, -271, 0, 0, 0, 0, 1230, -273)
+}
+point_count = 2
+
 [node name="MainArea" type="Node2D"]
 script = ExtResource("1_xhqh8")
 
@@ -107,6 +114,7 @@ shape = SubResource("RectangleShape2D_3cto1")
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(-283, 566)
 rotation = -1.5707964
+script = ExtResource("2_nxvwa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(579, 40.5)
@@ -115,12 +123,14 @@ shape = SubResource("RectangleShape2D_3cto1")
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 position = Vector2(1350, 679)
 rotation = -1.5707964
+script = ExtResource("2_nxvwa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2(579, 40.5)
 shape = SubResource("RectangleShape2D_3cto1")
 
 [node name="Transition" parent="." instance=ExtResource("2_3cto1")]
+visible = false
 
 [node name="MainAreaFloor" parent="." instance=ExtResource("4_bpk2j")]
 position = Vector2(-346, -240)
@@ -440,6 +450,13 @@ theme_override_font_sizes/font_size = 131
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nxvwa")
+
+[node name="FoodSpawn" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-94, -271)
+rotation = -0.001510573
 
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
 [connection signal="pressed" from="Points/Rest/Fly" to="." method="_on_fly_pressed"]

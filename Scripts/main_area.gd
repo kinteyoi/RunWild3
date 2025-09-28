@@ -52,3 +52,7 @@ func _on_transition_exited() -> void:
 func _on_rust_pressed() -> void:
 	transition.leavesclose()
 	goto = "sleep"
+
+
+func _on_eat_pressed() -> void:
+	pass # Replace with function body.
