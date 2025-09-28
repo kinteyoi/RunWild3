@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b0ec6xfq1isam"]
+[gd_scene load_steps=20 format=4 uid="uid://b0ec6xfq1isam"]
 
 [ext_resource type="PackedScene" path="res://Entities/Players/runner_pet.tscn" id="1_3ok8t"]
 [ext_resource type="Script" uid="uid://be45be05b4sqx" path="res://Entities/Screens/escape.gd" id="1_3qgi6"]
@@ -85,6 +85,9 @@ script = ExtResource("3_6c54b")
 texture = ExtResource("5_mnaq2")
 mesh = SubResource("ArrayMesh_3qgi6")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qgi6"]
+size = Vector2(376, 622)
+
 [node name="Escape" type="Node2D"]
 script = ExtResource("1_3qgi6")
 
@@ -143,9 +146,9 @@ polygon = PackedVector2Array(-4265.925, 3729.5269, -3197.2512, 637.8199, 1518.45
 
 [node name="RunnerPet" parent="." instance=ExtResource("1_3ok8t")]
 position = Vector2(91, 480)
-flyingSpeed = 100.0
-swimmingSpeed = 100.0
-runningSpeed = 100.0
+flyingSpeed = 1000.0
+swimmingSpeed = 1000.0
+runningSpeed = 1000.0
 
 [node name="Camera2D" type="Camera2D" parent="RunnerPet"]
 position = Vector2(0, -271)
@@ -197,6 +200,45 @@ offset_bottom = 48.339424
 scale = Vector2(0.1833132, 0.40308094)
 text = "Try Again"
 
+[node name="Winning" type="Panel" parent="RunnerPet/Camera2D/GG"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(60.639744, 28.37465)
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="RunnerPet/Camera2D/GG/Winning"]
+layout_mode = 0
+offset_left = 2.9518592
+offset_right = 115.95186
+offset_bottom = 23.0
+scale = Vector2(0.3042046, 0.70381033)
+text = "They Survived!"
+horizontal_alignment = 1
+
+[node name="Retire" type="Button" parent="RunnerPet/Camera2D/GG/Winning"]
+process_mode = 3
+z_index = 1225
+layout_mode = 0
+offset_left = 24.192055
+offset_top = 16.881266
+offset_right = 105.192055
+offset_bottom = 47.881264
+scale = Vector2(0.18542156, 0.4002968)
+text = "Retire"
+
+[node name="GoAgain" type="Button" parent="RunnerPet/Camera2D/GG/Winning"]
+process_mode = 3
+z_index = 1080
+layout_mode = 0
+offset_left = 0.8740158
+offset_top = 17.339422
+offset_right = 81.874016
+offset_bottom = 48.339424
+scale = Vector2(0.1833132, 0.40308094)
+text = "Raise another"
+
 [node name="RunwildBackgroundSwim" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.69411767)
 z_index = 15
@@ -214,4 +256,13 @@ texture = ExtResource("8_b0qra")
 [node name="Monster" parent="." instance=ExtResource("9_b0qra")]
 position = Vector2(-965, 470)
 
+[node name="Win" type="Area2D" parent="."]
+position = Vector2(48025, 3391)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
+position = Vector2(178, 301)
+shape = SubResource("RectangleShape2D_3qgi6")
+
 [connection signal="pressed" from="RunnerPet/Camera2D/GG/Panel/TryAgain" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="RunnerPet/Camera2D/GG/Winning/GoAgain" to="." method="_on_go_again_pressed"]
+[connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]
