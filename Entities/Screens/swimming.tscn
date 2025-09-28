@@ -18,6 +18,9 @@
 [ext_resource type="Script" uid="uid://d218yx0d1ilsn" path="res://addons/rmsmartshape/normal_range.gd" id="16_5i8xs"]
 [ext_resource type="Script" uid="uid://nc5bfedvnpgm" path="res://addons/rmsmartshape/materials/shape_material.gd" id="17_fr8in"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_381oc"]
+radius = 103.077644
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6v8h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvlh8"]
@@ -33,9 +36,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1102, 0, 0, 0, 0, 0, 50, 0)
 }
 point_count = 2
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_381oc"]
-radius = 103.077644
 
 [sub_resource type="Animation" id="Animation_07xlo"]
 length = 0.001
@@ -233,6 +233,19 @@ _edge_meta_materials = Array[ExtResource("14_jicjj")]([SubResource("Resource_p2m
 [node name="Swimming" type="Node2D"]
 script = ExtResource("1_o6v8h")
 
+[node name="SwimmingMiniGamePlayer" parent="." instance=ExtResource("3_o6v8h")]
+z_index = 0
+position = Vector2(571, 548)
+
+[node name="Area2D" type="Area2D" parent="SwimmingMiniGamePlayer"]
+position = Vector2(-1, -1)
+collision_layer = 513
+collision_mask = 518
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwimmingMiniGamePlayer/Area2D"]
+shape = SubResource("CircleShape2D_381oc")
+debug_color = Color(0.86471015, 0.34950736, 0.20299855, 0.41960785)
+
 [node name="Rocks" type="Node2D" parent="."]
 position = Vector2(-1, 0)
 
@@ -308,20 +321,6 @@ autostart = true
 [node name="Difficulty" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
-
-[node name="SwimmingMiniGamePlayer" parent="." instance=ExtResource("3_o6v8h")]
-z_index = 0
-position = Vector2(571, 548)
-collision_layer = 1
-
-[node name="Area2D" type="Area2D" parent="SwimmingMiniGamePlayer"]
-position = Vector2(-1, -1)
-collision_layer = 513
-collision_mask = 518
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwimmingMiniGamePlayer/Area2D"]
-shape = SubResource("CircleShape2D_381oc")
-debug_color = Color(0.86471015, 0.34950736, 0.20299855, 0.41960785)
 
 [node name="RunwildBackgroundSwim" type="Sprite2D" parent="."]
 z_index = -370
@@ -410,9 +409,9 @@ _meshes = Array[ExtResource("12_3k7kr")]([SubResource("Resource_xxwh5")])
 shape_material = SubResource("Resource_x6qc6")
 metadata/_custom_type_script = "uid://dhdc4b8yddyej"
 
-[connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]
-[connection signal="timeout" from="Difficulty" to="." method="_on_difficulty_timeout"]
 [connection signal="rockIsClose" from="SwimmingMiniGamePlayer" to="." method="_on_swimming_mini_game_player_rock_is_close"]
 [connection signal="area_entered" from="SwimmingMiniGamePlayer/Area2D" to="SwimmingMiniGamePlayer" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="SwimmingMiniGamePlayer/Area2D" to="SwimmingMiniGamePlayer" method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]
+[connection signal="timeout" from="Difficulty" to="." method="_on_difficulty_timeout"]
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
