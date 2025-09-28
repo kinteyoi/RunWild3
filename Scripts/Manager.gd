@@ -16,3 +16,8 @@ var defaultMaxBounce = 2
 @export var swimStats = 0
 @export var runStats = 0
 @export var flyStats = 0
+
+func SetStats(newRunStat, newSwimStat, newFlyStat):
+	runStats = newRunStat
+	swimStats = newSwimStat
+	flyStats = newFlyStat
