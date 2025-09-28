@@ -12,7 +12,9 @@ var check = false
 
 @onready var label: Label = $Label
 
-
+@onready var deerguy = preload("res://Assets/Players/DeerDog/Kritter1_adultback8.png")
+@onready var deerguy2 = preload("res://Assets/Players/DeerDog/Kritter1_adultback5.png")
+@onready var deerguy3 = preload("res://Assets/Players/DeerDog/Kritter1_adultback2.png")
 
 func im_pooping(type):
 	if type == "fly":

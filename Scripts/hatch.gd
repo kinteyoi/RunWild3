@@ -27,7 +27,7 @@ extends Node2D
 @onready var marker_2d: Marker2D = $Marker2D
 
 @onready var deerdog = preload("res://Assets/Players/DeerDog/Kritter1_adultback6.png")
-@onready var penggon = preload("res://Assets/Players/DeerDog/Kritter1_adultback6.png")
+@onready var penggon = preload("res://Assets/Players/PengGon/runwild_birdbaby.png")
 @onready var poopgon = preload("res://Assets/Players/DeerDog/Kritter1_adultback6.png")
 @onready var mongeygon = preload("res://Assets/Players/DeerDog/Kritter1_adultback6.png")
 @onready var snakegon = preload("res://Assets/Players/DeerDog/Kritter1_adultback6.png")
