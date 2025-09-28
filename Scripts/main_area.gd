@@ -3,11 +3,17 @@ extends Node2D
 @onready var food = preload("res://Entities/Objects/candy_apple.tscn")
 @onready var transition: Node2D = $Transition
 @onready var food_spawn: PathFollow2D = $Path2D/FoodSpawn
-@onready var fly_stats_3: Label = $RunwildButtonblank/FlyStats3
+@onready var fly_stats_3: Label = $Points/RunwildButtonblank/FlyStats3
+@onready var texture_progress_bar: TextureProgressBar = $Points/TextureProgressBar
+
 @onready var fly_stats: Label = $Points/Rest/FlyStats
 @onready var run_stats: Label = $Points/Run/RunStats
 @onready var swim_stats: Label = $Points/Swim/SwimStats
 
+@onready var flybutt: Button = $Points/Rest/Fly
+@onready var runbutt: Button = $Points/Run/Run
+@onready var swimbutt: Button = $Points/Swim/Swim
+@onready var rustbutt: Button = $Points/Fly/Rust
 
 signal run
 signal swim
@@ -15,6 +21,10 @@ signal fly
 signal sleep
 var goto : String
 func _ready() -> void:
+	flybutt.disabled = false
+	runbutt.disabled = false
+	swimbutt.disabled = false
+	rustbutt.disabled = false
 	transition.leavesopen()
 
 
@@ -23,16 +33,22 @@ func _on_button_pressed() -> void:
 	add_child(escape_tscn)
 
 func _on_run_pressed() -> void:
+	disable_all()
+	energy_drain("run")
 	transition.leavesclose()
 	goto = "run"
 	
 
 func _on_swim_pressed() -> void:
+	disable_all()
+	energy_drain("swim")
 	transition.leavesclose()
 	goto = "swim"
 	
 	
 func _on_fly_pressed() -> void:
+	disable_all()
+	energy_drain("swim")
 	transition.leavesclose()
 	goto = "fly"
 
@@ -58,10 +74,13 @@ func _on_transition_exited() -> void:
 
 
 func _on_rust_pressed() -> void:
+	disable_all()
+	Manager.energy = 100
 	transition.leavesclose()
 	goto = "sleep"
 
 func _process(delta: float) -> void:
+	texture_progress_bar.value = Manager.energy
 	fly_stats_3.text = str(Manager.currency)
 	fly_stats.text = str(int(Manager.flyStats))
 	run_stats.text = str(int(Manager.runStats))
@@ -77,3 +96,34 @@ func _on_eat_pressed() -> void:
 		get_tree().get_root().add_child(capple)
 	else:
 		pass
+		
+func energy_drain(minigame):
+	match Manager.current_pet:
+		"deergon":
+			if minigame == "run":
+				Manager.energy -= Manager.affinity_drain
+			else:
+				Manager.energy -= Manager.base_drain
+		"penggon":
+			if minigame == "fly":
+				Manager.energy -= Manager.affinity_drain
+			else:
+				Manager.energy -= Manager.base_drain
+		"snakegon":
+			if minigame == "swim":
+				Manager.energy -= Manager.affinity_drain
+			else:
+				Manager.energy -= Manager.base_drain
+		"poopgon":
+			Manager.energy -= Manager.base_drain
+		"mongeygon":
+			if minigame == "run":
+				Manager.energy -= Manager.affinity_drain
+			else:
+				Manager.energy -= Manager.base_drain
+
+func disable_all():
+		flybutt.disabled = true
+		runbutt.disabled = true
+		swimbutt.disabled = true
+		rustbutt.disabled = true

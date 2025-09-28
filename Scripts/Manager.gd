@@ -5,6 +5,8 @@ var days_left = 16
 var current_pet : String = "deergon"
 
 var evo = 1
+var base_drain = 30
+var affinity_drain = 15
 var is_food_active = false
 #Cloud Scene
 var cloudList = []
@@ -15,7 +17,7 @@ var defaultMaxBounce = 2
 # FRUIT SCENE STATS
 @export var fruitStats = 0
 # PLAYER STATS
-var energy = 0
+var energy = 100
 var currency = 0
 @export var swimStats = 0
 @export var runStats = 0
