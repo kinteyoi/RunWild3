@@ -1,6 +1,6 @@
 extends Node
 var activeScene : String
-var days_left = 16
+var days_left = 14
 #Current Pet
 var current_pet : String = "deergon"
 
@@ -50,3 +50,4 @@ func SetStats(newRunStat, newSwimStat, newFlyStat):
 		runStats += newRunStat * mult
 		swimStats += newSwimStat * mult
 		flyStats += newFlyStat * mult
+	

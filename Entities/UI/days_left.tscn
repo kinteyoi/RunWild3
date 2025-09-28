@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3tsqpmfenm7g"]
 
 [ext_resource type="FontFile" uid="uid://wq64lwf82khb" path="res://Fonts/ShortStack-Regular.ttf" id="1_8m0b7"]
-[ext_resource type="Script" uid="uid://1bauh5keu48j" path="res://Scripts/days_left.gd" id="1_i6al6"]
+[ext_resource type="Script" uid="uid://1bauh5keu48j" path="res://days_left.gd" id="1_i6al6"]
 [ext_resource type="AudioStream" uid="uid://dxj03188sjhwb" path="res://Assets/Sounds/Ominousbell.mp3" id="2_c78l8"]
 
 [sub_resource type="Animation" id="Animation_c78l8"]
