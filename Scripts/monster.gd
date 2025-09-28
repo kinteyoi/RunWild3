@@ -38,14 +38,14 @@ func _physics_process(delta: float) -> void:
 	if mode == "run":
 		#print(velocity)
 		floor_snap_length = 20
-		label.text = "Runung Poop"
+		label.text = "evil Runung Poop"
 	if mode == "fly":
 		#print("fly")
-		label.text = "Flyung Poop"
+		label.text = "evil Flyung Poop"
 		velocity.y = 600
 	if mode == "swim":
 		#print("swim")
-		label.text = "Swimung Poop"
+		label.text = "evil Swimung Poop"
 		velocity.y = 0
 	move_and_slide()
 

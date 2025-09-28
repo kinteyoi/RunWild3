@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://b0ec6xfq1isam"]
+[gd_scene load_steps=18 format=4 uid="uid://b0ec6xfq1isam"]
 
 [ext_resource type="PackedScene" path="res://Entities/Players/runner_pet.tscn" id="1_3ok8t"]
 [ext_resource type="PackedScene" path="res://Entities/Players/switch_mode.tscn" id="2_lgyr1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ce7xk5g378us5" path="res://Assets/Environment/runwild_grassblock1.2.png" id="5_mnaq2"]
 [ext_resource type="Texture2D" uid="uid://b827m363dbkdf" path="res://Assets/Environment/runwild_grassblock1.png" id="5_x4n6v"]
 [ext_resource type="Texture2D" uid="uid://dre2pefifyni2" path="res://Assets/Environment/runwild_background_swim.png" id="8_x4n6v"]
+[ext_resource type="PackedScene" uid="uid://01g144g63sbe" path="res://Entities/Screens/monster.tscn" id="9_b0qra"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_o1by8"]
 _surfaces = [{
@@ -161,3 +162,6 @@ z_index = -75
 position = Vector2(24942, 3967)
 scale = Vector2(5.2966146, 1.5416666)
 texture = ExtResource("8_x4n6v")
+
+[node name="Monster" parent="." instance=ExtResource("9_b0qra")]
+position = Vector2(-965, 470)
