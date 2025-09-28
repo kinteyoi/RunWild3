@@ -24,11 +24,6 @@ size = Vector2(11752.264, 273.73547)
 [node name="Sky" type="Node2D"]
 script = ExtResource("1_o24eu")
 
-[node name="SkyBackground" type="Sprite2D" parent="."]
-position = Vector2(748.00006, -2448)
-scale = Vector2(1.73, 1.73)
-texture = ExtResource("1_q65rb")
-
 [node name="MiniGamePlayer" parent="." instance=ExtResource("3_o24eu")]
 position = Vector2(751, 395)
 
@@ -140,6 +135,15 @@ position = Vector2(751, 395)
 
 [node name="Transition" parent="." instance=ExtResource("8_u04ro")]
 visible = false
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1, 0.2)
+
+[node name="SkyBackground" type="Sprite2D" parent="Parallax2D"]
+z_index = -930
+position = Vector2(748.00006, -2448)
+scale = Vector2(1.73, 1.73)
+texture = ExtResource("1_q65rb")
 
 [connection signal="Down" from="MiniGamePlayer" to="." method="_on_mini_game_player_down"]
 [connection signal="Up" from="MiniGamePlayer" to="." method="_on_mini_game_player_up"]
