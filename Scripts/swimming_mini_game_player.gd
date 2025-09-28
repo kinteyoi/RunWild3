@@ -135,7 +135,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 
 func _on_jump_timeout() -> void:
-	set_collision_mask_value(10, true)
+	set_collision_layer_value(10, true)
 	var spscene = splash.instantiate()
 	spscene.position.y += 50
 	add_child(spscene)

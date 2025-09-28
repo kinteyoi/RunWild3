@@ -23,18 +23,26 @@ var currency = 0
 @export var runStats = 0
 @export var flyStats = 0
 
+var mult
+var maxScore = 100
 func SetStats(newRunStat, newSwimStat, newFlyStat):
 	if energy >= 90:
-		var mult = 2
-		runStats += newRunStat * mult
-		swimStats += newSwimStat * mult
-		flyStats += newFlyStat * mult
+		mult = 2
 	elif energy < 90 and energy >= 20:
-		runStats += newRunStat 
-		swimStats += newSwimStat
-		flyStats += newFlyStat
+		mult = 1
 	else:
-		var mult = .5
-		runStats += newRunStat * mult
+		mult = .5
+	if newRunStat > maxScore:
+		runStats += maxScore
 		swimStats += newSwimStat * mult
 		flyStats += newFlyStat * mult
+		
+	if newSwimStat > maxScore:
+		runStats += newRunStat * mult
+		swimStats += maxScore
+		flyStats += newFlyStat * mult
+		
+	if newFlyStat > maxScore:
+		runStats += newRunStat * mult
+		swimStats += newSwimStat * mult
+		flyStats += maxScore

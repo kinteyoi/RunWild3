@@ -20,6 +20,7 @@ extends Node2D
 @export var ratio = 1050
 var playerUp = false
 var maxHeight = 0
+var score = 0
 
 signal finishedfly
 
@@ -33,16 +34,16 @@ func _ready() -> void:
 	print(Manager.cloudList.size())
 	
 func _process(_delta: float) -> void:
-	
+
 	camera_2d.position.y = mini_game_player.position.y
 	path_2d.global_position.y = mini_game_player.global_position.y
 	mini_game_player.position.x = wrapf(mini_game_player.position.x, minXToWrap, maxXToWrap)
 	if mini_game_player.position.y < marker_2d.position.y and playerUp and Engine.time_scale != 0:
 		marker_2d.position = mini_game_player.position
 		maxHeight = marker_2d.position.y
+	score = maxHeight * -.1
 	
-	
-	label.text = "Score: " + str(int(-maxHeight))
+	label.text = "Score: " + str(int(score))
 
 	if Manager.cloudList.size() < Manager.maxClouds:
 		AddCloud()
@@ -85,13 +86,13 @@ func _on_star_mode_body_entered(_body: Node2D) -> void:
 	star_mode.queue_free()
 
 func _on_kill_box_body_entered(_body: Node2D) -> void:
-	label.text = "Score: " + str(int(-maxHeight))
+	label.text = "Score: " + str(int(score))
 	maxHeight *= -0.2
 	Manager.maxBounce = 2
 	Manager.maxClouds = 4
 	Manager.maxCloudTimer = 10
 	Manager.minCLoudTimer = 4
-	Manager.SetStats(.15 * maxHeight, .15 * maxHeight, .7 * maxHeight)
+	Manager.SetStats(.15 * score, .15 * score, .7 * score)
 	maxHeight = 0
 	Manager.cloudList.clear()
 	get_tree().paused = true
