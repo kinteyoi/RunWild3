@@ -3,7 +3,7 @@ extends Node2D
 @onready var mini_game_player: CharacterBody2D = $MiniGamePlayer
 @onready var path_2d: Path2D = $Path2D
 @onready var path_follow_2d: PathFollow2D = $Path2D/PathFollow2D
-@onready var cloudScene: PackedScene = preload("res://Entities/Objects/cloud.tscn")
+@onready var cloudScene = preload("res://Entities/Objects/cloud.tscn")
 @onready var clouds: Node2D = $Clouds
 @onready var sub_maxes: Area2D = $DifficultyBarriers/SubMaxes
 @onready var sub_maxes_2: Area2D = $DifficultyBarriers/SubMaxes2

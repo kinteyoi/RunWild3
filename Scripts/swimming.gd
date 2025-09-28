@@ -6,10 +6,12 @@ extends Node2D
 @onready var rock_timer: Timer = $RockTimer
 @onready var transition: Node2D = $Transition
 @onready var label: Label = $UI/Panel/Label
+@onready var coinScene = preload("res://Entities/Objects/coin.tscn")
 
 signal finishedswim
 @export var score = 0
 var closeMult = 1
+var rock
 
 
 func _ready() -> void:
@@ -17,17 +19,24 @@ func _ready() -> void:
 	transition.leavesopen()
 func _process(delta: float) -> void:
 	score += delta
-	label.text = "Time Spent: " + str(int(score))
+	label.text = "Time Spent: " + str(int(score)) + "x" + str(closeMult)
 	if mini_game_player == null:
-		score = int(2 * score)
-		label.text = "Score: " + str(int(score) * closeMult)+ "!"
+		score *= closeMult
+		label.text = "Score: " + str(score) + "!"
+		score *= .15
+
 		Manager.SetStats(.15 * score, .7 * score, .15 * score)
 
 		get_tree().paused = true
 		transition.leavesclose()
 func _on_rock_timer_timeout() -> void:
-	var rock = rockScene.instantiate()
 	var randPos = randf_range(0,1)
+	var coinCheck = randi_range(1,10) == 10
+	if coinCheck:
+		print("MOney")
+		rock = coinScene.instantiate()
+	else:
+		rock = rockScene.instantiate()
 	path_follow_2d.progress_ratio = randPos
 	rock.global_position = path_follow_2d.global_position
 	get_tree().get_root().add_child(rock)
