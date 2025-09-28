@@ -9,7 +9,7 @@ size = Vector2(98, 111)
 [node name="StupidThing" type="CharacterBody2D"]
 script = ExtResource("1_gfosg")
 
-[node name="Kritter1Adultback7" type="Sprite2D" parent="."]
+[node name="Pose" type="Sprite2D" parent="."]
 position = Vector2(0, -130.00002)
 scale = Vector2(0.485, 0.485)
 texture = ExtResource("1_vbogk")

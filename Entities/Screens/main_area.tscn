@@ -438,10 +438,10 @@ scale = Vector2(0.56, 0.56)
 texture = ExtResource("10_nitqc")
 
 [node name="FlyStats3" type="Label" parent="RunwildButtonblank"]
-offset_left = 38.66671
-offset_top = -84.0
-offset_right = 143.66672
-offset_bottom = 78.0
+offset_left = 10.461578
+offset_top = -84.000015
+offset_right = 115.461586
+offset_bottom = 77.999985
 theme_override_colors/font_color = Color(0.7529412, 0.5137255, 0.12156863, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20

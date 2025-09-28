@@ -3,7 +3,7 @@ var activeScene : String
 var days_left = 15
 #Current Pet
 var current_pet : String = "deergon"
-var evo = 0
+var evo = 1
 var is_food_active = false
 #Cloud Scene
 var cloudList = []
