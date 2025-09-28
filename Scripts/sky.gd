@@ -12,6 +12,7 @@ extends Node2D
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var transition: Node2D = $Camera2D/Transition
 @onready var timeout: AudioStreamPlayer2D = $Timeout
+@onready var star_mode: Area2D = $DifficultyBarriers/StarMode
 
 
 @export var minXToWrap = -700
@@ -34,7 +35,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	camera_2d.position.y = mini_game_player.position.y
-	path_2d.global_position.y = mini_game_player.global_position.y - 30
+	path_2d.global_position.y = mini_game_player.global_position.y
 	mini_game_player.position.x = wrapf(mini_game_player.position.x, minXToWrap, maxXToWrap)
 	if mini_game_player.position.y < marker_2d.position.y and playerUp and Engine.time_scale != 0:
 		marker_2d.position = mini_game_player.position
@@ -59,45 +60,44 @@ func AddCloud():
 	path_follow_2d.progress_ratio = playerPos + randPos
 	cloud.position = path_follow_2d.global_position
 
-
+func Difficulty():
+	Manager.maxBounce -= 1
+	Manager.maxClouds -= 1
+	Manager.maxCloudTimer -= 1
+	Manager.minCLoudTimer -= 1
+	print("entered New Max")
+	print("Max Bounce " + str(Manager.maxBounce))
+	print("Max Cloud " + str(Manager.maxClouds))
 
 
 func _on_sub_maxes_body_entered(_body: Node2D) -> void:
-	Manager.maxBounce -= 1
-	Manager.maxClouds -= 1
-	print("entered New Max")
-	print("Max Bounce " + str(Manager.maxBounce))
-	print("Max Cloud " + str(Manager.maxClouds))
+	Difficulty()
 	sub_maxes.queue_free()
-	#print($"Max Bounce: {Manager.maxBounce}, Max Clouds: {Manager.maxClouds}")
+	
 
-
+	
 func _on_sub_maxes_2_body_entered(_body: Node2D) -> void:
-	Manager.maxBounce -= 1
-	Manager.maxClouds -= 1
-	print("entered New Max")
-	print("Max Bounce " + str(Manager.maxBounce))
-	print("Max Cloud " + str(Manager.maxClouds))
+	Difficulty()
 	sub_maxes_2.queue_free()
 
+func _on_star_mode_body_entered(_body: Node2D) -> void:
+	Difficulty()
+	star_mode.queue_free()
 
-func _on_kill_box_body_entered(body: Node2D) -> void:
-	if body.has_method("_on_timer_timeout()"):
-		Manager.cloudList.pop_at(Manager.cloudList.find(self))
-		body.queue_free()
-		print("snapCracklePop")
-	else:
-		label.text = "Score: " + str(int(-maxHeight))
-		maxHeight *= -0.2
-		Manager.maxBounce = Manager.defaultMaxBounce
-		Manager.maxClouds = Manager.defaultMaxClouds
-		Manager.SetStats(.15 * maxHeight, .15 * maxHeight, .7 * maxHeight)
-		maxHeight = 0
-		Manager.cloudList.clear()
-		get_tree().paused = true
-		timeout.play()
-		await get_tree().create_timer(1.5).timeout
-		transition.leavesclose()
+func _on_kill_box_body_entered(_body: Node2D) -> void:
+	label.text = "Score: " + str(int(-maxHeight))
+	maxHeight *= -0.2
+	Manager.maxBounce = 2
+	Manager.maxClouds = 4
+	Manager.maxCloudTimer = 10
+	Manager.minCLoudTimer = 4
+	Manager.SetStats(.15 * maxHeight, .15 * maxHeight, .7 * maxHeight)
+	maxHeight = 0
+	Manager.cloudList.clear()
+	get_tree().paused = true
+	timeout.play()
+	await get_tree().create_timer(1.5).timeout
+	transition.leavesclose()
 
 
 func _on_mini_game_player_up() -> void:
@@ -112,3 +112,11 @@ func _on_transition_exited() -> void:
 	if not is_connected("finishedfly", Callable(get_parent(), "go_to_days")):
 		connect("finishedfly", Callable(get_parent(), "go_to_days"))
 		emit_signal("finishedfly")
+
+
+func _on_kill_box_area_entered(area: Area2D) -> void:
+	Manager.cloudList.pop_at(Manager.cloudList.find(self))
+	area.queue_free()
+
+
+	

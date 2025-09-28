@@ -11,9 +11,9 @@ var is_food_active = false
 #Cloud Scene
 var cloudList = []
 var maxClouds = 4
-var maxBounce = 2
-var defaultMaxClouds = 4
-var defaultMaxBounce = 2
+var maxBounce = 3
+var maxCloudTimer = 6
+var minCLoudTimer = 4
 # FRUIT SCENE STATS
 @export var fruitStats = 0
 # PLAYER STATS
