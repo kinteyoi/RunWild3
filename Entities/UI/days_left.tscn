@@ -98,6 +98,28 @@ text = "20 Days Left"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="Marker2D"]
+visible = false
+custom_minimum_size = Vector2(1000, 1000)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = -407.0
+offset_right = 505.0
+offset_bottom = 593.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.15, 1.15)
+pivot_offset = Vector2(500, 500)
+theme_override_fonts/font = ExtResource("1_8m0b7")
+theme_override_font_sizes/font_size = 56
+text = "Something happened..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_c78l8")
 volume_db = -8.0
