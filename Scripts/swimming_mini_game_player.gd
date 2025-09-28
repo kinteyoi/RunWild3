@@ -20,14 +20,13 @@ extends CharacterBody2D
 @onready var penjump2 = preload("res://Assets/Players/PengGon/birdteenswimjump.png")
 @onready var penjump3 = preload("res://Assets/Players/PengGon/birdadultswimjump.png")
 
-
 @onready var snake = preload("res://Assets/Players/Snakegon/runwild_snakeswimbaby.png")
 @onready var snake2 = preload("res://Assets/Players/Snakegon/runwild_snakeswimteen.png")
 @onready var snake3 = preload("res://Assets/Players/Snakegon/runwild_snakeswimadult.png")
 
-@onready var snakej = preload("res://Assets/Players/Snakegon/Kritter2_swim_baby.png")
-@onready var snake2j = preload("res://Assets/Players/Snakegon/Kritter2_swim_teen.png")
-@onready var snake3j = preload("res://Assets/Players/Snakegon/Kritter2_back_swim_adult.png")
+@onready var snakej = preload("res://Assets/Players/Snakegon/runwild_snakeswimbabyjump.png")
+@onready var snake2j = preload("res://Assets/Players/Snakegon/runwild_snakeswimteenjump.png")
+@onready var snake3j = preload("res://Assets/Players/Snakegon/runwild_snakeswimadultjump.png")
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 

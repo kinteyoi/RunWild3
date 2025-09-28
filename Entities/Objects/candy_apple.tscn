@@ -1,11 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://bo6fa44aoqkpu"]
 
-[ext_resource type="Texture2D" uid="uid://c07rl46minm4v" path="res://Assets/UI/pngtree-candied-apple-food-illustration-png-image_6647101.png" id="1_geuik"]
 [ext_resource type="Script" uid="uid://ca23jss0miwrx" path="res://Scripts/candy_apple.gd" id="1_oi21x"]
+[ext_resource type="Texture2D" uid="uid://b7ypjvv81qiq6" path="res://Assets/Environment/Candy_apple1.png" id="2_oi21x"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi21x"]
-radius = 7.0
-height = 106.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgtjj"]
+radius = 42.0119
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_geuik"]
 radius = 65.490456
@@ -14,11 +13,11 @@ radius = 65.490456
 script = ExtResource("1_oi21x")
 
 [node name="PngtreeCandiedAppleFoodIllustrationPngImage6647101" type="Sprite2D" parent="."]
-scale = Vector2(0.42, 0.42)
-texture = ExtResource("1_geuik")
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_oi21x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_oi21x")
+shape = SubResource("CircleShape2D_fgtjj")
 
 [node name="Area2D" type="Area2D" parent="."]
 
