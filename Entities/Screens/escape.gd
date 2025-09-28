@@ -16,3 +16,11 @@ func _on_win_body_entered(body: Node2D) -> void:
 func _on_go_again_pressed() -> void:
 	Manager.Reset()
 	get_tree().change_scene_to_file("res://Entities/main.tscn")
+
+
+func _on_give_up_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_retire_pressed() -> void:
+	pass # Replace with function body.

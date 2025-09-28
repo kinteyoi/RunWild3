@@ -4,9 +4,9 @@ var gravity_scale = 0
 var direction: Vector2 = Vector2.RIGHT
 var mode : String
 var check = false
-@export var flyingSpeed: float = 1100
-@export var swimmingSpeed: float = 800
-@export var runningSpeed: float = 500
+@export var flyingSpeed: float = 500
+@export var swimmingSpeed: float = 350
+@export var runningSpeed: float = 450
 @export var monster : bool = false
 @onready var swim_time: Timer = $SwimTime
 @onready var checker: Timer = $checker

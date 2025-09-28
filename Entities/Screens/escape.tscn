@@ -263,6 +263,8 @@ position = Vector2(48025, 3391)
 position = Vector2(178, 301)
 shape = SubResource("RectangleShape2D_3qgi6")
 
+[connection signal="pressed" from="RunnerPet/Camera2D/GG/Panel/GiveUp" to="." method="_on_give_up_pressed"]
 [connection signal="pressed" from="RunnerPet/Camera2D/GG/Panel/TryAgain" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="RunnerPet/Camera2D/GG/Winning/Retire" to="." method="_on_retire_pressed"]
 [connection signal="pressed" from="RunnerPet/Camera2D/GG/Winning/GoAgain" to="." method="_on_go_again_pressed"]
 [connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]
