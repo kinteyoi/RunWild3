@@ -254,7 +254,7 @@ offset_right = 381.71582
 offset_bottom = 117.69976
 texture = SubResource("GradientTexture1D_o3fja")
 
-[node name="FlyStats3" type="Label" parent="Points/Run"]
+[node name="RunStats" type="Label" parent="Points/Run"]
 offset_left = -52.0
 offset_top = 49.0
 offset_right = 53.0
@@ -298,7 +298,7 @@ offset_right = 438.4563
 offset_bottom = -325.85977
 texture = SubResource("GradientTexture1D_o3fja")
 
-[node name="FlyStats2" type="Label" parent="Points/Swim"]
+[node name="SwimStats" type="Label" parent="Points/Swim"]
 offset_left = -52.0
 offset_top = 49.0
 offset_right = 53.0
@@ -460,6 +460,7 @@ rotation = -0.001510573
 
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
 [connection signal="pressed" from="Points/Rest/Fly" to="." method="_on_fly_pressed"]
+[connection signal="pressed" from="Points/Eat/Eat" to="." method="_on_eat_pressed"]
 [connection signal="pressed" from="Points/Run/Run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="Points/Swim/Swim" to="." method="_on_swim_pressed"]
 [connection signal="pressed" from="Points/Fly/Rust" to="." method="_on_rust_pressed"]

@@ -1,6 +1,14 @@
 extends Node2D
 @onready var escape = preload("res://Entities/Screens/escape.tscn")
+@onready var food = preload("res://Entities/Objects/candy_apple.tscn")
 @onready var transition: Node2D = $Transition
+@onready var food_spawn: PathFollow2D = $Path2D/FoodSpawn
+@onready var fly_stats_3: Label = $RunwildButtonblank/FlyStats3
+@onready var fly_stats: Label = $Points/Rest/FlyStats
+@onready var run_stats: Label = $Points/Run/RunStats
+@onready var swim_stats: Label = $Points/Swim/SwimStats
+
+
 signal run
 signal swim
 signal fly
@@ -53,6 +61,19 @@ func _on_rust_pressed() -> void:
 	transition.leavesclose()
 	goto = "sleep"
 
+func _process(delta: float) -> void:
+	fly_stats_3.text = str(Manager.currency)
+	fly_stats.text = str(Manager.flyStats)
+	run_stats.text = str(Manager.runStats)
+	swim_stats.text = str(Manager.swimStats)
 
 func _on_eat_pressed() -> void:
-	pass # Replace with function body.
+	if Manager.currency >= 10:
+		Manager.currency -= 10
+		var rand = randf_range(0, 1)
+		food_spawn.progress_ratio = rand
+		var capple = food.instantiate()
+		capple.global_position = food_spawn.global_position
+		get_tree().get_root().add_child(capple)
+	else:
+		pass

@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var ray_cast_2d_2: RayCast2D = $RayCast2D2
 
 var speed: float = 0
-var direction: Vector2
+var direction: Vector2 = Vector2.RIGHT
 
 func poop():
 	pass
@@ -21,6 +21,8 @@ func _physics_process(delta: float) -> void:
 		direction = Vector2.LEFT
 	if collider2 and collider2.has_method("wall"):
 		direction = Vector2.RIGHT
+	if Manager.is_food_active:
+		speed = 150
 	move_and_collide(velocity * delta)
 
 func _on_action_timer_timeout() -> void:
@@ -46,5 +48,3 @@ func _on_action_timer_timeout() -> void:
 		else:
 			var randspeed = randi_range(10, 700)
 			speed = randspeed
-	else:
-		speed = 50
