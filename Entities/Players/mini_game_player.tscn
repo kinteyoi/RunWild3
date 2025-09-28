@@ -124,6 +124,7 @@ _data = {
 }
 
 [node name="MiniGamePlayer" type="CharacterBody2D"]
+z_index = 3330
 collision_mask = 7
 script = ExtResource("1_4oew3")
 

@@ -13,6 +13,7 @@ extends Node2D
 @onready var runbutt: Button = $Points/Run/Run
 @onready var swimbutt: Button = $Points/Swim/Swim
 @onready var rustbutt: Button = $Points/Fly/Rust
+@onready var e_epy: AnimationPlayer = $EEpy
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var is_done = false
@@ -77,8 +78,7 @@ func _on_transition_exited() -> void:
 func _on_rust_pressed() -> void:
 	disable_all()
 	Manager.energy = 100
-	transition.leavesclose()
-	goto = "sleep"
+	e_epy.play("Rest")
 
 func _process(delta: float) -> void:
 	texture_progress_bar.value = Manager.energy
@@ -163,3 +163,10 @@ func _on_escape_butt_pressed() -> void:
 
 func _on_button_pressed() -> void:
 	Manager.evo += 1
+
+
+func _on_e_epy_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Rest":
+		if not is_connected("sleep", Callable(get_parent(), "go_to_days")):
+			connect("sleep", Callable(get_parent(), "go_to_days"))
+			emit_signal("sleep")

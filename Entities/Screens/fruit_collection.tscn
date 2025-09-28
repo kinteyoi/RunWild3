@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://c1p6yysosa0qw"]
+[gd_scene load_steps=43 format=4 uid="uid://c1p6yysosa0qw"]
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_1bki2"]
 [ext_resource type="Script" uid="uid://bns4n0ukjcgl6" path="res://Scripts/fruit_collection.gd" id="1_8gfxb"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://by4ndgva7j4q2" path="res://Assets/Environment/runwild_applecanopyback.png" id="15_dtt0i"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="16_fjsm6"]
 [ext_resource type="AudioStream" uid="uid://8rsvwhvmslsi" path="res://Assets/Sounds/Whistle Sound Effect!.mp3" id="17_wvwni"]
+[ext_resource type="Texture2D" uid="uid://cdlkt6v22syqq" path="res://Assets/UI/runwild_appletutorial.png" id="18_xvnst"]
+[ext_resource type="Texture2D" uid="uid://s3bf7eydadpa" path="res://Assets/UI/runwild_wasdspace_tutorial.png" id="19_5yrvm"]
+[ext_resource type="Texture2D" uid="uid://c0b61c7fo6078" path="res://Assets/UI/runwild_shiftdashtutorial.png" id="20_ia8rv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6v8h"]
 
@@ -119,6 +122,43 @@ metadata/_custom_type_script = "uid://0lhxan4cqrc1"
 script = ExtResource("13_5yrvm")
 _edge_meta_materials = Array[ExtResource("10_pfqwf")]([SubResource("Resource_8r62w")])
 
+[sub_resource type="Animation" id="Animation_xvnst"]
+resource_name = "tutorial"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RunwildAppletutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 5.8563395),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5yrvm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RunwildAppletutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ia8rv"]
+_data = {
+&"RESET": SubResource("Animation_5yrvm"),
+&"tutorial": SubResource("Animation_xvnst")
+}
+
 [node name="FruitCollection" type="Node2D"]
 script = ExtResource("1_8gfxb")
 
@@ -214,6 +254,7 @@ position = Vector2(578, 318)
 texture = ExtResource("15_dtt0i")
 
 [node name="Transition" parent="." instance=ExtResource("16_fjsm6")]
+visible = false
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -260,6 +301,24 @@ text = "Time:"
 process_mode = 3
 stream = ExtResource("17_wvwni")
 volume_db = -8.0
+
+[node name="RunwildAppletutorial" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(846, 136)
+texture = ExtResource("18_xvnst")
+
+[node name="RunwildWasdspaceTutorial" type="Sprite2D" parent="RunwildAppletutorial"]
+position = Vector2(-571, 2)
+texture = ExtResource("19_5yrvm")
+
+[node name="RunwildShiftdashtutorial" type="Sprite2D" parent="RunwildAppletutorial"]
+position = Vector2(-286, 262)
+texture = ExtResource("20_ia8rv")
+
+[node name="Tutorial" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ia8rv")
+}
 
 [connection signal="hitted" from="MiniGamePlayer" to="." method="_on_mini_game_player_hitted"]
 [connection signal="kissed" from="MiniGamePlayer" to="." method="_on_mini_game_player_kissed"]

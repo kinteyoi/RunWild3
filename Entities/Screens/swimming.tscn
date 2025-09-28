@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://mvj1h48tgrlg"]
+[gd_scene load_steps=51 format=4 uid="uid://mvj1h48tgrlg"]
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_g8jrg"]
 [ext_resource type="Script" uid="uid://cgmy17big6c0w" path="res://Scripts/swimming.gd" id="1_o6v8h"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://d0xjijisx1woh" path="res://addons/rmsmartshape/materials/edge_material.gd" id="15_ln1td"]
 [ext_resource type="Script" uid="uid://d218yx0d1ilsn" path="res://addons/rmsmartshape/normal_range.gd" id="16_5i8xs"]
 [ext_resource type="Script" uid="uid://nc5bfedvnpgm" path="res://addons/rmsmartshape/materials/shape_material.gd" id="17_fr8in"]
+[ext_resource type="Texture2D" uid="uid://bbrbno3jthvom" path="res://Assets/UI/runwild_swimtutorial.png" id="18_nfll8"]
+[ext_resource type="Texture2D" uid="uid://s3bf7eydadpa" path="res://Assets/UI/runwild_wasdspace_tutorial.png" id="19_3k7kr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_381oc"]
 radius = 103.077644
@@ -230,6 +232,43 @@ metadata/_custom_type_script = "uid://0lhxan4cqrc1"
 script = ExtResource("17_fr8in")
 _edge_meta_materials = Array[ExtResource("14_jicjj")]([SubResource("Resource_p2msv")])
 
+[sub_resource type="Animation" id="Animation_nfll8"]
+resource_name = "tutorial"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RunwildSwimtutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(3.2490113, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3k7kr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RunwildSwimtutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3k7kr"]
+_data = {
+&"RESET": SubResource("Animation_3k7kr"),
+&"tutorial": SubResource("Animation_nfll8")
+}
+
 [node name="Swimming" type="Node2D"]
 script = ExtResource("1_o6v8h")
 
@@ -323,11 +362,12 @@ wait_time = 10.0
 autostart = true
 
 [node name="RunwildBackgroundSwim" type="Sprite2D" parent="."]
-z_index = -370
+z_index = -4096
 position = Vector2(598, 326)
 texture = ExtResource("4_wvlh8")
 
 [node name="Transition" parent="." instance=ExtResource("5_381oc")]
+visible = false
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -408,6 +448,20 @@ _points = SubResource("Resource_lb6a2")
 _meshes = Array[ExtResource("12_3k7kr")]([SubResource("Resource_xxwh5")])
 shape_material = SubResource("Resource_x6qc6")
 metadata/_custom_type_script = "uid://dhdc4b8yddyej"
+
+[node name="RunwildSwimtutorial" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(853, 173)
+texture = ExtResource("18_nfll8")
+
+[node name="RunwildWasdspaceTutorial" type="Sprite2D" parent="RunwildSwimtutorial"]
+position = Vector2(-565, -46)
+texture = ExtResource("19_3k7kr")
+
+[node name="Tutorial" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3k7kr")
+}
 
 [connection signal="rockIsClose" from="SwimmingMiniGamePlayer" to="." method="_on_swimming_mini_game_player_rock_is_close"]
 [connection signal="area_entered" from="SwimmingMiniGamePlayer/Area2D" to="SwimmingMiniGamePlayer" method="_on_area_2d_area_entered"]

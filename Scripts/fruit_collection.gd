@@ -10,6 +10,7 @@ extends Node2D
 @onready var label_2: Label = $UI/Panel/Label2
 @onready var fruit_timer: Timer = $FruitTimer
 @onready var timeout: AudioStreamPlayer2D = $Timeout
+@onready var tutorial: AnimationPlayer = $Tutorial
 
 signal finishedrun
 var timer = 0
@@ -18,6 +19,9 @@ var coconut
 var apple_factor = 1
 
 func _ready():
+	if Manager.firstrun:
+		tutorial.play("tutorial")
+		Manager.firstrun = false
 	transition.leavesopen()
 	Manager.activeScene = "FruitCollection"
 	

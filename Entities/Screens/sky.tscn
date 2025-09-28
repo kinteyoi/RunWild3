@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3s1f6udt8kna"]
+[gd_scene load_steps=21 format=3 uid="uid://c3s1f6udt8kna"]
 
 [ext_resource type="Script" uid="uid://dj4br0qcnm18" path="res://Scripts/sky.gd" id="1_o24eu"]
 [ext_resource type="Texture2D" uid="uid://ddu3o1udunf1" path="res://Assets/Environment/SkyBackground.png" id="1_q65rb"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dmd2kkbre1ynn" path="res://Assets/Environment/runwild_jumpcloud2.png" id="7_u04ro"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="8_u04ro"]
 [ext_resource type="AudioStream" uid="uid://8rsvwhvmslsi" path="res://Assets/Sounds/Whistle Sound Effect!.mp3" id="9_beuh6"]
+[ext_resource type="Texture2D" uid="uid://s3bf7eydadpa" path="res://Assets/UI/runwild_wasdspace_tutorial.png" id="10_ygty5"]
+[ext_resource type="Texture2D" uid="uid://c0b61c7fo6078" path="res://Assets/UI/runwild_shiftdashtutorial.png" id="11_6pmwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o24eu"]
 size = Vector2(2773, 20)
@@ -30,6 +32,43 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_beuh6"]
 gradient = SubResource("Gradient_u04ro")
+
+[sub_resource type="Animation" id="Animation_ygty5"]
+resource_name = "Tutorial"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RunwildWasdspaceTutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 5.0982404),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6pmwg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RunwildWasdspaceTutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6pmwg"]
+_data = {
+&"RESET": SubResource("Animation_6pmwg"),
+&"Tutorial": SubResource("Animation_ygty5")
+}
 
 [node name="Sky" type="Node2D"]
 script = ExtResource("1_o24eu")
@@ -151,6 +190,7 @@ scale = Vector2(0.33380452, 1.7016737)
 text = "Score:"
 
 [node name="Transition" parent="Camera2D" instance=ExtResource("8_u04ro")]
+visible = false
 position = Vector2(-597, -506)
 scale = Vector2(1, 1.54)
 
@@ -185,6 +225,20 @@ color = Color(0, 0, 0, 1)
 process_mode = 3
 stream = ExtResource("9_beuh6")
 volume_db = -8.0
+
+[node name="RunwildWasdspaceTutorial" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(765, -179)
+texture = ExtResource("10_ygty5")
+
+[node name="RunwildShiftdashtutorial" type="Sprite2D" parent="RunwildWasdspaceTutorial"]
+position = Vector2(-8, 270)
+texture = ExtResource("11_6pmwg")
+
+[node name="Tutorial" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6pmwg")
+}
 
 [connection signal="body_entered" from="Clouds/Cloud0" to="." method="_on_cloud_0_body_entered"]
 [connection signal="body_entered" from="Clouds/Cloud1" to="." method="_on_cloud_0_body_entered"]

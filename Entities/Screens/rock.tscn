@@ -352,6 +352,7 @@ autoplay = "sway"
 speed_scale = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -805
 texture = ExtResource("2_18mdk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

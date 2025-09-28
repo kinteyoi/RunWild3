@@ -23,8 +23,12 @@ var maxHeight = 0
 var score = 0
 
 signal finishedfly
+@onready var tutorial: AnimationPlayer = $Tutorial
 
 func _ready() -> void:
+	if Manager.firstsky:
+		tutorial.play("Tutorial")
+		Manager.firstsky = false
 	transition.leavesopen()
 	Manager.activeScene = "sky"
 	Manager.cloudList.append($Clouds/Cloud0)

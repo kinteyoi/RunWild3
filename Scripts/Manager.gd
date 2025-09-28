@@ -22,7 +22,9 @@ var currency = 0
 @export var swimStats = 0
 @export var runStats = 0
 @export var flyStats = 0
-
+var firstswim = true
+var firstrun = true 
+var firstsky = true
 var mult
 var maxScore = 100
 func Reset():

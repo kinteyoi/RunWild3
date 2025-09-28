@@ -15,7 +15,7 @@ extends CharacterBody2D
 
 @onready var snekgon = preload("res://Assets/Players/Snakegon/Kritter2_Baby.png")
 @onready var snekgon2 = preload("res://Assets/Players/Snakegon/Kritter2_Teen.png")
-@onready var snekgon3 = preload("res://Assets/Players/Snakegon/Kritter2_Adult_Side.png")
+@onready var snekgon3 = preload("res://Assets/Players/Snakegon/Kritter2_Adult_Front.png")
 
 var speed: float = 0
 var direction: Vector2 = Vector2.RIGHT
