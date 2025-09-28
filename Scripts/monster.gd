@@ -39,13 +39,16 @@ func _physics_process(delta: float) -> void:
 	if mode == "run":
 		#print(velocity)
 		floor_snap_length = 20
+		velocity = direction.normalized() *  (speed - 100)
 		label.text = "evil Runung Poop"
 	if mode == "fly":
 		#print("fly")
+		velocity = direction.normalized() * speed
 		label.text = "evil Flyung Poop"
 		velocity.y = 600
 	if mode == "swim":
 		#print("swim")
+		velocity = direction.normalized() * speed
 		label.text = "evil Swimung Poop"
 		velocity.y = 0
 	move_and_slide()
