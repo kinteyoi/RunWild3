@@ -126,19 +126,21 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1543.0
-offset_top = 965.0
-offset_right = 1583.0
-offset_bottom = 1005.0
+offset_left = 712.0
+offset_top = 363.0
+offset_right = 752.0
+offset_bottom = 403.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(7.9599905, 1)
+scale = Vector2(4.469203, 1.0960345)
 
 [node name="Label" type="Label" parent="UI/Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-scale = Vector2(0.28643006, 1.72)
+offset_left = 1.1187676
+offset_top = 1.82476
+offset_right = 49.118767
+offset_bottom = 24.82476
+scale = Vector2(0.44562662, 1.5358061)
 text = "Score:"
 
 [connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]

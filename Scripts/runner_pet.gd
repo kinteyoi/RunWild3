@@ -1,5 +1,8 @@
 extends CharacterBody2D
 var speed: float = 700.0
+var flyingSpeed: float = 0
+var swimmingSpeed: float = 0
+var runningSpeed: float = 0
 var gravity_scale = 0
 var direction: Vector2 = Vector2.RIGHT
 var mode : String
@@ -26,7 +29,7 @@ func im_pooping(type):
 	
 	
 func _ready() -> void:
-	pass
+	
 	velocity = direction.normalized() * speed
 
 func _physics_process(delta: float) -> void:

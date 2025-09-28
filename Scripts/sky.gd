@@ -26,6 +26,7 @@ func _ready() -> void:
 	Manager.cloudList.append($Clouds/Cloud1)
 	Manager.cloudList.append($Clouds/Cloud2)
 	Manager.cloudList.append($Clouds/Cloud3)
+	print(Manager.cloudList.size())
 	
 func _process(_delta: float) -> void:
 	
@@ -83,8 +84,14 @@ func _on_kill_box_body_entered(body: Node2D) -> void:
 		body.queue_free()
 		print("snapCracklePop")
 	else:
-		Manager.cloudStats = int(-maxHeight)
-		print(Manager.cloudStats)
+		maxHeight *= -0.1
+		Manager.maxBounce = Manager.defaultMaxBounce
+		Manager.maxClouds = Manager.defaultMaxClouds
+		Manager.flyStats += maxHeight * .7
+		Manager.swimStats += maxHeight * .15
+		Manager.runStats += maxHeight * .15
+		maxHeight = 0
+		Manager.cloudList.clear()
 		get_tree().paused = true
 		transition.leavesclose()
 

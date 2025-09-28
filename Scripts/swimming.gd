@@ -19,7 +19,8 @@ func _process(delta: float) -> void:
 	score += delta
 	label.text = "Score: " + str(int(score))
 	if mini_game_player == null:
-		Manager.swimStats = score
+		Manager.swimStats += score
+		score = 0
 		get_tree().paused = true
 		transition.leavesclose()
 func _on_rock_timer_timeout() -> void:
