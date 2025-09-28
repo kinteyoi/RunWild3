@@ -18,15 +18,15 @@ func _ready():
 func _process(delta: float) -> void:
 	timeLimit += delta
 	if timeLimit >= 30 or mini_game_player == null:
+		label.text = "Score: " + str(Manager.fruitStats)
 		var score = Manager.fruitStats * .1
-		Manager.runStats += .7 * score
-		Manager.swimStats += .15 * score
-		Manager.flyStats += .15 * score
+		Manager.SetStats( .7 * score, .15 * score, .15 * score)
 		get_tree().paused = true
 		Manager.fruitStats = 0
 		transition.leavesclose()
-	label.text = "Score: " + str(Manager.fruitStats)
-	label_2.text = "Time Left: " + str(snapped(30 - timeLimit, .01))
+	else:
+		label.text = "Score: " + str(Manager.fruitStats)
+		label_2.text = "Time Left: " + str(snapped(30 - timeLimit, .01))
 func _on_fruit_timer_timeout() -> void:
 	var fruitOrCoco = randi_range(0,3) == 1
 	var randPos = randf_range(0,1)

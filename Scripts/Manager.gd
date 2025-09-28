@@ -14,11 +14,24 @@ var defaultMaxBounce = 2
 # FRUIT SCENE STATS
 @export var fruitStats = 0
 # PLAYER STATS
+var energy = 0
+var currency = 99
 @export var swimStats = 0
 @export var runStats = 0
 @export var flyStats = 0
 
 func SetStats(newRunStat, newSwimStat, newFlyStat):
-	runStats = newRunStat
-	swimStats = newSwimStat
-	flyStats = newFlyStat
+	if energy >= 90:
+		var mult = 2
+		runStats += newRunStat * mult
+		swimStats += newSwimStat * mult
+		flyStats += newFlyStat * mult
+	elif energy < 90 and energy >= 20:
+		runStats += newRunStat 
+		swimStats += newSwimStat
+		flyStats += newFlyStat
+	else:
+		var mult = .5
+		runStats += newRunStat * mult
+		swimStats += newSwimStat * mult
+		flyStats += newFlyStat * mult

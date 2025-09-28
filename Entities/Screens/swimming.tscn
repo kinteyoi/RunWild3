@@ -100,7 +100,7 @@ scale = Vector2(1.1993349, 0.9999999)
 autostart = true
 
 [node name="Difficulty" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 autostart = true
 
 [node name="SwimmingMiniGamePlayer" parent="." instance=ExtResource("3_o6v8h")]
