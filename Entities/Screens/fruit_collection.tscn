@@ -235,7 +235,7 @@ offset_right = 431.0
 offset_bottom = 217.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(7.9599905, 1)
+scale = Vector2(7.753675, 2.1119509)
 
 [node name="Label" type="Label" parent="UI/Panel"]
 layout_mode = 0
@@ -243,8 +243,17 @@ offset_left = 0.87939805
 offset_top = -1.0
 offset_right = 48.8794
 offset_bottom = 22.0
-scale = Vector2(0.28643006, 1.72)
+scale = Vector2(0.2734802, 0.785541)
 text = "Score:"
+
+[node name="Label2" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 1.2897102
+offset_top = 17.51935
+offset_right = 49.28971
+offset_bottom = 40.51935
+scale = Vector2(0.2734802, 0.785541)
+text = "Time:"
 
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]

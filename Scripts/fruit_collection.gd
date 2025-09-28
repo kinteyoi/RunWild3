@@ -6,6 +6,7 @@ extends Node2D
 @onready var mini_game_player: CharacterBody2D = $MiniGamePlayer
 @onready var transition: Node2D = $Transition
 @onready var label: Label = $UI/Panel/Label
+@onready var label_2: Label = $UI/Panel/Label2
 
 signal finishedrun
 var timeLimit = 0
@@ -18,13 +19,14 @@ func _process(delta: float) -> void:
 	timeLimit += delta
 	if timeLimit >= 30 or mini_game_player == null:
 		var score = Manager.fruitStats * .01
-		Manager.fruitStats = 0
 		Manager.runStats += .7 * score
 		Manager.swimStats += .15 * score
 		Manager.flyStats += .15 * score
 		get_tree().paused = true
+		Manager.fruitStats = 0
 		transition.leavesclose()
-	label.text = "Score: " + str(Manager.runStats)
+	label.text = "Score: " + str(Manager.fruitStats)
+	label_2.text = "Time Left: " + str(snapped(30 - timeLimit, .01))
 func _on_fruit_timer_timeout() -> void:
 	var fruitOrCoco = randi_range(0,3) == 1
 	var randPos = randf_range(0,1)
