@@ -159,3 +159,7 @@ func _on_escape_butt_pressed() -> void:
 	disable_all()
 	transition.leavesclose()
 	goto = "escape"
+
+
+func _on_button_pressed() -> void:
+	Manager.evo += 1
