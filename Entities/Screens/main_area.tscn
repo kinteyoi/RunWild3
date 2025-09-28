@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dngplirvfvb70" path="res://Assets/UI/energybar_middle.png" id="17_o3fja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cto1"]
-size = Vector2(1178, 101)
+size = Vector2(1741, 101)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bpaqk"]
 _surfaces = [{
@@ -46,11 +46,11 @@ script = ExtResource("1_xhqh8")
 position = Vector2(0, 560)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(579, 40.5)
+position = Vector2(572.5, 40.5)
 shape = SubResource("RectangleShape2D_3cto1")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(-13, 566)
+position = Vector2(-283, 566)
 rotation = -1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
@@ -58,7 +58,7 @@ position = Vector2(579, 40.5)
 shape = SubResource("RectangleShape2D_3cto1")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(1084, 679)
+position = Vector2(1350, 679)
 rotation = -1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
@@ -184,7 +184,6 @@ text = "escape"
 position = Vector2(535, 550)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-anchors_preset = -1
 offset_left = 187.0
 offset_top = -23.0
 offset_right = 965.0
