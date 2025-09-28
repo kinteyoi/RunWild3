@@ -15,7 +15,7 @@ extends Node2D
 @onready var rustbutt: Button = $Points/Fly/Rust
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
+var is_done = false
 signal run
 signal swim
 signal fly
@@ -86,6 +86,11 @@ func _process(delta: float) -> void:
 	fly_stats.text = str(int(Manager.flyStats))
 	run_stats.text = str(int(Manager.runStats))
 	swim_stats.text = str(int(Manager.swimStats))
+	if Manager.days_left ==0:
+		if !is_done:
+			transition.leavesclose()
+			goto = "escape"
+			is_done = true
 
 func _on_eat_pressed() -> void:
 	if Manager.currency >= 10:

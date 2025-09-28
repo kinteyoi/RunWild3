@@ -10,7 +10,7 @@ func _ready() -> void:
 		Manager.evo = 2 
 	elif Manager.days_left == 4:
 		Manager.evo = 3
-		print("days" + str(Manager.days_left) + " evo" + str(Manager.evo))
+	print("days" + str(Manager.days_left) + " evo" + str(Manager.evo))
 
 
 
