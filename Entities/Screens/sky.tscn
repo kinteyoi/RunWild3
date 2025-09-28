@@ -118,25 +118,28 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1673.0
-offset_top = 1034.0
-offset_right = 1713.0
-offset_bottom = 1074.0
+offset_left = -567.0
+offset_top = -364.0
+offset_right = -527.0
+offset_bottom = -324.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(7.9599905, 1)
+scale = Vector2(12.331396, 2.4556508)
 
 [node name="Label" type="Label" parent="Camera2D/UI/Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-scale = Vector2(0.28643006, 1.72)
+offset_left = 0.72984433
+offset_top = -0.814448
+offset_right = 48.729843
+offset_bottom = 22.185553
+scale = Vector2(0.33380452, 1.7016737)
 text = "Score:"
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(751, 395)
 
 [node name="Transition" parent="." instance=ExtResource("8_u04ro")]
+visible = false
 
 [connection signal="Down" from="MiniGamePlayer" to="." method="_on_mini_game_player_down"]
 [connection signal="Up" from="MiniGamePlayer" to="." method="_on_mini_game_player_up"]
