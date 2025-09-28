@@ -25,6 +25,18 @@ var currency = 0
 
 var mult
 var maxScore = 100
+func Reset():
+	days_left = 14
+	evo = 1
+	base_drain = 30
+	affinity_drain = 15
+	is_food_active = false
+	swimStats = 0
+	runStats = 0
+	flyStats = 0
+	energy = 100
+	currency = 0
+
 func SetStats(newRunStat, newSwimStat, newFlyStat):
 	if energy >= 90:
 		mult = 2
