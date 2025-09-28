@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=4 uid="uid://b0ec6xfq1isam"]
 
-[ext_resource type="PackedScene" path="res://Entities/Players/runner_pet.tscn" id="1_3ok8t"]
+[ext_resource type="PackedScene" uid="uid://cpoo081d0ft1" path="res://Entities/Players/runner_pet.tscn" id="1_3ok8t"]
 [ext_resource type="Script" uid="uid://be45be05b4sqx" path="res://Entities/Screens/escape.gd" id="1_3qgi6"]
 [ext_resource type="PackedScene" path="res://Entities/Players/switch_mode.tscn" id="2_lgyr1"]
 [ext_resource type="Script" uid="uid://llobjh5hvry" path="res://addons/rmsmartshape/shapes/mesh.gd" id="3_6c54b"]
@@ -146,9 +146,9 @@ polygon = PackedVector2Array(-4265.925, 3729.5269, -3197.2512, 637.8199, 1518.45
 
 [node name="RunnerPet" parent="." instance=ExtResource("1_3ok8t")]
 position = Vector2(91, 480)
-flyingSpeed = 1000.0
-swimmingSpeed = 1000.0
-runningSpeed = 1000.0
+flyingSpeed = 700.0
+swimmingSpeed = 700.0
+runningSpeed = 700.0
 
 [node name="Camera2D" type="Camera2D" parent="RunnerPet"]
 position = Vector2(0, -271)

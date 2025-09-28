@@ -1,18 +1,23 @@
 extends CharacterBody2D
-var speed: float = 700.0
+var speed: float = 999.0
 var gravity_scale = 0
 var direction: Vector2 = Vector2.RIGHT
 var mode : String
 var check = false
+@export var flyingSpeed: float = 1100
+@export var swimmingSpeed: float = 800
+@export var runningSpeed: float = 500
+@export var monster : bool = false
 @onready var swim_time: Timer = $SwimTime
 @onready var checker: Timer = $checker
 @onready var panel: Panel = $"../RunnerPet/Camera2D/GG/Panel"
 
 @onready var label: Label = $Label
+func busting():
+	pass
 
 
-
-func im_creaming(type):
+func im_pooping(type):
 	if type == "fly":
 		check = true
 		checker.start()
@@ -36,19 +41,20 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() and check == false:
 		mode = "run"
 		velocity.y = 0
+		
 	if mode == "run":
 		#print(velocity)
 		floor_snap_length = 20
-		velocity = direction.normalized() *  (speed - 100)
+		velocity = direction.normalized() * runningSpeed
 		label.text = "evil Runung Poop"
 	if mode == "fly":
 		#print("fly")
-		velocity = direction.normalized() * speed
+		velocity = direction.normalized() * flyingSpeed
 		label.text = "evil Flyung Poop"
 		velocity.y = 600
 	if mode == "swim":
 		#print("swim")
-		velocity = direction.normalized() * speed
+		velocity = direction.normalized() * swimmingSpeed
 		label.text = "evil Swimung Poop"
 		velocity.y = 0
 	move_and_slide()

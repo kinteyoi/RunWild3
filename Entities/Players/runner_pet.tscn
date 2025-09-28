@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1ggb7ghur43v"]
+[gd_scene load_steps=5 format=3 uid="uid://cpoo081d0ft1"]
 
 [ext_resource type="Script" uid="uid://fmd1cgs0ho20" path="res://Scripts/runner_pet.gd" id="1_aacp1"]
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_nghvd"]
