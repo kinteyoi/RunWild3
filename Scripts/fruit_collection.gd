@@ -33,22 +33,6 @@ func _process(delta: float) -> void:
 		label.text = "Score: " + str(Manager.fruitStats)
 		label_2.text = "Time Left: " + str(snapped(timerLimit - timer, .01))
 func _on_fruit_timer_timeout() -> void:
-<<<<<<< Updated upstream
-	var fruitOrCoco = randi_range(0,4) == 1
-	var randPos = randf_range(0,1)
-	var fruit
-	path_follow_2d.progress_ratio = randPos
-	if fruitOrCoco:
-		if randi_range(0,1) == 1:
-			print("MOney")
-			fruit = coinScene.instantiate()
-		else:
-			fruit = coconutScene.instantiate()
-	else:
-		fruit = fruitScene.instantiate()
-	fruit.global_position = path_follow_2d.global_position 
-	fruits.add_child(fruit)
-=======
 	apple_factor += .1
 	for i in apple_factor:
 		await get_tree().create_timer(.2).timeout
@@ -68,7 +52,6 @@ func _on_fruit_timer_timeout() -> void:
 			fruit = fruitScene.instantiate()
 		fruit.global_position = path_follow_2d.global_position 
 		get_tree().get_root().add_child(fruit)
->>>>>>> Stashed changes
 	
 
 

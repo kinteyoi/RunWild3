@@ -179,6 +179,7 @@ rotation = 3.1415927
 scale = Vector2(1.1993349, 0.9999999)
 
 [node name="FruitTimer" type="Timer" parent="."]
+wait_time = 1.2
 autostart = true
 
 [node name="RunwildBackgroundApplecatch" type="Sprite2D" parent="."]
