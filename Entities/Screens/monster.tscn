@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://01g144g63sbe"]
+[gd_scene load_steps=7 format=3 uid="uid://01g144g63sbe"]
 
 [ext_resource type="Script" uid="uid://cgp36ynhmldvh" path="res://Scripts/monster.gd" id="1_20gda"]
 [ext_resource type="Texture2D" uid="uid://dsgywdntb6sx1" path="res://Assets/Players/Monster.png" id="2_20gda"]
@@ -7,36 +7,11 @@
 radius = 62.0
 height = 310.0
 
-[sub_resource type="Animation" id="Animation_iodho"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Fetchimage:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.155, 0.235)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Fetchimage:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.28972465]
-}
-
 [sub_resource type="Animation" id="Animation_3k203"]
 resource_name = "new_animation"
+length = 1.8
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,27 +19,38 @@ tracks/0/path = NodePath("Fetchimage:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.20000002, 0.6, 0.86666673, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.01, 0.3, 0.6, 0.90000004, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.155, 0.235), Vector2(0.25, 0.19), Vector2(0.17, 0.29), Vector2(0.3, 0.47), Vector2(0.155, 0.235)]
+"values": [Vector2(0.8, 1), Vector2(0.895, 0.79), Vector2(0.753, 0.823), Vector2(0.807, 0.624), Vector2(0.581, 0.845), Vector2(0.774, 0.937)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Fetchimage:rotation")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.43333337, 0.86666673, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.01, 0.3, 0.6, 0.90000004, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.28972465, 0.11170107, -0.28972465, -0.28972465]
+"values": [0.0, 0.17976892, -0.17802358, 0.286234, 0.16929694, 0.061086524]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fetchimage:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.01, 0.3, 0.6, 0.90000004, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(41, -64), Vector2(41, -37.98), Vector2(41, -50.776722), Vector2(41, 8.235), Vector2(41, -41.098), Vector2(41, -54.968)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d1qu8"]
 _data = {
-&"RESET": SubResource("Animation_iodho"),
 &"new_animation": SubResource("Animation_3k203")
 }
 
@@ -82,9 +68,9 @@ script = ExtResource("1_20gda")
 shape = SubResource("CapsuleShape2D_aacp1")
 
 [node name="Fetchimage" type="Sprite2D" parent="."]
-position = Vector2(-23.000015, -30)
-rotation = -0.28972465
-scale = Vector2(0.155, 0.235)
+position = Vector2(41, -63.708645)
+rotation = -0.0020083913
+scale = Vector2(0.7991613, 0.9979677)
 texture = ExtResource("2_20gda")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -92,7 +78,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_d1qu8")
 }
 autoplay = "new_animation"
-speed_scale = 0.4
+speed_scale = 9.0
 
 [node name="checker" type="Timer" parent="."]
 one_shot = true
