@@ -7,14 +7,16 @@ var gravity_scale = 0
 var direction: Vector2 = Vector2.RIGHT
 var mode : String
 var check = false
+@onready var pose: Sprite2D = $Pose
 @onready var swim_time: Timer = $SwimTime
 @onready var checker: Timer = $checker
 
 @onready var label: Label = $Label
 
-@onready var deerguy = preload("res://Assets/Players/DeerDog/Kritter1_adultback8.png")
-@onready var deerguy2 = preload("res://Assets/Players/DeerDog/Kritter1_adultback5.png")
-@onready var deerguy3 = preload("res://Assets/Players/DeerDog/Kritter1_adultback2.png")
+@onready var deerguy = preload("res://Assets/Players/DeerDog/Kritter_Side_1.png")
+@onready var snekguy = preload("res://Assets/Players/Snakegon/Kritter2_Adult_Side.png")
+@onready var penguy = preload("res://Assets/Players/PengGon/runwild_birdadultside.png")
+
 
 func im_pooping(type):
 	if type == "fly":
@@ -31,6 +33,17 @@ func im_pooping(type):
 	
 	
 func _ready() -> void:
+	match Manager.current_pet:
+		"deergon":
+			pose.texture = deerguy
+		"penggon":
+			pose.texture = penguy
+		"snakegon":
+			pose.texture = snekguy
+		"poopgon":
+			pass
+		"mongeygon":
+			pass
 	if Manager.flyStats != 0:
 		runningSpeed = Manager.runStats
 		swimmingSpeed = Manager.swimStats
