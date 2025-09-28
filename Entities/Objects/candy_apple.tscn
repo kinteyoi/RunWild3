@@ -10,7 +10,7 @@ height = 40.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_geuik"]
 radius = 22.0
 
-[node name="CandyApple" type="RigidBody2D"]
+[node name="CandyApple" type="RigidBody2D" groups=["food"]]
 script = ExtResource("1_oi21x")
 
 [node name="PngtreeCandiedAppleFoodIllustrationPngImage6647101" type="Sprite2D" parent="."]
