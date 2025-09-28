@@ -11,7 +11,6 @@ var check = false
 @onready var swim_time: Timer = $SwimTime
 @onready var checker: Timer = $checker
 
-@onready var label: Label = $Label
 
 @onready var deerguy = preload("res://Assets/Players/DeerDog/Kritter_Side_1.png")
 @onready var snekguy = preload("res://Assets/Players/Snakegon/Kritter2_Adult_Side.png")
@@ -60,16 +59,16 @@ func _physics_process(delta: float) -> void:
 		#print(velocity)
 		floor_snap_length = 20
 		velocity = direction.normalized() * runningSpeed
-		label.text = "Runung Poop"
+
 	if mode == "fly":
 		#print("fly")
 		velocity = direction.normalized() * flyingSpeed
-		label.text = "Flyung Poop"
+
 		velocity.y = 600
 	if mode == "swim":
 		#print("swim")
 		velocity = direction.normalized() * swimmingSpeed
-		label.text = "Swimung Poop"
+
 		velocity.y = 0
 	move_and_slide()
 

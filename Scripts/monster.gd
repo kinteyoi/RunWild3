@@ -12,7 +12,7 @@ var check = false
 @onready var checker: Timer = $checker
 @onready var panel: Panel = $"../RunnerPet/Camera2D/GG/Panel"
 
-@onready var label: Label = $Label
+
 func busting():
 	pass
 
@@ -46,16 +46,15 @@ func _physics_process(delta: float) -> void:
 		#print(velocity)
 		floor_snap_length = 20
 		velocity = direction.normalized() * runningSpeed
-		label.text = "evil Runung Poop"
 	if mode == "fly":
 		#print("fly")
 		velocity = direction.normalized() * flyingSpeed
-		label.text = "evil Flyung Poop"
+
 		velocity.y = 600
 	if mode == "swim":
 		#print("swim")
 		velocity = direction.normalized() * swimmingSpeed
-		label.text = "evil Swimung Poop"
+
 		velocity.y = 0
 	move_and_slide()
 	
