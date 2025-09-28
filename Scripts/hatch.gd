@@ -23,6 +23,9 @@ extends Node2D
 @onready var kritter: Sprite2D = $Kritter
 @onready var transition: Node2D = $Transition
 @onready var end: Timer = $End
+@onready var cracking: AudioStreamPlayer2D = $Cracking
+@onready var angel_choir: AudioStreamPlayer2D = $AngelChoir
+
 
 @onready var marker_2d: Marker2D = $Marker2D
 
@@ -93,19 +96,24 @@ func _on_button_pressed() -> void:
 		animation_player.play("WiggleMax")
 		cutscene.play("Cutscene")
 		amount_pressed += 1
+		cracking.play()
 	elif amount_pressed == 1:
 		animation_player.play("WiggleMax2")
 		ray_2.visible = true
 		amount_pressed += 1
 		runwild_eggcrackswhite.texture = crack2
+		cracking.play()
 	elif amount_pressed == 2:
 		runwild_eggcrackswhite.texture = crack3
 		animation_player.play("WiggleMax3")
 		ray_3.visible = true
 		amount_pressed += 1
+		cracking.play()
 	elif amount_pressed == 3:
 		cutscene_2.play("Cutscene2")
 		amount_pressed += 1
+		cracking.play()
+		angel_choir.play()
 	else:
 		pass
 	

@@ -155,14 +155,7 @@ func _on_rust_mouse_entered() -> void:
 	audio_stream_player_2d.play()
 
 
-func _on_escape_butt_pressed() -> void:
-	disable_all()
-	transition.leavesclose()
-	goto = "escape"
 
-
-func _on_button_pressed() -> void:
-	Manager.evo += 1
 
 
 func _on_e_epy_animation_finished(anim_name: StringName) -> void:

@@ -1,11 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://dw71wn42kta0q"]
+[gd_scene load_steps=43 format=3 uid="uid://dw71wn42kta0q"]
 
 [ext_resource type="Script" uid="uid://2ej61un2gti7" path="res://Scripts/hatch.gd" id="1_o8joq"]
 [ext_resource type="Texture2D" uid="uid://d0rs3ot8q24o1" path="res://Assets/Eggs/runwild_egg3purple.png" id="2_k7n8x"]
 [ext_resource type="Texture2D" uid="uid://c0t0dy1hngdta" path="res://Assets/Environment/runwild_background_home.png" id="3_k7n8x"]
 [ext_resource type="Texture2D" uid="uid://dvq4f50pyog7m" path="res://Assets/Eggs/runwild_eggcrack1.png" id="3_s5wdi"]
 [ext_resource type="Texture2D" uid="uid://54i5vl613p2p" path="res://Assets/UI/595FAD8C-E33F-4E12-A974-9B2D043A2BA3.png.eac9bd8cac80378692e4115553790af8.png" id="5_wfokv"]
-[ext_resource type="Shader" uid="uid://dtqfybx65bkrl" path="res://Shaders/Ray.gdshader" id="6_bf452"]
+[ext_resource type="Shader" path="res://Shaders/Ray.gdshader" id="6_bf452"]
 [ext_resource type="FontFile" uid="uid://wq64lwf82khb" path="res://Fonts/ShortStack-Regular.ttf" id="6_iryu1"]
 [ext_resource type="Texture2D" uid="uid://cesw62ump63e6" path="res://Assets/Players/DeerDog/Kritter1_adultback6.png" id="8_2woqt"]
 [ext_resource type="Texture2D" uid="uid://c7lab4qlwqpth" path="res://Assets/UI/UIBox.png" id="9_dasb0"]
@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://dlfx1okt8hbv6" path="res://Assets/Sounds/drop_004.ogg" id="14_hhqnw"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="15_iryu1"]
 [ext_resource type="Texture2D" uid="uid://d3hdd2o8grdqi" path="res://Assets/Eggs/runwild_eggshadow.png" id="16_ympbk"]
+[ext_resource type="AudioStream" uid="uid://cydkuangekx13" path="res://Assets/Sounds/EggBreak.mp3" id="17_hhqnw"]
+[ext_resource type="AudioStream" uid="uid://c35yden4ywi07" path="res://Assets/Sounds/AngelChoir.mp3" id="18_aok8c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bf452"]
 shader = ExtResource("6_bf452")
@@ -697,6 +699,11 @@ stream_1/stream = ExtResource("12_iryu1")
 stream_2/stream = ExtResource("13_ympbk")
 stream_3/stream = ExtResource("14_hhqnw")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hhqnw"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("17_hhqnw")
+
 [node name="Hatch" type="Node2D"]
 script = ExtResource("1_o8joq")
 
@@ -880,6 +887,12 @@ self_modulate = Color(1, 1, 1, 0.43529412)
 position = Vector2(581, 453)
 texture = ExtResource("16_ympbk")
 offset = Vector2(0, -131)
+
+[node name="Cracking" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_hhqnw")
+
+[node name="AngelChoir" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_aok8c")
 
 [connection signal="timeout" from="Wiggle" to="." method="_on_wiggle_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
