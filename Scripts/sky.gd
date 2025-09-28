@@ -11,6 +11,7 @@ extends Node2D
 @onready var label: Label = $Camera2D/UI/Panel/Label
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var transition: Node2D = $Camera2D/Transition
+@onready var timeout: AudioStreamPlayer2D = $Timeout
 
 
 @export var minXToWrap = -700
@@ -94,6 +95,8 @@ func _on_kill_box_body_entered(body: Node2D) -> void:
 		maxHeight = 0
 		Manager.cloudList.clear()
 		get_tree().paused = true
+		timeout.play()
+		await get_tree().create_timer(1.5).timeout
 		transition.leavesclose()
 
 

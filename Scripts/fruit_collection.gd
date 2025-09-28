@@ -9,6 +9,7 @@ extends Node2D
 @onready var label: Label = $UI/Panel/Label
 @onready var label_2: Label = $UI/Panel/Label2
 @onready var fruit_timer: Timer = $FruitTimer
+@onready var timeout: AudioStreamPlayer2D = $Timeout
 
 signal finishedrun
 var timer = 0
@@ -32,6 +33,8 @@ func _process(delta: float) -> void:
 		var score = Manager.fruitStats * .1
 		Manager.SetStats( .7 * score, .15 * score, .15 * score)
 		get_tree().paused = true
+		timeout.play()
+		await get_tree().create_timer(1.5).timeout
 		Manager.fruitStats = 0
 		transition.leavesclose()
 	else:

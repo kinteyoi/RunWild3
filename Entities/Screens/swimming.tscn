@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://mvj1h48tgrlg"]
+[gd_scene load_steps=13 format=3 uid="uid://mvj1h48tgrlg"]
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_g8jrg"]
 [ext_resource type="Script" uid="uid://cgmy17big6c0w" path="res://Scripts/swimming.gd" id="1_o6v8h"]
 [ext_resource type="PackedScene" uid="uid://ckqqonp1ohd5k" path="res://Entities/Players/swimming_mini_game_player.tscn" id="3_o6v8h"]
 [ext_resource type="Texture2D" uid="uid://dre2pefifyni2" path="res://Assets/Environment/runwild_background_swim.png" id="4_wvlh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="5_381oc"]
+[ext_resource type="AudioStream" uid="uid://8rsvwhvmslsi" path="res://Assets/Sounds/Whistle Sound Effect!.mp3" id="6_cafpm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6v8h"]
 
@@ -153,6 +154,11 @@ offset_right = 49.118767
 offset_bottom = 24.82476
 scale = Vector2(0.25347987, 1.5587023)
 text = "Score:"
+
+[node name="Timeout" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("6_cafpm")
+volume_db = -8.0
 
 [connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]
 [connection signal="timeout" from="Difficulty" to="." method="_on_difficulty_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://c1p6yysosa0qw"]
+[gd_scene load_steps=37 format=4 uid="uid://c1p6yysosa0qw"]
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_1bki2"]
 [ext_resource type="Script" uid="uid://bns4n0ukjcgl6" path="res://Scripts/fruit_collection.gd" id="1_8gfxb"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dnub6q51ebmgj" path="res://Assets/Environment/runwild_applecanopy.png" id="14_o2xe5"]
 [ext_resource type="Texture2D" uid="uid://by4ndgva7j4q2" path="res://Assets/Environment/runwild_applecanopyback.png" id="15_dtt0i"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="16_fjsm6"]
+[ext_resource type="AudioStream" uid="uid://8rsvwhvmslsi" path="res://Assets/Sounds/Whistle Sound Effect!.mp3" id="17_wvwni"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6v8h"]
 
@@ -254,6 +255,11 @@ offset_right = 49.28971
 offset_bottom = 40.51935
 scale = Vector2(0.2734802, 0.785541)
 text = "Time:"
+
+[node name="Timeout" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("17_wvwni")
+volume_db = -8.0
 
 [connection signal="hitted" from="MiniGamePlayer" to="." method="_on_mini_game_player_hitted"]
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]

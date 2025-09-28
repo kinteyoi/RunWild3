@@ -7,6 +7,7 @@ extends Node2D
 @onready var transition: Node2D = $Transition
 @onready var label: Label = $UI/Panel/Label
 @onready var coinScene = preload("res://Entities/Objects/coin.tscn")
+@onready var timeout: AudioStreamPlayer2D = $Timeout
 
 signal finishedswim
 @export var score = 0
@@ -26,8 +27,9 @@ func _process(delta: float) -> void:
 		score *= .15
 
 		Manager.SetStats(.15 * score, .7 * score, .15 * score)
-
+		timeout.play()
 		get_tree().paused = true
+		await get_tree().create_timer(1.5).timeout
 		transition.leavesclose()
 func _on_rock_timer_timeout() -> void:
 	var randPos = randf_range(0,1)
