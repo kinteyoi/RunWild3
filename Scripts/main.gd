@@ -62,3 +62,11 @@ func go_to_days():
 	add_child(dltdscene)
 	current_scene.queue_free()
 	current_scene = dltdscene
+func go_to_escape():
+	main_audio.stop()
+	mini_game_audio.stop()
+	print(current_scene)
+	var fsdscene = final_scene.instantiate()
+	add_child(fsdscene)
+	current_scene.queue_free()
+	current_scene = fsdscene

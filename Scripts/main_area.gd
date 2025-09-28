@@ -1,5 +1,4 @@
 extends Node2D
-@onready var escape = preload("res://Entities/Screens/escape.tscn")
 @onready var food = preload("res://Entities/Objects/candy_apple.tscn")
 @onready var transition: Node2D = $Transition
 @onready var food_spawn: PathFollow2D = $Path2D/FoodSpawn
@@ -21,6 +20,7 @@ signal run
 signal swim
 signal fly
 signal sleep
+signal escape
 var goto : String
 func _ready() -> void:
 	flybutt.disabled = false
@@ -64,6 +64,10 @@ func _on_transition_exited() -> void:
 		if not is_connected("fly", Callable(get_parent(), "go_to_fly")):
 			connect("fly", Callable(get_parent(), "go_to_fly"))
 			emit_signal("fly")
+	elif goto == "escape":
+		if not is_connected("escape", Callable(get_parent(), "go_to_escape")):
+			connect("escape", Callable(get_parent(), "go_to_escape"))
+			emit_signal("escape")
 	elif goto == "sleep":
 		if not is_connected("sleep", Callable(get_parent(), "go_to_days")):
 			connect("sleep", Callable(get_parent(), "go_to_days"))
@@ -144,3 +148,9 @@ func _on_swim_mouse_entered() -> void:
 
 func _on_rust_mouse_entered() -> void:
 	audio_stream_player_2d.play()
+
+
+func _on_escape_butt_pressed() -> void:
+	disable_all()
+	transition.leavesclose()
+	goto = "escape"

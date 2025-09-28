@@ -456,6 +456,13 @@ rotation = -0.001510573
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_cc2mi")
 
+[node name="EscapeButt" type="Button" parent="."]
+offset_left = 136.0
+offset_top = 252.0
+offset_right = 297.0
+offset_bottom = 324.0
+text = "Escape"
+
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
 [connection signal="mouse_entered" from="Points/Rest/Fly" to="." method="_on_fly_mouse_entered"]
 [connection signal="pressed" from="Points/Rest/Fly" to="." method="_on_fly_pressed"]
@@ -467,3 +474,4 @@ stream = ExtResource("24_cc2mi")
 [connection signal="pressed" from="Points/Swim/Swim" to="." method="_on_swim_pressed"]
 [connection signal="mouse_entered" from="Points/Fly/Rust" to="." method="_on_rust_mouse_entered"]
 [connection signal="pressed" from="Points/Fly/Rust" to="." method="_on_rust_pressed"]
+[connection signal="pressed" from="EscapeButt" to="." method="_on_escape_butt_pressed"]
