@@ -262,5 +262,6 @@ stream = ExtResource("17_wvwni")
 volume_db = -8.0
 
 [connection signal="hitted" from="MiniGamePlayer" to="." method="_on_mini_game_player_hitted"]
+[connection signal="kissed" from="MiniGamePlayer" to="." method="_on_mini_game_player_kissed"]
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]

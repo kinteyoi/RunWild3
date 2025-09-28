@@ -24,9 +24,11 @@ var canDash = true
 signal Up
 signal Down
 signal hitted
+signal kissed
 func hit():
 	emit_signal("hitted")
-
+func kiss():
+	emit_signal("kissed")
 func player():
 	pass
 

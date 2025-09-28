@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2cvv6pj3rapn"
+path="res://.godot/imported/Picked Coin Echo 2.wav-53f04b5c8d0ee59f7760467536c351fa.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Picked Coin Echo 2.wav"
+dest_files=["res://.godot/imported/Picked Coin Echo 2.wav-53f04b5c8d0ee59f7760467536c351fa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

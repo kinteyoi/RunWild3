@@ -71,3 +71,7 @@ func _on_transition_exited() -> void:
 
 func _on_mini_game_player_hitted() -> void:
 	reduce_time()
+
+
+func _on_mini_game_player_kissed() -> void:
+	add_time()

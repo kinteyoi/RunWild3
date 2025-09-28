@@ -1,6 +1,8 @@
 extends Area2D
 
 var direction: Vector2 = Vector2.DOWN * 200
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var timer: Timer = $Timer
 
 func _physics_process(delta: float) -> void:
 	if Manager.activeScene != "sky":
@@ -9,7 +11,10 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		Manager.currency += 1
-		queue_free()
+		self.visible = false
+		timer.start()
+		audio_stream_player_2d.play()
+		set_collision_mask_value(1, false)
 		
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	print("GONE")

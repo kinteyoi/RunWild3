@@ -27,11 +27,6 @@ func _ready() -> void:
 	rustbutt.disabled = false
 	transition.leavesopen()
 
-
-func _on_button_pressed() -> void:
-	var escape_tscn = escape.instantiate()
-	add_child(escape_tscn)
-
 func _on_run_pressed() -> void:
 	disable_all()
 	energy_drain("run")

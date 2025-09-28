@@ -373,13 +373,6 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-offset_left = 42.0
-offset_top = 393.0
-offset_right = 275.0
-offset_bottom = 493.0
-text = "escape"
-
 [node name="StupidThing" parent="." instance=ExtResource("14_b00yh")]
 position = Vector2(535, 550)
 
@@ -465,4 +458,3 @@ rotation = -0.001510573
 [connection signal="pressed" from="Points/Run/Run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="Points/Swim/Swim" to="." method="_on_swim_pressed"]
 [connection signal="pressed" from="Points/Fly/Rust" to="." method="_on_rust_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
