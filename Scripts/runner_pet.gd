@@ -10,7 +10,7 @@ var check = false
 @onready var pose: Sprite2D = $Pose
 @onready var swim_time: Timer = $SwimTime
 @onready var checker: Timer = $checker
-
+var checker2 = true
 
 @onready var deerguy = preload("res://Assets/Players/DeerDog/Kritter_Side_1.png")
 @onready var snekguy = preload("res://Assets/Players/Snakegon/Kritter2_Adult_Side.png")
@@ -23,9 +23,11 @@ func im_pooping(type):
 		checker.start()
 		mode = "fly"
 	if type == "swim":
+		pose.global_position.y += 400
+		checker2 = false
 		check = true
 		checker.start()
-		velocity.y += 200
+		#velocity.y += 200
 		swim_time.start()
 	
 	
@@ -56,6 +58,9 @@ func _physics_process(delta: float) -> void:
 		mode = "run"
 		velocity.y = 0
 	if mode == "run":
+		if !checker2:
+			pose.global_position.y -= 400
+			checker2 = true
 		#print(velocity)
 		floor_snap_length = 20
 		velocity = direction.normalized() * runningSpeed

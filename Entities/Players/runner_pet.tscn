@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpoo081d0ft1"]
+[gd_scene load_steps=7 format=3 uid="uid://cpoo081d0ft1"]
 
 [ext_resource type="Script" uid="uid://fmd1cgs0ho20" path="res://Scripts/runner_pet.gd" id="1_aacp1"]
 [ext_resource type="Texture2D" uid="uid://bn88cdsvweqam" path="res://Assets/Players/PengGon/runwild_birdadultside.png" id="3_j3ie3"]
@@ -6,6 +6,93 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aacp1"]
 radius = 62.0
 height = 310.0
+
+[sub_resource type="Animation" id="Animation_aacp1"]
+resource_name = "walk"
+length = 0.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pose:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.4), Vector2(0.4, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pose:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.13962634, 0.13962634]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pose:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -31.4)]
+}
+
+[sub_resource type="Animation" id="Animation_j3ie3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pose:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pose:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pose:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -31.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3ie3"]
+_data = {
+&"RESET": SubResource("Animation_j3ie3"),
+&"walk": SubResource("Animation_aacp1")
+}
 
 [node name="RunnerPet" type="CharacterBody2D"]
 floor_stop_on_slope = false
@@ -17,7 +104,7 @@ script = ExtResource("1_aacp1")
 shape = SubResource("CapsuleShape2D_aacp1")
 
 [node name="Pose" type="Sprite2D" parent="."]
-position = Vector2(-2, -45)
+position = Vector2(-2, -31.4)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_j3ie3")
 
@@ -27,6 +114,13 @@ one_shot = true
 [node name="SwimTime" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j3ie3")
+}
+autoplay = "walk"
+speed_scale = 3.0
 
 [connection signal="timeout" from="checker" to="." method="_on_check_timeout"]
 [connection signal="timeout" from="SwimTime" to="." method="_on_swim_time_timeout"]
