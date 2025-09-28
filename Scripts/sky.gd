@@ -87,7 +87,7 @@ func _on_star_mode_body_entered(_body: Node2D) -> void:
 
 func _on_kill_box_body_entered(_body: Node2D) -> void:
 	label.text = "Score: " + str(int(score))
-	maxHeight *= -0.2
+	score *= 0.2
 	Manager.maxBounce = 2
 	Manager.maxClouds = 4
 	Manager.maxCloudTimer = 10
