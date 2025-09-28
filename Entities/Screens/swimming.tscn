@@ -37,6 +37,9 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_381oc"]
 radius = 103.077644
 
+[sub_resource type="Animation" id="Animation_07xlo"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_cafpm"]
 resource_name = "waves"
 length = 3.0
@@ -66,13 +69,37 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_07xlo"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ukjr7"]
 _data = {
 &"RESET": SubResource("Animation_07xlo"),
 &"waves": SubResource("Animation_cafpm")
+}
+
+[sub_resource type="Animation" id="Animation_4ex7f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RunwildSwimwave1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(285, 216)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RunwildSwimwave2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(872, 385)]
 }
 
 [sub_resource type="Animation" id="Animation_ncjj3"]
@@ -103,33 +130,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(864, 385), Vector2(864, 435), Vector2(864, 368.333), Vector2(864, 426.667)]
-}
-
-[sub_resource type="Animation" id="Animation_4ex7f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../RunwildSwimwave1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(285, 216)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../RunwildSwimwave2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(872, 385)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_07xlo"]
@@ -310,11 +310,14 @@ wait_time = 10.0
 autostart = true
 
 [node name="SwimmingMiniGamePlayer" parent="." instance=ExtResource("3_o6v8h")]
+z_index = 0
 position = Vector2(571, 548)
+collision_layer = 1
 
 [node name="Area2D" type="Area2D" parent="SwimmingMiniGamePlayer"]
 position = Vector2(-1, -1)
-collision_mask = 6
+collision_layer = 513
+collision_mask = 518
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwimmingMiniGamePlayer/Area2D"]
 shape = SubResource("CircleShape2D_381oc")
