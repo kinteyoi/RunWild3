@@ -19,6 +19,11 @@ var apple_factor = 1
 func _ready():
 	transition.leavesopen()
 	Manager.activeScene = "FruitCollection"
+	
+func reduce_time():
+	timer += 2
+func add_time():
+	timer -= 2
 
 func _process(delta: float) -> void:
 	timer += delta
@@ -59,3 +64,7 @@ func _on_transition_exited() -> void:
 	if not is_connected("finishedrun", Callable(get_parent(), "go_to_days")):
 		connect("finishedrun", Callable(get_parent(), "go_to_days"))
 		emit_signal("finishedrun")
+
+
+func _on_mini_game_player_hitted() -> void:
+	reduce_time()

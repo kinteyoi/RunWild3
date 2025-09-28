@@ -255,5 +255,6 @@ offset_bottom = 40.51935
 scale = Vector2(0.2734802, 0.785541)
 text = "Time:"
 
+[connection signal="hitted" from="MiniGamePlayer" to="." method="_on_mini_game_player_hitted"]
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]

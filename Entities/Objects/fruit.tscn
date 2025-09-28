@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jvlum"]
 radius = 56.0
 
-[node name="Fruit" type="CharacterBody2D"]
+[node name="Fruit" type="CharacterBody2D" groups=["objects"]]
 z_index = -85
 collision_layer = 4
 script = ExtResource("1_xr8lx")

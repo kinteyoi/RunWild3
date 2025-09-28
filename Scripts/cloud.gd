@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var timer: Timer = $Timer
+@export var timer_extend = 10
 @onready var obby = preload("res://Assets/Environment/runwild_jumpcloud1.png")
 @onready var obby2 = preload("res://Assets/Environment/runwild_jumpcloud2.png")
 @onready var coinScene = preload("res://Entities/Objects/coin.tscn")
@@ -12,6 +13,8 @@ var cloudBounces = Manager.maxBounce
 
 
 func _ready() -> void:
+	timer.wait_time = timer_extend
+	timer.start()
 	var obby_graphics = [obby, obby2]
 	var random_item = obby_graphics.pick_random()
 	sprite_2d.texture = random_item

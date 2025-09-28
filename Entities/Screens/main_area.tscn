@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7fxy3lrbaleq" path="res://Scripts/main_area.gd" id="1_xhqh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="2_3cto1"]
-[ext_resource type="Script" path="res://Scripts/filler.gd" id="2_nxvwa"]
+[ext_resource type="Script" uid="uid://cm6qnkedd5eom" path="res://Scripts/filler.gd" id="2_nxvwa"]
 [ext_resource type="PackedScene" uid="uid://3851a7p8vssg" path="res://Entities/Objects/ss_2d_shape.tscn" id="4_bpk2j"]
 [ext_resource type="Texture2D" uid="uid://c0t0dy1hngdta" path="res://Assets/Environment/runwild_background_home.png" id="5_1k3xh"]
 [ext_resource type="Script" uid="uid://llobjh5hvry" path="res://addons/rmsmartshape/shapes/mesh.gd" id="5_bpaqk"]
@@ -130,7 +130,6 @@ position = Vector2(579, 40.5)
 shape = SubResource("RectangleShape2D_3cto1")
 
 [node name="Transition" parent="." instance=ExtResource("2_3cto1")]
-visible = false
 
 [node name="MainAreaFloor" parent="." instance=ExtResource("4_bpk2j")]
 position = Vector2(-346, -240)

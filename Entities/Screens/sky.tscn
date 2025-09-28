@@ -40,9 +40,11 @@ position = Vector2(751, 549)
 
 [node name="Cloud1" parent="Clouds" instance=ExtResource("2_xmyi1")]
 position = Vector2(1434, -39)
+timer_extend = 6
 
 [node name="Cloud2" parent="Clouds" instance=ExtResource("2_xmyi1")]
 position = Vector2(112, -33)
+timer_extend = 6
 
 [node name="Cloud3" parent="Clouds" instance=ExtResource("2_xmyi1")]
 position = Vector2(744, -659)
@@ -136,11 +138,12 @@ offset_bottom = 22.185553
 scale = Vector2(0.33380452, 1.7016737)
 text = "Score:"
 
+[node name="Transition" parent="Camera2D" instance=ExtResource("8_u04ro")]
+position = Vector2(-597, -506)
+scale = Vector2(1, 1.54)
+
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(751, 395)
-
-[node name="Transition" parent="." instance=ExtResource("8_u04ro")]
-visible = false
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1, 0.2)
@@ -176,4 +179,4 @@ color = Color(0, 0, 0, 1)
 [connection signal="body_entered" from="DifficultyBarriers/SubMaxes2" to="." method="_on_sub_maxes_2_body_entered"]
 [connection signal="body_entered" from="KillBox/KillBox" to="." method="_on_kill_box_body_entered"]
 [connection signal="timeout" from="KillBox/KillBoxDelay" to="KillBox/KillBox" method="_on_kill_box_delay_timeout"]
-[connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
+[connection signal="exited" from="Camera2D/Transition" to="." method="_on_transition_exited"]

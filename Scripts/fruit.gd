@@ -30,6 +30,7 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if is_evil:
 		print("ouch")
+		body.hit()
 	Manager.fruitStats += 100
 	queue_free()
 

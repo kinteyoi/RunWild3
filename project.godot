@@ -22,6 +22,10 @@ config/icon="res://icon.svg"
 
 Manager="*res://Scripts/Manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg")

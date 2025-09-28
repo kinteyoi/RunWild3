@@ -23,6 +23,9 @@ var dashing = false
 var canDash = true
 signal Up
 signal Down
+signal hitted
+func hit():
+	emit_signal("hitted")
 
 func player():
 	pass

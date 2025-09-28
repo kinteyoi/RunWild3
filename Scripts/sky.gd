@@ -10,7 +10,8 @@ extends Node2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var label: Label = $Camera2D/UI/Panel/Label
 @onready var marker_2d: Marker2D = $Marker2D
-@onready var transition: Node2D = $Transition
+@onready var transition: Node2D = $Camera2D/Transition
+
 
 @export var minXToWrap = -700
 @export var maxXToWrap = 2100

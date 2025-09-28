@@ -20,7 +20,6 @@ shape = SubResource("RectangleShape2D_v7gq6")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
-autostart = true
 
 [node name="Coin" type="Timer" parent="."]
 wait_time = 0.2
