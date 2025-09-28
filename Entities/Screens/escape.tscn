@@ -160,6 +160,7 @@ offset_right = -1095.0
 offset_bottom = -576.0
 
 [node name="Panel" type="Panel" parent="RunnerPet/Camera2D/GG"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
