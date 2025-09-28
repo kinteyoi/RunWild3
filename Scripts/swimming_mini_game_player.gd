@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@onready var icon: Sprite2D = $Icon
+#@onready var icon: Sprite2D = $Icon
 
 #DEERGON
 @onready var splash = preload("res://Assets/Particles/splash.tscn")
@@ -11,6 +11,23 @@ extends CharacterBody2D
 @onready var deerjump = preload("res://Assets/Players/DeerDog/Kritter1_adultback7.png")
 @onready var deerjump2 = preload("res://Assets/Players/DeerDog/likufdftgyh.png")
 @onready var deerjump3 = preload("res://Assets/Players/DeerDog/dguykaweopl.png")
+
+@onready var pen1 = preload("res://Assets/Players/PengGon/birdbabyswim.png")
+@onready var pen2 = preload("res://Assets/Players/PengGon/birdteenswim.png")
+@onready var pen3 = preload("res://Assets/Players/PengGon/birdadultswim.png")
+
+@onready var penjump = preload("res://Assets/Players/PengGon/birdbabyswimjump.png")
+@onready var penjump2 = preload("res://Assets/Players/PengGon/birdteenswimjump.png")
+@onready var penjump3 = preload("res://Assets/Players/PengGon/birdadultswimjump.png")
+
+
+@onready var snake = preload("res://Assets/Players/Snakegon/runwild_snakeswimbaby.png")
+@onready var snake2 = preload("res://Assets/Players/Snakegon/runwild_snakeswimteen.png")
+@onready var snake3 = preload("res://Assets/Players/Snakegon/runwild_snakeswimadult.png")
+
+@onready var snakej = preload("res://Assets/Players/Snakegon/Kritter2_swim_baby.png")
+@onready var snake2j = preload("res://Assets/Players/Snakegon/Kritter2_swim_teen.png")
+@onready var snake3j = preload("res://Assets/Players/Snakegon/Kritter2_back_swim_adult.png")
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
@@ -36,19 +53,19 @@ func _ready() -> void:
 		"penggon":
 			match Manager.evo:
 				1:
-					pass
+					pose.texture = pen1
 				2:
-					pass
+					pose.texture = pen2
 				3:
-					pass
+					pose.texture = pen3
 		"snakegon":
 			match Manager.evo:
 				1:
-					pass
+					pose.texture = snake
 				2:
-					pass
+					pose.texture = snake2
 				3:
-					pass
+					pose.texture = snake3
 		"poopgon":
 			match Manager.evo:
 				1:
@@ -85,19 +102,19 @@ func _physics_process(_delta):
 				"penggon":
 					match Manager.evo:
 						1:
-							pass
+							pose.texture = penjump
 						2:
-							pass
+							pose.texture = penjump2
 						3:
-							pass
+							pose.texture = penjump3
 				"snakegon":
 					match Manager.evo:
 						1:
-							pass
+							pose.texture = snakej
 						2:
-							pass
+							pose.texture = snake2j
 						3:
-							pass
+							pose.texture = snake3j
 				"poopgon":
 					match Manager.evo:
 						1:
@@ -153,19 +170,19 @@ func _on_jump_timeout() -> void:
 		"penggon":
 			match Manager.evo:
 				1:
-					pass
+					pose.texture = pen1
 				2:
-					pass
+					pose.texture = pen2
 				3:
-					pass
+					pose.texture = pen3
 		"snakegon":
 			match Manager.evo:
 				1:
-					pass
+					pose.texture = snake
 				2:
-					pass
+					pose.texture = snake2
 				3:
-					pass
+					pose.texture = snake3
 		"poopgon":
 			match Manager.evo:
 				1:

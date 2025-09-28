@@ -14,6 +14,13 @@ extends CharacterBody2D
 @onready var meddogjump = preload("res://Assets/Players/DeerDog/teenjumpsheet.png")
 @onready var bigdogjump = preload("res://Assets/Players/DeerDog/adultjumpsheet.png")
 
+@onready var pengon = preload("res://Assets/Players/PengGon/runwild_birdbaby.png")
+@onready var pengon2 = preload("res://Assets/Players/PengGon/runwild_birdteenfront.png")
+@onready var pengon3 = preload("res://Assets/Players/PengGon/runwild_birdadultfront.png")
+
+@onready var snekgon = preload("res://Assets/Players/Snakegon/Kritter2_Baby.png")
+@onready var snekgon2 = preload("res://Assets/Players/Snakegon/Kritter2_Teen.png")
+@onready var snekgon3 = preload("res://Assets/Players/Snakegon/Kritter2_Adult_Side.png")
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const GRAV_SCALE = .8
@@ -45,19 +52,19 @@ func _ready() -> void:
 		"penggon":
 			match Manager.evo:
 				1:
-					pass
+					pose.texture = pengon
 				2:
-					pass
+					pose.texture = pengon2
 				3:
-					pass
+					pose.texture = pengon3
 		"snakegon":
 			match Manager.evo:
 				1:
-					pass
+					pose.texture = snekgon
 				2:
-					pass
+					pose.texture = snekgon2
 				3:
-					pass
+					pose.texture = snekgon3
 		"poopgon":
 			match Manager.evo:
 				1:

@@ -30,11 +30,11 @@ extends Node2D
 @onready var penggon = preload("res://Assets/Players/PengGon/runwild_birdbaby.png")
 @onready var poopgon = preload("res://Assets/Players/DeerDog/Kritter1_adultback6.png")
 @onready var mongeygon = preload("res://Assets/Players/DeerDog/Kritter1_adultback6.png")
-@onready var snakegon = preload("res://Assets/Players/DeerDog/Kritter1_adultback6.png")
+@onready var snakegon = preload("res://Assets/Players/Snakegon/Kritter2_Baby.png")
 
 
-@onready var pet_graphs = [deerdog, penggon, poopgon, mongeygon, snakegon]
-var available_pets = ["deerdog", "penggon", "poopgon", "mongeygon", "snakegon"]
+
+var available_pets = ["deerdog", "penggon", "snakegon"]
 signal finished
 
 var hatching = false
@@ -43,16 +43,16 @@ func _ready() -> void:
 	var eggs = [egg1, egg2, egg3, egg4, egg5]
 	var random_item = eggs.pick_random()
 	egg.texture = random_item
-	var random_pet = pet_graphs.pick_random()
 	var random_pick = available_pets.pick_random()
-	kritter.texture = random_pet
 	match random_pick:
 		"deerdog":
 			label.text = "You Hatched DeerGon"
 			Manager.current_pet = "deergon"
+			kritter.texture = deerdog
 		"penggon":
 			label.text = "You Hatched PengGon"
 			Manager.current_pet = "penggon"
+			kritter.texture = penggon
 		"poopgon":
 			label.text = "You Hatched PoopGon"
 			Manager.current_pet = "poopgon"
@@ -62,6 +62,7 @@ func _ready() -> void:
 		"snakegon":
 			label.text = "You Hatched SnakeGon"
 			Manager.current_pet = "snakegon"
+			kritter.texture = snakegon
 	transition.leavesopen()
 	wiggle()
 func _on_wiggle_timeout() -> void:

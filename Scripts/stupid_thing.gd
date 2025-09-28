@@ -9,6 +9,14 @@ extends CharacterBody2D
 @onready var meddog = preload("res://Assets/Players/DeerDog/Kritter1_adultback3.png")
 @onready var bigdog = preload("res://Assets/Players/DeerDog/Kritter1_adultback.png")
 
+@onready var pengon = preload("res://Assets/Players/PengGon/runwild_birdbaby.png")
+@onready var pengon2 = preload("res://Assets/Players/PengGon/runwild_birdteenfront.png")
+@onready var pengon3 = preload("res://Assets/Players/PengGon/runwild_birdadultfront.png")
+
+@onready var snekgon = preload("res://Assets/Players/Snakegon/Kritter2_Baby.png")
+@onready var snekgon2 = preload("res://Assets/Players/Snakegon/Kritter2_Teen.png")
+@onready var snekgon3 = preload("res://Assets/Players/Snakegon/Kritter2_Adult_Side.png")
+
 var speed: float = 0
 var direction: Vector2 = Vector2.RIGHT
 
@@ -28,19 +36,19 @@ func _ready() -> void:
 		"penggon":
 			match Manager.evo:
 				1:
-					pass
+					pose.texture = pengon
 				2:
-					pass
+					pose.texture = pengon2
 				3:
-					pass
+					pose.texture = pengon3
 		"snakegon":
 			match Manager.evo:
 				1:
-					pass
+					pose.texture = snekgon
 				2:
-					pass
+					pose.texture = snekgon2
 				3:
-					pass
+					pose.texture = snekgon3
 		"poopgon":
 			match Manager.evo:
 				1:
