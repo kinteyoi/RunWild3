@@ -21,6 +21,8 @@ func _ready() -> void:
 		rocks.play("rocks")
 		speed = 120
 		direction = Vector2.DOWN * speed
+	elif random_item == obby3 or random_item == obby4:
+		rocks.play("woodsmall")
 	else:
 		rocks.play("wood")
 	animation_player.play("sway")

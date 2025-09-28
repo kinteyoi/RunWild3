@@ -8,6 +8,7 @@ extends Node2D
 @onready var label: Label = $UI/Panel/Label
 @onready var coinScene = preload("res://Entities/Objects/coin.tscn")
 @onready var timeout: AudioStreamPlayer2D = $Timeout
+@onready var bobs: AnimationPlayer = $Bobs
 
 signal finishedswim
 @export var score = 0

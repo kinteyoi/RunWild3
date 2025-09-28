@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://4wqsxiiw6rt6"]
+
+[ext_resource type="Texture2D" uid="uid://dfn3314e0dk2g" path="res://Assets/Environment/droplet.png" id="1_suaas"]
+[ext_resource type="Script" uid="uid://cci68fgvl8k6k" path="res://Scripts/splash.gd" id="2_7rfm6"]
+
+[sub_resource type="Curve" id="Curve_4gjoo"]
+_data = [Vector2(0, 0.7296), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8yew4"]
+curve = SubResource("Curve_4gjoo")
+
+[sub_resource type="Curve" id="Curve_7rfm6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.35877863, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4gjoo"]
+curve = SubResource("Curve_7rfm6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8yew4"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 125.0
+initial_velocity_max = 187.92
+gravity = Vector3(0, 300, 0)
+scale_min = 0.68
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_4gjoo")
+alpha_curve = SubResource("CurveTexture_8yew4")
+
+[node name="Splash" type="GPUParticles2D"]
+emitting = false
+texture = ExtResource("1_suaas")
+lifetime = 1.8
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_8yew4")
+script = ExtResource("2_7rfm6")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

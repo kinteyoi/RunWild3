@@ -69,6 +69,8 @@ _data = {
 }
 
 [node name="SwimmingMiniGamePlayer" type="CharacterBody2D"]
+z_index = 405
+collision_layer = 513
 collision_mask = 7
 script = ExtResource("1_tkrdu")
 
@@ -89,4 +91,8 @@ autoplay = "Movement"
 [node name="CloseTimeLimit" type="Timer" parent="."]
 wait_time = 0.15
 
+[node name="Jump" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="CloseTimeLimit" to="." method="_on_close_time_limit_timeout"]
+[connection signal="timeout" from="Jump" to="." method="_on_jump_timeout"]

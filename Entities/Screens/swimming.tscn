@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://mvj1h48tgrlg"]
+[gd_scene load_steps=46 format=4 uid="uid://mvj1h48tgrlg"]
 
 [ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_g8jrg"]
 [ext_resource type="Script" uid="uid://cgmy17big6c0w" path="res://Scripts/swimming.gd" id="1_o6v8h"]
@@ -6,6 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://dre2pefifyni2" path="res://Assets/Environment/runwild_background_swim.png" id="4_wvlh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="5_381oc"]
 [ext_resource type="AudioStream" uid="uid://8rsvwhvmslsi" path="res://Assets/Sounds/Whistle Sound Effect!.mp3" id="6_cafpm"]
+[ext_resource type="Texture2D" uid="uid://bm8ud5mb25qjh" path="res://Assets/Environment/runwild_swimwave1.png" id="7_ncjj3"]
+[ext_resource type="Texture2D" uid="uid://dm6namnkqjl8h" path="res://Assets/Environment/runwild_swimwave2.png" id="8_4ex7f"]
+[ext_resource type="Script" uid="uid://dhdc4b8yddyej" path="res://addons/rmsmartshape/shapes/shape.gd" id="9_pn60m"]
+[ext_resource type="Script" uid="uid://bwcf4pjgprn0k" path="res://addons/rmsmartshape/shapes/point.gd" id="10_1ddnd"]
+[ext_resource type="Script" uid="uid://bo5f7qe27jfje" path="res://addons/rmsmartshape/shapes/point_array.gd" id="11_nfll8"]
+[ext_resource type="Script" uid="uid://llobjh5hvry" path="res://addons/rmsmartshape/shapes/mesh.gd" id="12_3k7kr"]
+[ext_resource type="Texture2D" uid="uid://ce7xk5g378us5" path="res://Assets/Environment/runwild_grassblock1.2.png" id="13_nyanc"]
+[ext_resource type="Script" uid="uid://0lhxan4cqrc1" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="14_jicjj"]
+[ext_resource type="Script" uid="uid://d0xjijisx1woh" path="res://addons/rmsmartshape/materials/edge_material.gd" id="15_ln1td"]
+[ext_resource type="Script" uid="uid://d218yx0d1ilsn" path="res://addons/rmsmartshape/normal_range.gd" id="16_5i8xs"]
+[ext_resource type="Script" uid="uid://nc5bfedvnpgm" path="res://addons/rmsmartshape/materials/shape_material.gd" id="17_fr8in"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6v8h"]
 
@@ -25,6 +36,199 @@ point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_381oc"]
 radius = 103.077644
+
+[sub_resource type="Animation" id="Animation_cafpm"]
+resource_name = "waves"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RunwildSwimwave2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(569, 435), Vector2(194, 435), Vector2(887, 435), Vector2(571, 435)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RunwildSwimwave2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_07xlo"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ukjr7"]
+_data = {
+&"RESET": SubResource("Animation_07xlo"),
+&"waves": SubResource("Animation_cafpm")
+}
+
+[sub_resource type="Animation" id="Animation_ncjj3"]
+resource_name = "bobs"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RunwildSwimwave1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(285, 216), Vector2(285, 266), Vector2(285, 216), Vector2(285, 166)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RunwildSwimwave2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(864, 385), Vector2(864, 435), Vector2(864, 368.333), Vector2(864, 426.667)]
+}
+
+[sub_resource type="Animation" id="Animation_4ex7f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RunwildSwimwave1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(285, 216)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RunwildSwimwave2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(872, 385)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07xlo"]
+_data = {
+&"RESET": SubResource("Animation_4ex7f"),
+&"bobs": SubResource("Animation_ncjj3")
+}
+
+[sub_resource type="Resource" id="Resource_h83k7"]
+script = ExtResource("10_1ddnd")
+position = Vector2(-255.9874, -86.404724)
+
+[sub_resource type="Resource" id="Resource_fdkjn"]
+script = ExtResource("10_1ddnd")
+position = Vector2(-252.76639, 702.74536)
+
+[sub_resource type="Resource" id="Resource_hrf3s"]
+script = ExtResource("10_1ddnd")
+position = Vector2(-385.33807, 803.6716)
+
+[sub_resource type="Resource" id="Resource_86ymf"]
+script = ExtResource("10_1ddnd")
+position = Vector2(-527.5945, 772.4921)
+
+[sub_resource type="Resource" id="Resource_3aogh"]
+script = ExtResource("10_1ddnd")
+position = Vector2(-608.73206, 673.8162)
+
+[sub_resource type="Resource" id="Resource_16xrn"]
+script = ExtResource("10_1ddnd")
+position = Vector2(-601.64575, -10.8923645)
+
+[sub_resource type="Resource" id="Resource_iyw6g"]
+script = ExtResource("10_1ddnd")
+position = Vector2(-539.28674, -137.55899)
+
+[sub_resource type="Resource" id="Resource_rtx4i"]
+script = ExtResource("10_1ddnd")
+position = Vector2(-346.3637, -176.53336)
+
+[sub_resource type="Resource" id="Resource_l82ag"]
+script = ExtResource("10_1ddnd")
+position = Vector2(-255.9874, -86.404724)
+
+[sub_resource type="Resource" id="Resource_lb6a2"]
+script = ExtResource("11_nfll8")
+_points = {
+0: SubResource("Resource_h83k7"),
+1: SubResource("Resource_fdkjn"),
+2: SubResource("Resource_hrf3s"),
+3: SubResource("Resource_86ymf"),
+4: SubResource("Resource_3aogh"),
+5: SubResource("Resource_16xrn"),
+6: SubResource("Resource_iyw6g"),
+7: SubResource("Resource_rtx4i"),
+8: SubResource("Resource_l82ag")
+}
+_point_order = PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8)
+_constraints = {
+Vector2i(0, 8): 15
+}
+_next_key = 9
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dq1v4"]
+_surfaces = [{
+"aabb": AABB(-735.1098, -304.84784, 0, 602.782, 1239.3635, 1e-05),
+"attribute_data": PackedByteArray("/////wAAAAAAAAAAAAAAAAAAAAD/////AAAAAAAAgD8AAAAAAACAP/////+l6D5AAACAP6XoPkAAAIA//////6XoPkAAAAAApeg+QAAAAAD/////LThnQAAAgD8tOGdAAACAP/////8tOGdAAAAAAC04Z0AAAAAA/////5s+hUAAAIA/mz6FQAAAgD//////mz6FQAAAAACbPoVAAAAAAP////99spRAAACAP32ylEAAAIA//////32ylEAAAAAAfbKUQAAAAAD/////9IXnQAAAgD/0hedAAACAP//////0hedAAAAAAPSF50AAAAAA/////zqt+EAAAIA/Oq34QAAAgD//////Oq34QAAAAAA6rfhAAAAAAP////8mPghBAACAPyY+CEEAAIA//////yY+CEEAAAAAJj4IQQAAAAD/////AAAQQQAAgD8AABBBAACAP/////8AABBBAAAAAAAAEEEAAAAA"),
+"format": 34359742527,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAwACAAQAAwAEAAUABQAEAAYABQAGAAcABwAGAAgABwAIAAkACQAIAAoACQAKAAsACwAKAAwACwAMAA0ADQAMAA4ADQAOAA8ADwAOABAADwAQABEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("7VMEw44FCsMAAAAA0NK9w6kmC8IAAAAATHq6w7DfIEQAAAAAzZMEw7h/PkQAAAAA3R/Pw/Y0KEQAAAAArzaywwChaUQAAAAAt9Lkw6aMJEQAAAAAvWIVxFiyXUQAAAAAWi3xwxFRHUQAAAAAB8c3xGmXM0QAAAAAwqXrw6JVoUEAAAAAx/82xGDOJ8IAAAAAVcLkw3wx+8EAAAAAiUMbxAS4c8MAAAAAuX3AwxzgQMIAAAAAY9+Zw4ZsmMMAAAAA0NK9w6kmC8IAAAAA7VMEw44FCsMAAAAA/3//f+yAdgD/f/9/P4GgAP9//383VOMV/3//f5NVNRX/f/9/ow8tOP9//382F2Q0/3//f/8x/1j/f/9/GzANWP9//399Xj5v/3//f/JeeG//f/9/eI7CeP9//39pmMpz/3//f2PCzV7/f/9/Esl2W/9//3+BzkEn/3//f03iJzH/f/9/MbYZG/9//3+awc0g")
+}]
+
+[sub_resource type="Resource" id="Resource_xxwh5"]
+script = ExtResource("12_3k7kr")
+texture = ExtResource("13_nyanc")
+mesh = SubResource("ArrayMesh_dq1v4")
+
+[sub_resource type="Resource" id="Resource_aftml"]
+script = ExtResource("15_ln1td")
+textures = Array[Texture2D]([ExtResource("13_nyanc")])
+metadata/_custom_type_script = "uid://d0xjijisx1woh"
+
+[sub_resource type="Resource" id="Resource_x3ftl"]
+script = ExtResource("16_5i8xs")
+distance = 360.0
+
+[sub_resource type="Resource" id="Resource_p2msv"]
+script = ExtResource("14_jicjj")
+edge_material = SubResource("Resource_aftml")
+normal_range = SubResource("Resource_x3ftl")
+metadata/_custom_type_script = "uid://0lhxan4cqrc1"
+
+[sub_resource type="Resource" id="Resource_x6qc6"]
+script = ExtResource("17_fr8in")
+_edge_meta_materials = Array[ExtResource("14_jicjj")]([SubResource("Resource_p2msv")])
 
 [node name="Swimming" type="Node2D"]
 script = ExtResource("1_o6v8h")
@@ -159,6 +363,49 @@ text = "Score:"
 process_mode = 3
 stream = ExtResource("6_cafpm")
 volume_db = -8.0
+
+[node name="Waves" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ukjr7")
+}
+
+[node name="Bobs" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Waves")
+libraries = {
+&"": SubResource("AnimationLibrary_07xlo")
+}
+autoplay = "bobs"
+speed_scale = 0.1
+
+[node name="RunwildSwimwave1" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.20392157)
+z_index = -215
+position = Vector2(285, 216)
+texture = ExtResource("7_ncjj3")
+
+[node name="RunwildSwimwave2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.22745098)
+z_index = -255
+position = Vector2(872, 385)
+texture = ExtResource("8_4ex7f")
+
+[node name="SS2D_Shape" type="Node2D" parent="."]
+z_index = -170
+position = Vector2(180, 0)
+script = ExtResource("9_pn60m")
+_points = SubResource("Resource_lb6a2")
+_meshes = Array[ExtResource("12_3k7kr")]([SubResource("Resource_xxwh5")])
+shape_material = SubResource("Resource_x6qc6")
+metadata/_custom_type_script = "uid://dhdc4b8yddyej"
+
+[node name="SS2D_Shape2" type="Node2D" parent="."]
+z_index = -170
+position = Vector2(1830, 0)
+script = ExtResource("9_pn60m")
+_points = SubResource("Resource_lb6a2")
+_meshes = Array[ExtResource("12_3k7kr")]([SubResource("Resource_xxwh5")])
+shape_material = SubResource("Resource_x6qc6")
+metadata/_custom_type_script = "uid://dhdc4b8yddyej"
 
 [connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]
 [connection signal="timeout" from="Difficulty" to="." method="_on_difficulty_timeout"]
