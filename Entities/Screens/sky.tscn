@@ -190,7 +190,6 @@ scale = Vector2(0.33380452, 1.7016737)
 text = "Score:"
 
 [node name="Transition" parent="Camera2D" instance=ExtResource("8_u04ro")]
-visible = false
 position = Vector2(-597, -506)
 scale = Vector2(1, 1.54)
 

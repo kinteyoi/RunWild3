@@ -131,7 +131,6 @@ position = Vector2(579, 40.5)
 shape = SubResource("RectangleShape2D_3cto1")
 
 [node name="Transition" parent="." instance=ExtResource("2_3cto1")]
-visible = false
 
 [node name="MainAreaFloor" parent="." instance=ExtResource("4_bpk2j")]
 position = Vector2(-346, -240)
