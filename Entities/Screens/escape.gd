@@ -1,6 +1,6 @@
 extends Node2D
 @onready var winning: Panel = $RunnerPet/Camera2D/GG/Winning
-
+signal retire
 
 
 func _on_try_again_pressed() -> void:
@@ -19,8 +19,12 @@ func _on_go_again_pressed() -> void:
 
 
 func _on_give_up_pressed() -> void:
-	pass # Replace with function body.
+	if not is_connected("retire", Callable(get_parent(), "go_to_ENDGAME")):
+			connect("retire", Callable(get_parent(), "go_to_ENDGAME"))
+			emit_signal("retire")
 
 
 func _on_retire_pressed() -> void:
-	pass # Replace with function body.
+	if not is_connected("retire", Callable(get_parent(), "go_to_ENDGAME")):
+			connect("retire", Callable(get_parent(), "go_to_ENDGAME"))
+			emit_signal("retire")

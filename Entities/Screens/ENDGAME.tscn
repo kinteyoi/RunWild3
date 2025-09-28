@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8643nn4sep8a"]
+
+[ext_resource type="Texture2D" uid="uid://cayhwdsrjswvg" path="res://Assets/Environment/coverpage_runwild.png" id="1_5xejw"]
+
+[node name="ENDGAME" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 2.9999542
+offset_top = -3.0
+offset_right = 42.99997
+offset_bottom = 37.0
+scale = Vector2(28.657896, 16.226412)
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 6.6648316
+offset_top = 35.312798
+offset_right = 282.66483
+offset_bottom = 58.312798
+scale = Vector2(0.09317567, 0.18477285)
+text = "Thank You For Trying to Help Them!"
+
+[node name="CoverpageRunwild" type="Sprite2D" parent="."]
+position = Vector2(549, 300)
+texture = ExtResource("1_5xejw")

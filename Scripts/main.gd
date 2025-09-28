@@ -7,7 +7,7 @@ extends Node2D
 @onready var main_area = preload("res://Entities/Screens/main_area.tscn")
 @onready var final_scene = preload("res://Entities/Screens/escape.tscn")
 @onready var hatch: Node2D = $Hatch
-
+@onready var ENDGAME = preload("res://Entities/Screens/ENDGAME.tscn")
 var current_scene
 @onready var main_audio: AudioStreamPlayer = $MainAudio
 @onready var mini_game_audio: AudioStreamPlayer = $MiniGameAudio
@@ -70,3 +70,11 @@ func go_to_escape():
 	add_child(fsdscene)
 	current_scene.queue_free()
 	current_scene = fsdscene
+func go_to_ENDGAME():
+	main_audio.play()
+	mini_game_audio.stop()
+	print(current_scene)
+	var edscene = ENDGAME.instantiate()
+	add_child(edscene)
+	current_scene.queue_free()
+	current_scene = edscene

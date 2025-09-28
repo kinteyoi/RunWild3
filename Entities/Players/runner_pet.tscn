@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpoo081d0ft1"]
+[gd_scene load_steps=4 format=3 uid="uid://cpoo081d0ft1"]
 
 [ext_resource type="Script" uid="uid://fmd1cgs0ho20" path="res://Scripts/runner_pet.gd" id="1_aacp1"]
-[ext_resource type="Texture2D" uid="uid://rlmgnpcedflb" path="res://icon.svg" id="1_nghvd"]
 [ext_resource type="Texture2D" uid="uid://bn88cdsvweqam" path="res://Assets/Players/PengGon/runwild_birdadultside.png" id="3_j3ie3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aacp1"]
@@ -13,11 +12,6 @@ floor_stop_on_slope = false
 floor_max_angle = 3.1415927
 floor_snap_length = 10.0
 script = ExtResource("1_aacp1")
-
-[node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0.30399996, 0.27999997, 1, 1)
-position = Vector2(-1, 0)
-texture = ExtResource("1_nghvd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_aacp1")
