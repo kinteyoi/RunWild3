@@ -22,6 +22,7 @@ signal finishedfly
 
 func _ready() -> void:
 	transition.leavesopen()
+	Manager.activeScene = "sky"
 	Manager.cloudList.append($Clouds/Cloud0)
 	Manager.cloudList.append($Clouds/Cloud1)
 	Manager.cloudList.append($Clouds/Cloud2)

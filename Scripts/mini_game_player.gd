@@ -24,6 +24,9 @@ var canDash = true
 signal Up
 signal Down
 
+func player():
+	pass
+
 func _ready() -> void:
 	match Manager.current_pet:
 		"deergon":
