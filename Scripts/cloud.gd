@@ -16,11 +16,7 @@ func _ready() -> void:
 	var random_item = obby_graphics.pick_random()
 	sprite_2d.texture = random_item
 	timer.wait_time = randf_range(4,7)
-	if randi_range(1, 10) == 10:
-		print("Money")
-		var coin = coinScene.instantiate()
-		coin.position.y += position.y - 100
-		self.add_child(coin)
+	
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if cloudBounces > 0:
 		body.velocity.y = 0
@@ -37,3 +33,12 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 func _on_timer_timeout() -> void:
 	Manager.cloudList.pop_at(Manager.cloudList.find(self))
 	queue_free()
+
+
+func _on_coin_timeout() -> void:
+	if randi_range(1, 10) == 10:
+		print("Money")
+		var coin = coinScene.instantiate()
+		coin.global_position = self.global_position
+		coin.global_position.y -= 100
+		get_tree().get_root().add_child(coin)

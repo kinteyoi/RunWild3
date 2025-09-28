@@ -4,7 +4,7 @@ var days_left = 16
 #Current Pet
 var current_pet : String = "deergon"
 
-var evo = 2
+var evo = 1
 var is_food_active = false
 #Cloud Scene
 var cloudList = []
@@ -16,7 +16,7 @@ var defaultMaxBounce = 2
 @export var fruitStats = 0
 # PLAYER STATS
 var energy = 0
-var currency = 99
+var currency = 0
 @export var swimStats = 0
 @export var runStats = 0
 @export var flyStats = 0
