@@ -1,8 +1,13 @@
 extends CharacterBody2D
-@onready var kritter_1_adultback_7: Sprite2D = $Kritter1Adultback7
+@onready var pose: Sprite2D = $Pose
 @onready var action_timer: Timer = $ActionTimer
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var ray_cast_2d_2: RayCast2D = $RayCast2D2
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var babbydog = preload("res://Assets/Players/DeerDog/Kritter1_adultback6.png")
+@onready var meddog = preload("res://Assets/Players/DeerDog/Kritter1_adultback3.png")
+@onready var bigdog = preload("res://Assets/Players/DeerDog/Kritter1_adultback.png")
 
 var speed: float = 0
 var direction: Vector2 = Vector2.RIGHT
@@ -11,9 +16,55 @@ func poop():
 	pass
 
 func _ready() -> void:
+	match Manager.current_pet:
+		"deergon":
+			match Manager.evo:
+				1:
+					pose.texture = babbydog
+				2:
+					pose.texture = meddog
+				3:
+					pose.texture = bigdog
+		"penggon":
+			match Manager.evo:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+		"snakegon":
+			match Manager.evo:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+		"poopgon":
+			match Manager.evo:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+		"mongeygon":
+			match Manager.evo:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
 	velocity = direction.normalized() * speed
 
 func _physics_process(delta: float) -> void:
+	if speed > 0:
+		animation_player.play("walk")
+	else:
+		animation_player.play("RESET")
+		
 	velocity = direction.normalized() * speed
 	var collider = ray_cast_2d.get_collider()
 	var collider2 = ray_cast_2d_2.get_collider()
