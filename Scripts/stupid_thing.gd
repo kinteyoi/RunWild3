@@ -5,6 +5,9 @@ extends CharacterBody2D
 var speed: float = 0
 var direction: Vector2
 
+func poop():
+	pass
+
 func _ready() -> void:
 	velocity = direction.normalized() * speed
 

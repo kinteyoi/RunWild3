@@ -4,6 +4,7 @@ extends Node2D
 signal run
 signal swim
 signal fly
+signal sleep
 var goto : String
 func _ready() -> void:
 	transition.leavesopen()
@@ -42,3 +43,12 @@ func _on_transition_exited() -> void:
 		if not is_connected("fly", Callable(get_parent(), "go_to_fly")):
 			connect("fly", Callable(get_parent(), "go_to_fly"))
 			emit_signal("fly")
+	elif goto == "sleep":
+		if not is_connected("sleep", Callable(get_parent(), "go_to_days")):
+			connect("sleep", Callable(get_parent(), "go_to_days"))
+			emit_signal("sleep")
+
+
+func _on_rust_pressed() -> void:
+	transition.leavesclose()
+	goto = "sleep"

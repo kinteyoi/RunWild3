@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cubhshy5y2exj"]
+[gd_scene load_steps=32 format=4 uid="uid://cubhshy5y2exj"]
 
 [ext_resource type="Script" uid="uid://b7fxy3lrbaleq" path="res://Scripts/main_area.gd" id="1_xhqh8"]
 [ext_resource type="PackedScene" uid="uid://hautk1w8yj7d" path="res://Entities/UI/transition.tscn" id="2_3cto1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cnuh3lulteorf" path="res://Assets/UI/runwild_buttonrest.png" id="6_xsfye"]
 [ext_resource type="Texture2D" uid="uid://25nmppkoxpjv" path="res://Assets/UI/runwild_buttoneat.png" id="7_0es1c"]
 [ext_resource type="Texture2D" uid="uid://bfafwtmucvjce" path="res://Assets/UI/runwild_buttonrun.png" id="8_bpaqk"]
+[ext_resource type="Texture2D" uid="uid://haeotuxwocdp" path="res://Assets/UI/runwild_buttonblank.png" id="8_qjqji"]
 [ext_resource type="Texture2D" uid="uid://bxaa8o7in4mgd" path="res://Assets/UI/runwild_buttonswim.png" id="9_8s5yf"]
 [ext_resource type="Texture2D" uid="uid://ceitcm1l4efpm" path="res://Assets/UI/runwild_buttonfly.png" id="10_b00yh"]
 [ext_resource type="Texture2D" uid="uid://dr3gng7cjp8jk" path="res://Assets/Environment/runwild_coin.png" id="10_nitqc"]
@@ -17,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://c4bscj12m1msp" path="res://Assets/UI/energybar_bottom.png" id="15_ohl71"]
 [ext_resource type="Texture2D" uid="uid://b1hah1tagb7hk" path="res://Assets/UI/energybar_top.png" id="16_qjqji"]
 [ext_resource type="Texture2D" uid="uid://dngplirvfvb70" path="res://Assets/UI/energybar_middle.png" id="17_o3fja"]
+[ext_resource type="Texture2D" uid="uid://c425dmdk3fou8" path="res://Assets/UI/runwild_leafwall1.png" id="19_o3fja"]
+[ext_resource type="Texture2D" uid="uid://dnub6q51ebmgj" path="res://Assets/Environment/runwild_applecanopy.png" id="20_efrv2"]
+[ext_resource type="Texture2D" uid="uid://dlhwl63id6f6o" path="res://Assets/Environment/runwild_apple1.png" id="21_nxvwa"]
+[ext_resource type="Texture2D" uid="uid://c53v5vxxtbpo3" path="res://Assets/Environment/runwild_apple2.png" id="22_cc2mi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cto1"]
 size = Vector2(1741, 101)
@@ -39,6 +44,32 @@ script = ExtResource("5_bpaqk")
 texture = ExtResource("6_8s5yf")
 mesh = SubResource("ArrayMesh_bpaqk")
 
+[sub_resource type="Gradient" id="Gradient_qjqji"]
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0.09369939, 0.038694967, 0.038714647, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o3fja"]
+gradient = SubResource("Gradient_qjqji")
+
+[sub_resource type="Animation" id="Animation_o3fja"]
+resource_name = "Morning"
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_qjqji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_ohl71"]
 resource_name = "Rest"
 length = 4.0
@@ -55,25 +86,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.58000004, 0.58000004, 1, 1), Color(0, 0, 0.5, 1), Color(0, 0, 0, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_qjqji"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasModulate:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.58000004, 0.58000004, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_o3fja"]
-resource_name = "Morning"
-step = 0.1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjqji"]
 _data = {
@@ -109,7 +121,6 @@ position = Vector2(579, 40.5)
 shape = SubResource("RectangleShape2D_3cto1")
 
 [node name="Transition" parent="." instance=ExtResource("2_3cto1")]
-visible = false
 
 [node name="MainAreaFloor" parent="." instance=ExtResource("4_bpk2j")]
 position = Vector2(-346, -240)
@@ -134,11 +145,41 @@ texture = ExtResource("10_b00yh")
 
 [node name="Fly" type="Button" parent="Points/Rest"]
 self_modulate = Color(1, 1, 1, 0)
+z_index = 4096
 offset_left = -80.0
 offset_top = -49.0
 offset_right = 81.0
 offset_bottom = 49.0
 pivot_offset = Vector2(80, 49)
+
+[node name="RunwildButtonblank2" type="Sprite2D" parent="Points/Rest"]
+z_index = -40
+rotation = 1.5707964
+scale = Vector2(0.285, 0.45085123)
+texture = ExtResource("8_qjqji")
+offset = Vector2(188.87372, -0.045928955)
+
+[node name="TextureRect3" type="TextureRect" parent="Points/Rest/RunwildButtonblank2"]
+z_index = 30
+offset_left = 70.17554
+offset_top = 325.00244
+offset_right = 326.17554
+offset_bottom = 561.35095
+texture = SubResource("GradientTexture1D_o3fja")
+
+[node name="FlyStats" type="Label" parent="Points/Rest"]
+offset_left = -52.0
+offset_top = 49.0
+offset_right = 53.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0.61, 0.68149996, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("11_glmmk")
+theme_override_font_sizes/font_size = 46
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Eat" type="Marker2D" parent="Points"]
 position = Vector2(776, 85)
@@ -149,6 +190,7 @@ texture = ExtResource("7_0es1c")
 
 [node name="Eat" type="Button" parent="Points/Eat"]
 self_modulate = Color(1, 1, 1, 0)
+z_index = 4096
 offset_left = -80.0
 offset_top = -49.0
 offset_right = 81.0
@@ -180,11 +222,41 @@ texture = ExtResource("8_bpaqk")
 
 [node name="Run" type="Button" parent="Points/Run"]
 self_modulate = Color(1, 1, 1, 0)
+z_index = 4096
 offset_left = -80.0
 offset_top = -49.0
 offset_right = 81.0
 offset_bottom = 49.0
 pivot_offset = Vector2(80, 49)
+
+[node name="RunwildButtonblank" type="Sprite2D" parent="Points/Run"]
+z_index = -40
+position = Vector2(-0.020690918, 0.17098999)
+rotation = 1.5707964
+scale = Vector2(0.285, 0.45085123)
+texture = ExtResource("8_qjqji")
+offset = Vector2(188.87372, -0.045928955)
+
+[node name="TextureRect" type="TextureRect" parent="Points/Run/RunwildButtonblank"]
+offset_left = 125.715836
+offset_top = -118.64881
+offset_right = 381.71582
+offset_bottom = 117.69976
+texture = SubResource("GradientTexture1D_o3fja")
+
+[node name="FlyStats3" type="Label" parent="Points/Run"]
+offset_left = -52.0
+offset_top = 49.0
+offset_right = 53.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0.92, 0.85008, 0.5704, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("11_glmmk")
+theme_override_font_sizes/font_size = 46
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Swim" type="Marker2D" parent="Points"]
 position = Vector2(376, 85)
@@ -195,11 +267,40 @@ texture = ExtResource("9_8s5yf")
 
 [node name="Swim" type="Button" parent="Points/Swim"]
 self_modulate = Color(1, 1, 1, 0)
+z_index = 4096
 offset_left = -80.0
 offset_top = -49.0
 offset_right = 81.0
 offset_bottom = 49.0
 pivot_offset = Vector2(80, 49)
+
+[node name="RunwildButtonblank3" type="Sprite2D" parent="Points/Swim"]
+z_index = -40
+rotation = 1.5707964
+scale = Vector2(0.285, 0.45085123)
+texture = ExtResource("8_qjqji")
+offset = Vector2(188.87372, -0.045928955)
+
+[node name="TextureRect2" type="TextureRect" parent="Points/Swim/RunwildButtonblank3"]
+offset_left = 182.4563
+offset_top = -562.2083
+offset_right = 438.4563
+offset_bottom = -325.85977
+texture = SubResource("GradientTexture1D_o3fja")
+
+[node name="FlyStats2" type="Label" parent="Points/Swim"]
+offset_left = -52.0
+offset_top = 49.0
+offset_right = 53.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0.7268, 0.85238004, 0.92, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("11_glmmk")
+theme_override_font_sizes/font_size = 46
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Fly" type="Marker2D" parent="Points"]
 position = Vector2(976, 69)
@@ -210,6 +311,7 @@ texture = ExtResource("6_xsfye")
 
 [node name="Rust" type="Button" parent="Points/Fly"]
 self_modulate = Color(1, 1, 1, 0)
+z_index = 4096
 offset_left = -80.0
 offset_top = -49.0
 offset_right = 81.0
@@ -227,12 +329,10 @@ text = "escape"
 position = Vector2(535, 550)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 187.0
-offset_top = -23.0
-offset_right = 965.0
-offset_bottom = 179.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 188.0
+offset_top = 1.0000019
+offset_right = 966.0
+offset_bottom = 203.0
 scale = Vector2(0.745, 0.745)
 pivot_offset = Vector2(389, 101)
 value = 100.0
@@ -245,15 +345,105 @@ position = Vector2(576, 324)
 zoom = Vector2(0.655, 0.655)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.58000004, 0.58000004, 1, 1)
 
 [node name="EEpy" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_qjqji")
 }
 
+[node name="RunwildLeafwall1" type="Sprite2D" parent="."]
+self_modulate = Color(0.53, 0.53, 0.53, 0.8392157)
+position = Vector2(-267, 10)
+texture = ExtResource("19_o3fja")
+
+[node name="RunwildLeafwall2" type="Sprite2D" parent="."]
+self_modulate = Color(0.53, 0.53, 0.53, 0.8392157)
+position = Vector2(-347, 10)
+texture = ExtResource("19_o3fja")
+
+[node name="RunwildLeafwall3" type="Sprite2D" parent="."]
+self_modulate = Color(0.38, 0.38, 0.38, 0.8392157)
+position = Vector2(-387, 9)
+scale = Vector2(1, -1)
+texture = ExtResource("19_o3fja")
+
+[node name="RunwildLeafwall4" type="Sprite2D" parent="."]
+self_modulate = Color(0.53, 0.53, 0.53, 0.8392157)
+position = Vector2(1563, 10)
+scale = Vector2(-1, 1)
+texture = ExtResource("19_o3fja")
+
+[node name="RunwildLeafwall5" type="Sprite2D" parent="."]
+self_modulate = Color(0.53, 0.53, 0.53, 0.8392157)
+position = Vector2(1483, 10)
+scale = Vector2(-1, 1)
+texture = ExtResource("19_o3fja")
+
+[node name="RunwildLeafwall6" type="Sprite2D" parent="."]
+self_modulate = Color(0.38, 0.38, 0.38, 0.8392157)
+position = Vector2(1443, 9)
+scale = Vector2(-1, -1)
+texture = ExtResource("19_o3fja")
+
+[node name="RunwildApplecanopy" type="Sprite2D" parent="."]
+z_index = -80
+position = Vector2(589, 335)
+texture = ExtResource("20_efrv2")
+
+[node name="RunwildApple1" type="Sprite2D" parent="."]
+self_modulate = Color(0.74, 0.74, 0.74, 1)
+position = Vector2(37, -8)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("21_nxvwa")
+
+[node name="RunwildApple2" type="Sprite2D" parent="."]
+self_modulate = Color(0.79, 0.79, 0.79, 1)
+position = Vector2(-127, 49)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("21_nxvwa")
+
+[node name="RunwildApple3" type="Sprite2D" parent="."]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+z_index = -60
+position = Vector2(12.000002, 15.000004)
+scale = Vector2(0.155, 0.155)
+texture = ExtResource("22_cc2mi")
+
+[node name="RunwildButtonblank" type="Sprite2D" parent="."]
+position = Vector2(-41, -92)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("8_qjqji")
+
+[node name="RunwildCoin2" type="Sprite2D" parent="RunwildButtonblank"]
+modulate = Color(0.14, 0.14, 0.14, 1)
+z_index = 65
+position = Vector2(-78.666626, -4)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_nitqc")
+
+[node name="RunwildCoin" type="Sprite2D" parent="RunwildButtonblank"]
+z_index = 135
+position = Vector2(-78.666626, -4)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("10_nitqc")
+
+[node name="FlyStats3" type="Label" parent="RunwildButtonblank"]
+offset_left = 38.66671
+offset_top = -84.0
+offset_right = 143.66672
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0.7529412, 0.5137255, 0.12156863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("11_glmmk")
+theme_override_font_sizes/font_size = 131
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="exited" from="Transition" to="." method="_on_transition_exited"]
 [connection signal="pressed" from="Points/Rest/Fly" to="." method="_on_fly_pressed"]
 [connection signal="pressed" from="Points/Run/Run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="Points/Swim/Swim" to="." method="_on_swim_pressed"]
+[connection signal="pressed" from="Points/Fly/Rust" to="." method="_on_rust_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
