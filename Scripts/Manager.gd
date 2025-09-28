@@ -37,12 +37,16 @@ func SetStats(newRunStat, newSwimStat, newFlyStat):
 		swimStats += newSwimStat * mult
 		flyStats += newFlyStat * mult
 		
-	if newSwimStat > maxScore:
+	elif newSwimStat > maxScore:
 		runStats += newRunStat * mult
 		swimStats += maxScore
 		flyStats += newFlyStat * mult
 		
-	if newFlyStat > maxScore:
+	elif newFlyStat > maxScore:
 		runStats += newRunStat * mult
 		swimStats += newSwimStat * mult
 		flyStats += maxScore
+	else:
+		runStats += newRunStat * mult
+		swimStats += newSwimStat * mult
+		flyStats += newFlyStat * mult
