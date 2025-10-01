@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@onready var apple1 = preload("res://Assets/Environment/runwild_apple1.png")
-@onready var apple2 = preload("res://Assets/Environment/runwild_apple2.png")
+@onready var apple1 = preload("res://Assets/Environment/runwild_crystalapple.png")
+@onready var apple2 = preload("res://Assets/Environment/runwild_apple3.png")
 @onready var apple3 = preload("res://Assets/Environment/runwild_appleEVIL.png")
 @onready var apple4 = preload("res://Assets/UI/StopWatch.png")
 @export var speed = 1

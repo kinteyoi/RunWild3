@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://d3qc8twnky1f4" path="res://Assets/Sounds/laugh-evil-1.ogg" id="4_hhom3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jvlum"]
-radius = 56.0
+radius = 83.00603
 
 [node name="Fruit" type="CharacterBody2D" groups=["objects"]]
 z_index = -85
@@ -14,13 +14,15 @@ collision_layer = 4
 script = ExtResource("1_xr8lx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.375, 0.375)
+scale = Vector2(0.563, 0.563)
 texture = ExtResource("2_l1fta")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 rect = Rect2(-177, -133, 360, 276)
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_jvlum")
